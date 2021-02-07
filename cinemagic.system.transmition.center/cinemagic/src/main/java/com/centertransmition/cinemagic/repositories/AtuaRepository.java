@@ -1,4 +1,5 @@
-package com.centertransmition.cinemagic.repository;
+package com.centertransmition.cinemagic.repositories;
+
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

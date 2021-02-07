@@ -15,11 +15,6 @@ import com.centertransmition.cinemagic.services.interfaces.FilmeInterface;
 public class FilmeService implements FilmeInterface{
 	@Autowired
 	private FilmeRepository repo;
-	
-	@Override
-	public Filme insertFilme(Filme filme) {
-		return null;
-	}
 
 	@Override
 	public Filme findById(Integer id) {
@@ -27,19 +22,9 @@ public class FilmeService implements FilmeInterface{
 		return obj.orElseThrow(()-> new ObjectNotFoundException(
 				"Objecto não encontrado Id: "+id+" Tipo: "+Filme.class.getName()));
 	}
-
 	@Override
 	public List<Filme> findAll() {
-		return repo.findAll();
-		
+		return repo.findAll();	
 	}
-
-	@Override
-	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
 	
 }
