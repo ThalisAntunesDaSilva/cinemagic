@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Filme implements Serializable{
 
@@ -24,7 +26,8 @@ public class Filme implements Serializable{
 	
 	String titulo;
 	String urlFilme;
-	Date duration;
+	@JsonFormat(pattern = "HH:mm")
+	Date duracao;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_genero")
@@ -40,12 +43,12 @@ public class Filme implements Serializable{
 	
 	
 
-	public Filme(Integer id, String titulo, String urlFilme, Date duration,Genero genero) {
+	public Filme(Integer id, String titulo, String urlFilme, Date duracao,Genero genero) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.urlFilme = urlFilme;
-		this.duration = duration;
+		this.duracao = duracao;
 		this.genero = genero;
 	}
 
@@ -75,12 +78,12 @@ public class Filme implements Serializable{
 		this.urlFilme = urlFilme;
 	}
 
-	public Date getDuration() {
-		return duration;
+	public Date getDuracao() {
+		return duracao;
 	}
 
-	public void setDuration(Date duration) {
-		this.duration = duration;
+	public void setDuracao(Date duracao) {
+		this.duracao = duracao;
 	}
 
 

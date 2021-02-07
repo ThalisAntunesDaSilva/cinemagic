@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Atua implements Serializable {
 
@@ -20,6 +22,7 @@ public class Atua implements Serializable {
 	
 	private String papel;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "filme_id")
 	private Filme filme;
