@@ -128,6 +128,15 @@ public class Sessao implements Serializable{
 	public void setIngressos(List<Ingresso> ingressos) {
 		this.ingressos = ingressos;
 	}
+	
+
+	public Sala getSala() {
+		return sala;
+	}
+
+	public void setSala(Sala sala) {
+		this.sala = sala;
+	}
 
 	@Override
 	public int hashCode() {
