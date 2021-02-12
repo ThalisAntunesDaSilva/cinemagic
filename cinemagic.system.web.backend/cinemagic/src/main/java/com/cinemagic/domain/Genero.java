@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Genero implements Serializable{
 
@@ -18,7 +20,7 @@ public class Genero implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String descricao;
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "genero")
 	private List<Filme> filmes = new ArrayList<>();
 	

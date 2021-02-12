@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Sessao implements Serializable{
@@ -34,10 +35,11 @@ public class Sessao implements Serializable{
 	private double valorMeia;
 	private boolean sessaoEncerrada;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name = "filme_id")
 	private Filme filme;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "sessao")
 	private List<Ingresso> ingressos = new ArrayList<>();
 	

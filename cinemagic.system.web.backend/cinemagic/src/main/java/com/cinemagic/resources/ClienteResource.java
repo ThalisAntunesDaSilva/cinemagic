@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cinemagic.domain.Cliente;
 
-@RestController(value = "/clientes")
+@RestController()
+@RequestMapping(value = "/clientes")
 public class ClienteResource {
 
-	@RequestMapping(value = "/{id}",method = RequestMethod.GET)
+	
+	@RequestMapping(value ="/{id}",method = RequestMethod.GET)
 	public ResponseEntity<Cliente> findById(@PathVariable Integer id){
 		return null;
 	}

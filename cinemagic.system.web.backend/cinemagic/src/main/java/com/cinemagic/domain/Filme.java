@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Filme implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -23,13 +25,16 @@ public class Filme implements Serializable{
 	private String titulo;
 	private String duracao;
 	
+	
 	@ManyToOne
 	@JoinColumn(name = "genero_id")
 	private Genero genero;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "filme")
-	private Atua atuacoes;
+	private List<Atua> atuacoes;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "filme")
 	private List<Sessao> sessoes = new ArrayList<>();
 	
@@ -80,11 +85,13 @@ public class Filme implements Serializable{
 	
 	
 
-	public Atua getAtuacoes() {
+
+
+	public List<Atua> getAtuacoes() {
 		return atuacoes;
 	}
 
-	public void setAtuacoes(Atua atuacoes) {
+	public void setAtuacoes(List<Atua> atuacoes) {
 		this.atuacoes = atuacoes;
 	}
 

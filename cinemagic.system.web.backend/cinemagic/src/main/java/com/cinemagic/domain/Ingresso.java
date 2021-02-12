@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.cinemagic.domain.Enums.TipoIngresso;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Ingresso implements Serializable{
@@ -28,6 +29,7 @@ public class Ingresso implements Serializable{
 	@JoinColumn(name = "sessao_id")
 	private Sessao sessao;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "compra_id")
 	private Compra compra;

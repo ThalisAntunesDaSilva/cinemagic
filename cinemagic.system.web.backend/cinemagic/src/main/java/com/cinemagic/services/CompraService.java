@@ -29,40 +29,46 @@ public class CompraService {
 	private IngressoRepository ingressoRepository;
 	@Autowired
 	private ClienteService clienteService;
+
 	public Compra findById(Integer id) {
 		Optional<Compra> obj = repo.findById(id);
-		return obj.orElseThrow(()-> new ObjectNotFoundException("Objeto não encontrado ID:"+id+"Tipo "+Compra.class.getName()));
+		return obj.orElseThrow(
+				() -> new ObjectNotFoundException("Objeto não encontrado ID:" + id + "Tipo " + Compra.class.getName()));
 	}
+
 	public Compra insert(Compra compra) {
 		compra.setId(null);
 		ingressoRepository.saveAll(compra.getIngressos());
 		compra = repo.save(compra);
 		return compra;
-		
+
 	}
+
 	public Compra fromDTO(CompraNewDTO objDto) {
 		Cliente cliente = clienteService.findById(objDto.getClienteId());
 		Sessao sessao = sessaoService.findById(objDto.getSessaoId());
 		int quantidade = getQuantidadeIngressos(objDto.getIngressos());
-		CompraRN.validarRN(sessao,quantidade);
+		CompraRN.validarRN(sessao, quantidade);
 		Compra compra = new Compra(null, new Date(), cliente);
-		for(IngressoDTO i: objDto.getIngressos()) {
-			for(int index = 0; index < i.getQuantidade(); index++) {
-				Ingresso ingresso = new Ingresso(null,Integer.toString(sessao.getIngressos().size()+1),TipoIngresso.toEnum(i.getTipoIngresso()),sessao,compra);
+		for (IngressoDTO i : objDto.getIngressos()) {
+			for (int index = 0; index < i.getQuantidade(); index++) {
+				Ingresso ingresso = new Ingresso(null, Integer.toString(sessao.getIngressos().size() + 1),
+						TipoIngresso.toEnum(i.getTipoIngresso()), sessao, compra);
 				sessao.getIngressos().add(ingresso);
 				compra.getIngressos().add(ingresso);
 			}
-			
+
 		}
 		sessaoService.updade(sessao);
 		return compra;
 	}
+
 	private int getQuantidadeIngressos(List<IngressoDTO> ingressos) {
 		int quantidade = 0;
-		for(IngressoDTO i : ingressos) {
+		for (IngressoDTO i : ingressos) {
 			quantidade += i.getQuantidade();
 		}
 		return quantidade;
 	}
-	
+
 }

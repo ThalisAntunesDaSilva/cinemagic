@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 
 
@@ -21,7 +20,7 @@ public class Atua implements Serializable{
 	private Integer id;
 	private String papel;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name = "ator_id")
 	private Ator ator;
 	
@@ -34,11 +33,12 @@ public class Atua implements Serializable{
 	}
 
 	
-	public Atua(Integer id, String papel,Ator ator) {
+	public Atua(Integer id, String papel,Ator ator,Filme filme) {
 		super();
 		this.id = id;
 		this.papel = papel;
 		this.ator = ator;
+		this.filme = filme;
 	}
 
 

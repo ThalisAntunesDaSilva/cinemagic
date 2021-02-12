@@ -1,6 +1,7 @@
 package com.cinemagic.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -21,7 +22,7 @@ public class Pais implements Serializable{
 	private String nome;
 	
 	@OneToMany(mappedBy = "pais")
-	private List<Estado> estados;
+	private List<Estado> estados = new ArrayList<>();
 	
 	public Pais() {
 		

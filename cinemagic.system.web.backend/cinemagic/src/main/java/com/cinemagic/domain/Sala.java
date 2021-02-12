@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Sala implements Serializable{
 
@@ -24,6 +26,7 @@ public class Sala implements Serializable{
 	private int numero;
 	private int capacidade;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "sala")
 	private List<Sessao> sessoes= new ArrayList<>();
 	
@@ -35,11 +38,12 @@ public class Sala implements Serializable{
 		
 	}
 
-	public Sala(Integer id, int numero, int capacidade) {
+	public Sala(Integer id, int numero, int capacidade,Cinema cinema) {
 		super();
 		this.id = id;
 		this.numero = numero;
 		this.capacidade = capacidade;
+		this.cinema = cinema;
 	}
 
 	public Integer getId() {

@@ -16,7 +16,8 @@ import com.cinemagic.domain.Compra;
 import com.cinemagic.dto.CompraNewDTO;
 import com.cinemagic.services.CompraService;
 
-@RestController(value = "/compras")
+@RestController()
+@RequestMapping(value = "/compras")
 public class CompraResource {
 	@Autowired
 	CompraService compraService;
@@ -26,6 +27,7 @@ public class CompraResource {
 		Compra obj = compraService.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
+	
 	public ResponseEntity<Void> insert(@RequestBody CompraNewDTO compra){
 		Compra obj = compraService.fromDTO(compra);
 		compraService.insert(obj);
