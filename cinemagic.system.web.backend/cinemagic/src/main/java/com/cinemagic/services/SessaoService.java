@@ -19,5 +19,13 @@ public class SessaoService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado Id "+id+" Tipo "+Sessao.class.getName()));
 	}
 	
+	public Sessao updade(Sessao obj) {
+		Sessao newObj = findById(obj.getId());
+		updateData(newObj, obj);
+		return repo.save(newObj);
+	}
+	private void updateData(Sessao newObj, Sessao obj) {
+		newObj.setIngressos(obj.getIngressos());
+	}
 	
 }

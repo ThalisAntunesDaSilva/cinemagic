@@ -37,11 +37,10 @@ public class Compra implements Serializable{
 		
 	}
 
-	public Compra(Integer id, Date instante, double valor,Cliente cliente) {
+	public Compra(Integer id, Date instante,Cliente cliente) {
 		super();
 		this.id = id;
 		this.instante = instante;
-		this.valor = valor;
 	}
 
 	public Integer getId() {
