@@ -13,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.cinemagic.domain.Enums.TipoIngresso;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Compra implements Serializable{
 
@@ -22,9 +25,9 @@ public class Compra implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date instante;
 	
-	private double valor;
 	
 	@OneToMany(mappedBy = "compra")
 	private List<Ingresso> ingressos = new ArrayList<>();
@@ -41,6 +44,7 @@ public class Compra implements Serializable{
 		super();
 		this.id = id;
 		this.instante = instante;
+		this.cliente = cliente;
 	}
 
 	public Integer getId() {
@@ -60,12 +64,20 @@ public class Compra implements Serializable{
 	}
 
 	public double getValor() {
+		double valor = 0;
+		for(Ingresso i: ingressos) {
+			if(i.getTipoIngresso() == TipoIngresso.INTEIRA) {
+				valor += i.getSessao().getValorInteira();
+			}
+			else {
+				valor += i.getSessao().getValorMeia();
+			}
+		}
 		return valor;
+		
 	}
 
-	public void setValor(double valor) {
-		this.valor = valor;
-	}
+
 	
 
 	public List<Ingresso> getIngressos() {

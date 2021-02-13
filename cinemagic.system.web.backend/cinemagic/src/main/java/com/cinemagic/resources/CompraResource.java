@@ -27,7 +27,7 @@ public class CompraResource {
 		Compra obj = compraService.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
-	
+	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody CompraNewDTO compra){
 		Compra obj = compraService.fromDTO(compra);
 		compraService.insert(obj);

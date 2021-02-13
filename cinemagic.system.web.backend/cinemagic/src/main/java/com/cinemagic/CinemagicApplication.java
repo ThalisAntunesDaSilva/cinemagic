@@ -121,22 +121,24 @@ public class CinemagicApplication implements CommandLineRunner{
 		endereco1.setCliente(cliente1);
 		
 		Compra compra1 = new Compra(null, new Date(), cliente1);
+		cliente1.getCompras().addAll(Arrays.asList(compra1));
 		Ingresso ingresso1 = new Ingresso(null, "1", TipoIngresso.MEIA, sessao1, compra1);
 		
 		sessao1.getIngressos().addAll(Arrays.asList(ingresso1));
 		compra1.getIngressos().addAll(Arrays.asList(ingresso1));
 		
-
+		
 		
 		atorRepository.saveAll(Arrays.asList(ator1));
 		atuaRepository.saveAll(Arrays.asList(atua1));
 		
 		
-
-		clienteRepository.saveAll(Arrays.asList(cliente1));
 		
-		
+		cliente1 = clienteRepository.save(cliente1);
+		compra1.setCliente(cliente1);
 		compraRepository.saveAll(Arrays.asList(compra1));
+		
+		
 		ingressoRepository.saveAll(Arrays.asList(ingresso1));
 		
 	}

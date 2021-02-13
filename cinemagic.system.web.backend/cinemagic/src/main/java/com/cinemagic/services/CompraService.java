@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cinemagic.domain.Cliente;
 import com.cinemagic.domain.Compra;
@@ -35,15 +36,16 @@ public class CompraService {
 		return obj.orElseThrow(
 				() -> new ObjectNotFoundException("Objeto não encontrado ID:" + id + "Tipo " + Compra.class.getName()));
 	}
-
+	@Transactional
 	public Compra insert(Compra compra) {
 		compra.setId(null);
+		clienteService.update(compra.getCliente());
 		ingressoRepository.saveAll(compra.getIngressos());
 		compra = repo.save(compra);
 		return compra;
 
 	}
-
+	@Transactional
 	public Compra fromDTO(CompraNewDTO objDto) {
 		Cliente cliente = clienteService.findById(objDto.getClienteId());
 		Sessao sessao = sessaoService.findById(objDto.getSessaoId());
@@ -56,9 +58,11 @@ public class CompraService {
 						TipoIngresso.toEnum(i.getTipoIngresso()), sessao, compra);
 				sessao.getIngressos().add(ingresso);
 				compra.getIngressos().add(ingresso);
+				
 			}
 
 		}
+		cliente.getCompras().add(compra);
 		sessaoService.updade(sessao);
 		return compra;
 	}

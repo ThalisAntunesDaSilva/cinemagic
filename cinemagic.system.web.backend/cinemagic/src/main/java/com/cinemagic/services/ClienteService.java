@@ -19,4 +19,14 @@ public class ClienteService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado Id "+id+" Tipo "+Cliente.class.getName()));
 	}
 	
+	
+	public Cliente update(Cliente obj) {
+		Cliente newObj = findById(obj.getId());
+		updateData(newObj,obj);
+		return repo.save(newObj);
+	}
+	private void updateData(Cliente newObj, Cliente obj) {
+		newObj.setNome(obj.getNome());
+		newObj.setCompras(obj.getCompras());
+	}
 }

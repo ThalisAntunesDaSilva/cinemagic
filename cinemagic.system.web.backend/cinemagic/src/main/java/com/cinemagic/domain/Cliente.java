@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Cliente implements Serializable{
 
@@ -25,9 +27,11 @@ public class Cliente implements Serializable{
 	private String email;
 	private String cpf;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
 	private List<Compra> compras = new ArrayList<>();
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "endereco_id")
 	private Endereco endereco;
@@ -84,6 +88,15 @@ public class Cliente implements Serializable{
 
 	public void setCompras(List<Compra> compras) {
 		this.compras = compras;
+	}
+	
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	@Override
