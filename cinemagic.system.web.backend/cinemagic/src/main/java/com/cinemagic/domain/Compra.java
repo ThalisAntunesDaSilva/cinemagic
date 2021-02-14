@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.cinemagic.domain.Enums.TipoIngresso;
+import com.cinemagic.domain.Enums.TipoPagamento;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -21,12 +22,18 @@ public class Compra implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date instante;
+	
+	
+	private Integer tipoPagamento;
+	
 	
 	
 	@OneToMany(mappedBy = "compra")
@@ -40,11 +47,12 @@ public class Compra implements Serializable{
 		
 	}
 
-	public Compra(Integer id, Date instante,Cliente cliente) {
+	public Compra(Integer id, Date instante,Cliente cliente,TipoPagamento tipoPagamento) {
 		super();
 		this.id = id;
 		this.instante = instante;
 		this.cliente = cliente;
+		this.tipoPagamento = tipoPagamento.getCod();
 	}
 
 	public Integer getId() {
@@ -76,6 +84,8 @@ public class Compra implements Serializable{
 		return valor;
 		
 	}
+	
+	
 
 
 	
@@ -96,6 +106,16 @@ public class Compra implements Serializable{
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+	
+	
+
+	public TipoPagamento getTipoPagamento() {
+		return TipoPagamento.toEnum(tipoPagamento);
+	}
+
+	public void setTipoPagamento(TipoPagamento tipoPagamento) {
+		this.tipoPagamento = tipoPagamento.getCod();
 	}
 
 	@Override

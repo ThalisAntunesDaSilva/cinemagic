@@ -11,16 +11,18 @@ public class CompraNewDTO implements Serializable{
 	private Integer clienteId;
 	private Integer sessaoId;
 	private List<IngressoDTO> ingressos = new ArrayList<>();
+	private Integer tipoPagamento;
 	
 	public CompraNewDTO() {
 		
 	}
 
-	public CompraNewDTO(Integer clienteId,Integer sessaoId, List<IngressoDTO> ingressos) {
+	public CompraNewDTO(Integer clienteId,Integer sessaoId, List<IngressoDTO> ingressos,Integer tipoPagamento) {
 		super();
 		this.clienteId = clienteId;
 		this.ingressos = ingressos;
 		this.sessaoId = sessaoId;
+		this.tipoPagamento = tipoPagamento;
 	}
 
 	public Integer getClienteId() {
@@ -45,6 +47,14 @@ public class CompraNewDTO implements Serializable{
 
 	public void setSessaoId(Integer sessaoId) {
 		this.sessaoId = sessaoId;
+	}
+
+	public Integer getTipoPagamento() {
+		return tipoPagamento;
+	}
+
+	public void setTipoPagamento(Integer tipoPagamento) {
+		this.tipoPagamento = tipoPagamento;
 	}
 	
 	

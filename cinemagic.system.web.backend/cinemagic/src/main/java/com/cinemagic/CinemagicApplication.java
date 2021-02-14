@@ -24,6 +24,7 @@ import com.cinemagic.domain.Pais;
 import com.cinemagic.domain.Sala;
 import com.cinemagic.domain.Sessao;
 import com.cinemagic.domain.Enums.TipoIngresso;
+import com.cinemagic.domain.Enums.TipoPagamento;
 import com.cinemagic.repositories.AtorRepository;
 import com.cinemagic.repositories.AtuaRepository;
 import com.cinemagic.repositories.CidadeRepository;
@@ -99,6 +100,9 @@ public class CinemagicApplication implements CommandLineRunner{
 		
 		Sessao sessao1 = new Sessao(null, new SimpleDateFormat("dd/MM/yyyy").parse("15/02/2021"), new SimpleDateFormat("HH:mm").parse("22:00"), 20, 10, filme1, sala1);
 		sala1.getSessoes().addAll(Arrays.asList(sessao1));
+		sessao1.setTrocaPorCupons(true);
+		sessao1.setValorEmCupons(10);
+		
 		
 		Endereco endereco1 = new Endereco(null,"Rua das palmeiras", "Capão do Angico", 305,cidade1);
 		
@@ -120,14 +124,12 @@ public class CinemagicApplication implements CommandLineRunner{
 		Cliente cliente1 = new Cliente(null,"Gabriel Freitas", "gabriel@gmail.com", "04111073050", endereco1);
 		endereco1.setCliente(cliente1);
 		
-		Compra compra1 = new Compra(null, new Date(), cliente1);
+		Compra compra1 = new Compra(null, new Date(), cliente1,TipoPagamento.PONTOS);
 		cliente1.getCompras().addAll(Arrays.asList(compra1));
 		Ingresso ingresso1 = new Ingresso(null, "1", TipoIngresso.MEIA, sessao1, compra1);
 		
 		sessao1.getIngressos().addAll(Arrays.asList(ingresso1));
 		compra1.getIngressos().addAll(Arrays.asList(ingresso1));
-		
-		
 		
 		atorRepository.saveAll(Arrays.asList(ator1));
 		atuaRepository.saveAll(Arrays.asList(atua1));

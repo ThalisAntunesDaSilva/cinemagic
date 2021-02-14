@@ -5,7 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.cinemagic.services.exceptions.InsufficientCouponException;
 import com.cinemagic.services.exceptions.ObjectNotFoundException;
+import com.cinemagic.services.exceptions.PromotionClosedException;
 import com.cinemagic.services.exceptions.SessaoClosedExcpetion;
 import com.cinemagic.services.exceptions.SessaoFullCapacityException;
 
@@ -27,6 +29,18 @@ public class ResourceHandlerExcpetion {
 	@ExceptionHandler(value = SessaoFullCapacityException.class)
 	public ResponseEntity<StandardErr> sessaoFullCapacity(SessaoFullCapacityException ex){
 		StandardErr err = new StandardErr(HttpStatus.BAD_REQUEST.value(), ex.getMessage(), System.currentTimeMillis());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+	}
+	
+	@ExceptionHandler(value = PromotionClosedException.class)
+	public ResponseEntity<StandardErr> promotionClosed(PromotionClosedException ex){
+		StandardErr err = new StandardErr(HttpStatus.BAD_REQUEST.value(), ex.getMessage(), System.currentTimeMillis());
+		return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(err);
+	}
+	
+	@ExceptionHandler(value = InsufficientCouponException.class)
+	public ResponseEntity<StandardErr> insufficientCoupon(InsufficientCouponException ex){
+		StandardErr err = new StandardErr(HttpStatus.BAD_REQUEST.value(),ex.getMessage(), System.currentTimeMillis());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
 	}
 	

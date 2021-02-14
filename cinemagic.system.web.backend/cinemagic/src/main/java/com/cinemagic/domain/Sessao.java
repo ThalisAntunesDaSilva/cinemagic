@@ -35,6 +35,9 @@ public class Sessao implements Serializable{
 	private double valorMeia;
 	private boolean sessaoEncerrada;
 	
+	private boolean trocaPorCupons;
+	private int valorEmCupons;
+	
 	@ManyToOne
 	@JoinColumn(name = "filme_id")
 	private Filme filme;
@@ -62,6 +65,7 @@ public class Sessao implements Serializable{
 		this.sessaoEncerrada = false;
 		this.filme = filme;
 		this.sala = sala;
+		this.trocaPorCupons = false;
 	}
 
 	public Integer getId() {
@@ -138,6 +142,24 @@ public class Sessao implements Serializable{
 
 	public void setSala(Sala sala) {
 		this.sala = sala;
+	}
+
+	
+	
+	public boolean isTrocaPorCupons() {
+		return trocaPorCupons;
+	}
+
+	public void setTrocaPorCupons(boolean trocaPorCupons) {
+		this.trocaPorCupons = trocaPorCupons;
+	}
+
+	public int getValorEmCupons() {
+		return valorEmCupons;
+	}
+
+	public void setValorEmCupons(int valorEmCupons) {
+		this.valorEmCupons = valorEmCupons;
 	}
 
 	@Override

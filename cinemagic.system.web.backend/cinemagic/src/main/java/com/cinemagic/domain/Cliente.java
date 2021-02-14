@@ -26,6 +26,7 @@ public class Cliente implements Serializable{
 	private String nome;
 	private String email;
 	private String cpf;
+	private int pontos;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
@@ -47,6 +48,7 @@ public class Cliente implements Serializable{
 		this.email = email;
 		this.cpf = cpf;
 		this.endereco = endereco;
+		this.pontos = 0;
 	}
 
 	public Integer getId() {
@@ -97,6 +99,17 @@ public class Cliente implements Serializable{
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+	
+	
+	
+	
+	public int getPontos() {
+		return pontos;
+	}
+
+	public void setPontos(int pontos) {
+		this.pontos = pontos;
 	}
 
 	@Override

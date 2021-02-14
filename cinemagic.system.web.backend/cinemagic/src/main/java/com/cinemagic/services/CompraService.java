@@ -13,6 +13,7 @@ import com.cinemagic.domain.Compra;
 import com.cinemagic.domain.Ingresso;
 import com.cinemagic.domain.Sessao;
 import com.cinemagic.domain.Enums.TipoIngresso;
+import com.cinemagic.domain.Enums.TipoPagamento;
 import com.cinemagic.dto.CompraNewDTO;
 import com.cinemagic.dto.IngressoDTO;
 import com.cinemagic.repositories.CompraRepository;
@@ -51,7 +52,8 @@ public class CompraService {
 		Sessao sessao = sessaoService.findById(objDto.getSessaoId());
 		int quantidade = getQuantidadeIngressos(objDto.getIngressos());
 		CompraRN.validarRN(sessao, quantidade);
-		Compra compra = new Compra(null, new Date(), cliente);
+		Compra compra = new Compra(null, new Date(), cliente,TipoPagamento.toEnum(objDto.getTipoPagamento()));
+		CompraRN.validarPagamento(compra,sessao,cliente);
 		for (IngressoDTO i : objDto.getIngressos()) {
 			for (int index = 0; index < i.getQuantidade(); index++) {
 				Ingresso ingresso = new Ingresso(null, Integer.toString(sessao.getIngressos().size() + 1),
@@ -61,6 +63,9 @@ public class CompraService {
 				
 			}
 
+		}
+		if(compra.getTipoPagamento() == TipoPagamento.PONTOS) {
+			compra.getCliente().setPontos(compra.getCliente().getPontos() - sessao.getValorEmCupons());
 		}
 		cliente.getCompras().add(compra);
 		sessaoService.updade(sessao);
@@ -74,5 +79,6 @@ public class CompraService {
 		}
 		return quantidade;
 	}
+	
 
 }
