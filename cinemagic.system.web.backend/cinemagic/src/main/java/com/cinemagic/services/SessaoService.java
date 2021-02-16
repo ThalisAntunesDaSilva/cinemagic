@@ -24,6 +24,7 @@ public class SessaoService {
 		updateData(newObj, obj);
 		return repo.save(newObj);
 	}
+	
 	private void updateData(Sessao newObj, Sessao obj) {
 		newObj.setIngressos(obj.getIngressos());
 	}
