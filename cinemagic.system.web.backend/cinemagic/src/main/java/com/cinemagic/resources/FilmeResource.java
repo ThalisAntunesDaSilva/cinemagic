@@ -1,7 +1,6 @@
 package com.cinemagic.resources;
 
 import java.net.URI;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,13 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import com.cinemagic.domain.Cliente;
-import com.cinemagic.domain.Compra;
 import com.cinemagic.domain.Filme;
-import com.cinemagic.dto.CompraNewDTO;
 import com.cinemagic.dto.FilmeDTO;
-import com.cinemagic.services.CompraService;
 import com.cinemagic.services.FilmeService;
 
 @RestController()
@@ -32,6 +26,13 @@ public class FilmeResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	/**
+	 * -MATHEUS 10/02 Verificar se ah necessidade do metodo a baixo!
+	 * @param filme
+	 * @return
+	 */
+	
+	/*
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody FilmeDTO filme){
 		Filme obj = filmeService.fromDTO(filme);
@@ -40,4 +41,5 @@ public class FilmeResource {
 				.toUri();
 		return ResponseEntity.created(url).build();
 	}
+	*/
 }

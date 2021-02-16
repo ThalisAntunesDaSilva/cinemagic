@@ -21,6 +21,18 @@ public class FilmeService {
 				() -> new ObjectNotFoundException("Objeto não encontrado Id " + id + " Tipo" + Filme.class.getName()));
 
 	}
+	
+	public Filme update(Filme obj) {
+		Filme newObj = findById(obj.getId());
+		updateData(newObj,obj);
+		return repo.save(newObj);
+	}
+	
+	private void updateData(Filme newObj, Filme obj) {
+		newObj.setTitulo(obj.getTitulo());
+		newObj.setGenero(obj.getGenero());
+		newObj.setDuracao(obj.getDuracao());
+	}
 
 	public Filme insert(Filme filme) {
 		filme.setId(null);
