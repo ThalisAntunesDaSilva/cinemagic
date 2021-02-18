@@ -1,0 +1,26 @@
+body{
+background-image: url(../../assets/padrao.jpg);
+display: flex;
+flex-direction:center;
+background-size: cover;
+}
+
+
+.Filmes{
+background-color: blanchedalmond;
+height: 50vh;
+
+}
+
+.rodape{
+    background-color: #000000;
+    height: 50vh;
+    
+}
+
+.bandeira {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 5%;
+  }
