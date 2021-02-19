@@ -17,11 +17,11 @@ export default function Home(){
 
 <section className="head">
 <Link>
-<FiMenu size={30} color="#ffffff"/>
+<FiMenu size={80} className="head-menuIcon" color="#ffffff"/>
 </Link>
-<img src={logoImg} alt="cinemagic"/>
+<img src={logoImg} className="head-logoImg" alt="cinemagic"/>
 <h1>Cinamgic</h1>
-<FiSearch size={30} color="#ffffff"/>
+<FiSearch  className="head-searchIcon" size={80} color="#ffffff"/>
 <Link className="head-opcoes">...</Link>
 </section>
 
@@ -31,7 +31,7 @@ export default function Home(){
 
 <section className="botaoDeCompra">
 <button className="button" type="compra">
-   <FiCreditCard size={30} color="#ffffff"/> 
+   <FiCreditCard className="cardicon"size={80} color="#ffffff"/> 
      Compre já seu ingresso
      </button>
 </section>
@@ -39,11 +39,42 @@ export default function Home(){
 <section className="Filmes">
 
 <div className="filme">
-<img src={hp} alt="hp"/>
+<img src={hp} alt="hp" className="filmeImg"/>
     <Link className="nomeFilme">Harry Potter</Link>
-    <FiMapPin size={30} color="#000000"/>
+    <div className="localizacao">
+    <FiMapPin className="localizacaoIcon" size={60} color="#000000"/>
     <label className="localizacao">Alegrete</label>
+    </div>
+    
 </div>
+
+<div className="filme2">
+<img src={hp} alt="hp" className="filmeImg"/>
+    <Link className="nomeFilme">Harry Potter</Link>
+    <div className="localizacao">
+    <FiMapPin className="localizacaoIcon" size={60} color="#000000"/>
+    <label className="localizacao">Alegrete</label>
+    </div>
+    </div>
+
+    <div className="filme3">
+<img src={hp} alt="hp" className="filmeImg"/>
+    <Link className="nomeFilme">Harry Potter</Link>
+    <div className="localizacao">
+    <FiMapPin className="localizacaoIcon" size={60} color="#000000"/>
+    <label className="localizacao">Alegrete</label>
+    </div>
+    </div>
+    <div className="filme4">
+<img src={hp} alt="hp" className="filmeImg"/>
+    <Link className="nomeFilme">Homem Aranha</Link>
+    <div className="localizacao">
+    <FiMapPin className="localizacaoIcon" size={60} color="#000000"/>
+    <label className="localizacao">Alegrete</label>
+    </div>
+    </div>
+
+
 </section>
 
 
