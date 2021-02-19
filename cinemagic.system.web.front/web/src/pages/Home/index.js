@@ -3,6 +3,8 @@ import logoImg from '../../assets/logo.png';
 import maravilha from '../../assets/maravilha.png';
 import hp from '../../assets/hp.png';
 import bandeira from '../../assets/bandeira.png';
+import './flexboxgrid.min.css';
+
 import {Link} from 'react-router-dom';
 import './styles.css';
 import { FiMenu, FiSearch, FiCreditCard, FiMapPin } from 'react-icons/fi'
@@ -15,30 +17,50 @@ export default function Home(){
 <div className="body">
 <div className="home-container">
 
-<section className="head">
-<Link>
-<FiMenu size={80} className="head-menuIcon" color="#ffffff"/>
-</Link>
-<img src={logoImg} className="head-logoImg" alt="cinemagic"/>
-<h1>Cinamgic</h1>
-<FiSearch  className="head-searchIcon" size={80} color="#ffffff"/>
-<Link className="head-opcoes">...</Link>
+<section className="header col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div className="header-esquerda">
+        <Link>
+            <FiMenu size={80} className="head-menuIcon" color="#ffffff"/>
+                </Link>
+                    <img src={logoImg} className="head-logoImg" alt="cinemagic"/>
+    </div>
+    <div className="header-direita">
+        <FiSearch  className="head-searchIcon" size={80} color="#ffffff"/>
+            <Link className="head-opcoes">...</Link>
+    </div>
 </section>
 
-<section className="carrousel">
-<img src={maravilha} alt="maravilha"/>
+
+<section className="carrousel col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <img src={maravilha} alt="maravilha"/>
 </section>
 
-<section className="botaoDeCompra">
-<button className="button" type="compra">
-   <FiCreditCard className="cardicon"size={80} color="#ffffff"/> 
-     Compre já seu ingresso
-     </button>
+
+<section className="botaoDeCompra col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    
+    
+    
+    <button className="button " type="compra">
+       
+        <FiCreditCard className="cardicon "size={70} color="#ffffff"/> 
+         
+          <label className="">Compre!</label>
+                </button>
+
+
+
 </section>
 
-<section className="Filmes">
 
-<div className="filme">
+
+
+
+
+
+
+
+<section className="filmesContainer col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div className="filme ">
 <img src={hp} alt="hp" className="filmeImg"/>
     <Link className="nomeFilme">Harry Potter</Link>
     <div className="localizacao">
@@ -48,7 +70,7 @@ export default function Home(){
     
 </div>
 
-<div className="filme2">
+<div className="filme">
 <img src={hp} alt="hp" className="filmeImg"/>
     <Link className="nomeFilme">Harry Potter</Link>
     <div className="localizacao">
@@ -57,7 +79,7 @@ export default function Home(){
     </div>
     </div>
 
-    <div className="filme3">
+<div className="filme">
 <img src={hp} alt="hp" className="filmeImg"/>
     <Link className="nomeFilme">Harry Potter</Link>
     <div className="localizacao">
@@ -65,14 +87,7 @@ export default function Home(){
     <label className="localizacao">Alegrete</label>
     </div>
     </div>
-    <div className="filme4">
-<img src={hp} alt="hp" className="filmeImg"/>
-    <Link className="nomeFilme">Homem Aranha</Link>
-    <div className="localizacao">
-    <FiMapPin className="localizacaoIcon" size={60} color="#000000"/>
-    <label className="localizacao">Alegrete</label>
-    </div>
-    </div>
+  
 
 
 </section>
@@ -81,12 +96,11 @@ export default function Home(){
 
 
 <section className="rodape">
-<img src={logoImg} alt="cinemagic"/>
-<h1>Cinamgic</h1>
-<Link className="mudarPais">Mudar País</Link>
-<Link className="mudarCidade">Mudar Cidade</Link>
+
+<div>
 <img src={bandeira} alt="bandeira" className="bandeira" />
 
+</div>
 </section>
 
 
