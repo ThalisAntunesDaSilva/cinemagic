@@ -1,0 +1,8 @@
+.mainContainer {
+  border-radius: 10px;
+  background-color: #e5e5e5;
+
+  margin: 20px auto;
+  min-width: fit-content;
+  max-width: 50%;
+}

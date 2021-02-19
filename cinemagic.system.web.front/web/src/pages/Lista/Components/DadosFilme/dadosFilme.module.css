@@ -1,0 +1,13 @@
+.titulo {
+  padding: 10px;
+}
+
+.dados {
+  display: flex;
+  flex-direction: column;
+}
+
+.dados > * {
+  display: flex;
+  flex-direction: row;
+}

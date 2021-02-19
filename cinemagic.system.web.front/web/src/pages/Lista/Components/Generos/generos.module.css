@@ -1,0 +1,17 @@
+.generos {
+  padding: 3px 10px;
+  margin: 5px 2px;
+
+  border-radius: 15px;
+  background-color: #ab0032;
+  color: #fff9fd;
+
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-align: center;
+}
+/* 
+.completos {
+  background-color: #3a3a3a;
+  color: #fff9fd;
+} */

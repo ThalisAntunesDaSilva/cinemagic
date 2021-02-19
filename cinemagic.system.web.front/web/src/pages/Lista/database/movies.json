@@ -1,0 +1,459 @@
+{
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/iOrjCeIyRb4vDY3vbPSaEBCA1D3.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        { "id": 10749, "name": "Romance" },
+        { "id": 18, "name": "Drama" }
+      ],
+      "homepage": "https://www.netflix.com/title/81344370",
+      "id": 722913,
+      "imdb_id": "tt12676326",
+      "original_language": "en",
+      "original_title": "Malcolm & Marie",
+      "overview": "Um cineasta chega em casa após a première de seu novo filme. Enquanto aguarda a liberação das críticas, ele e sua namorada se veem desenrolando os muitos problemas e segredos do seu relacionamento.",
+      "popularity": 229.134,
+      "poster_path": "/oZDAW4nmlC2cT9vM4fRxTQWHddE.jpg",
+      "production_companies": [
+        {
+          "id": 126587,
+          "logo_path": null,
+          "name": "Little Lamb Productions",
+          "origin_country": "US"
+        },
+        {
+          "id": 149482,
+          "logo_path": null,
+          "name": "FotoKem",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        { "iso_3166_1": "US", "name": "United States of America" }
+      ],
+      "release_date": "2021-01-28",
+      "revenue": 0,
+      "runtime": 106,
+      "spoken_languages": [
+        { "english_name": "English", "iso_639_1": "en", "name": "English" }
+      ],
+      "status": "Released",
+      "tagline": "Insano amor.",
+      "title": "Malcolm e Marie",
+      "video": false,
+      "vote_average": 7.3,
+      "vote_count": 458,
+      "sessions": ["14:00", "17:30", "21:00"]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/vfuzELmhBjBTswXj2Vqxnu5ge4g.jpg",
+      "belongs_to_collection": null,
+      "budget": 30000000,
+      "genres": [
+        { "id": 53, "name": "Thriller" },
+        { "id": 80, "name": "Crime" }
+      ],
+      "homepage": "http://legendessays.com/",
+      "id": 602269,
+      "imdb_id": "tt10016180",
+      "original_language": "en",
+      "original_title": "The Little Things",
+      "overview": "Um policial começa a ter problemas em sua investigação devido a seu passado obscuro e sua tendência por quebrar as regras.",
+      "popularity": 1278.178,
+      "poster_path": "/98UFAKFPUOIzF91Q0j0W7vR4ikV.jpg",
+      "production_companies": [
+        {
+          "id": 174,
+          "logo_path": "/ky0xOc5OrhzkZ1N6KyUxacfQsCk.png",
+          "name": "Warner Bros. Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 2605,
+          "logo_path": null,
+          "name": "Gran Via Productions",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        { "iso_3166_1": "US", "name": "United States of America" }
+      ],
+      "release_date": "2021-01-28",
+      "revenue": 13100000,
+      "runtime": 128,
+      "spoken_languages": [
+        { "english_name": "English", "iso_639_1": "en", "name": "English" }
+      ],
+      "status": "Released",
+      "tagline": "Há vestígios que nunca se apagam.",
+      "title": "Os Pequenos Vestígios",
+      "video": false,
+      "vote_average": 6.3,
+      "vote_count": 319,
+      "sessions": ["14:00", "17:30", "21:00"]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/jjPpjUYf3o698cPx06FHZ5zqomv.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        { "id": 28, "name": "Ação" },
+        { "id": 12, "name": "Aventura" },
+        { "id": 18, "name": "Drama" },
+        { "id": 37, "name": "Faroeste" }
+      ],
+      "homepage": "https://www.netflix.com/br/Title/81210670",
+      "id": 581032,
+      "imdb_id": "tt6878306",
+      "original_language": "en",
+      "original_title": "News of the World",
+      "overview": "Um veterano de guerra que viaja de cidade em cidade lendo as notícias faz uma perigosa viagem pelo Texas para levar uma garotinha órfã até seu novo lar.",
+      "popularity": 100.774,
+      "poster_path": "/cLqg9BjcecdzYGqURSdWgBUO3rX.jpg",
+      "production_companies": [
+        {
+          "id": 4171,
+          "logo_path": "/ip8rzankhLLhJGGkvfCirfUM26d.png",
+          "name": "Playtone",
+          "origin_country": "US"
+        },
+        {
+          "id": 8875,
+          "logo_path": null,
+          "name": "Pretty Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 33,
+          "logo_path": "/8lvHyhjr8oUKOOy2dKXoALWKdp0.png",
+          "name": "Universal Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 10338,
+          "logo_path": "/el2ap6lvjcEDdbyJoB3oKiYgXu9.png",
+          "name": "Perfect World Pictures",
+          "origin_country": "CN"
+        }
+      ],
+      "production_countries": [
+        { "iso_3166_1": "US", "name": "United States of America" }
+      ],
+      "release_date": "2020-12-25",
+      "revenue": 0,
+      "runtime": 118,
+      "spoken_languages": [
+        { "english_name": "English", "iso_639_1": "en", "name": "English" },
+        { "english_name": "German", "iso_639_1": "de", "name": "Deutsch" }
+      ],
+      "status": "Released",
+      "tagline": "Encontre o seu lar.",
+      "title": "Relatos do Mundo",
+      "video": false,
+      "vote_average": 7.2,
+      "vote_count": 453,
+      "sessions": ["14:00", "17:30", "21:00"]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/2Fk3AB8E9dYIBc2ywJkxk8BTyhc.jpg",
+      "belongs_to_collection": null,
+      "budget": 34000000,
+      "genres": [
+        { "id": 28, "name": "Ação" },
+        { "id": 53, "name": "Thriller" }
+      ],
+      "homepage": "http://www.stxfilms.com/greenland/",
+      "id": 524047,
+      "imdb_id": "tt7737786",
+      "original_language": "en",
+      "original_title": "Greenland",
+      "overview": "Quando cientistas descobrem que um cometa atingirá a Terra em poucos dias e provavelmente causará a extinção da humanidade, uma família tenta cruzar o país para chegar a sua única esperança de sobrevivência: um grupo de abrigos subterrâneos em Greenland.",
+      "popularity": 519.529,
+      "poster_path": "/sJecw4UYpvTgKE2zS9le44Nwuag.jpg",
+      "production_companies": [
+        {
+          "id": 47729,
+          "logo_path": "/5NRpQ7xxmODXAjt2pRWUFMLVzvP.png",
+          "name": "STX Entertainment",
+          "origin_country": "US"
+        },
+        {
+          "id": 3528,
+          "logo_path": "/cCzCClIzIh81Fa79hpW5nXoUsHK.png",
+          "name": "Thunder Road",
+          "origin_country": "US"
+        },
+        {
+          "id": 138743,
+          "logo_path": null,
+          "name": "Anton",
+          "origin_country": "GB"
+        },
+        {
+          "id": 103331,
+          "logo_path": null,
+          "name": "G-BASE",
+          "origin_country": "US"
+        },
+        {
+          "id": 76314,
+          "logo_path": "/oFiHo3350Nj7bi6oxYMq3Kp6VGC.png",
+          "name": "Riverstone Pictures",
+          "origin_country": "GB"
+        },
+        {
+          "id": 1634,
+          "logo_path": null,
+          "name": "Truenorth Productions",
+          "origin_country": "IS"
+        }
+      ],
+      "production_countries": [
+        { "iso_3166_1": "GB", "name": "United Kingdom" },
+        { "iso_3166_1": "US", "name": "United States of America" }
+      ],
+      "release_date": "2020-07-29",
+      "revenue": 47800000,
+      "runtime": 120,
+      "spoken_languages": [
+        { "english_name": "English", "iso_639_1": "en", "name": "English" }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "Destruição Final: O Último Refúgio",
+      "video": false,
+      "vote_average": 7.2,
+      "vote_count": 1932,
+      "sessions": ["14:00", "17:30", "21:00"]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/eSl9MRMvWJ0Hm5yePHgsRhFtPTw.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        { "id": 878, "name": "Ficção científica" },
+        { "id": 18, "name": "Drama" },
+        { "id": 10749, "name": "Romance" }
+      ],
+      "homepage": "https://www.amazon.com/dp/B08RNWBDDC/",
+      "id": 613911,
+      "imdb_id": "tt10333426",
+      "original_language": "en",
+      "original_title": "Bliss",
+      "overview": "Uma alucinante história de amor vivida por Greg, recentemente divorciado e demitido, quando ele conhece a misteriosa Isabel, que vive nas ruas e está convencida de que o mundo poluído e deteriorado ao redor deles é só uma simulação virtual. A princípio descrente, Greg descobre que pode haver alguma verdade na louca teoria de Isabel.",
+      "popularity": 375.51,
+      "poster_path": "/b7BllsQkD6nTkAdtd28UVCmKqVi.jpg",
+      "production_companies": [
+        {
+          "id": 20580,
+          "logo_path": "/tkFE81jJIqiFYPP8Tho57MXRQEx.png",
+          "name": "Amazon Studios",
+          "origin_country": "US"
+        },
+        {
+          "id": 1205,
+          "logo_path": null,
+          "name": "Endgame Entertainment",
+          "origin_country": "US"
+        },
+        {
+          "id": 6831,
+          "logo_path": "/ojg8jqsVLGDvuJowOkZQZVV42AA.png",
+          "name": "Big Indie Pictures",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        { "iso_3166_1": "US", "name": "United States of America" }
+      ],
+      "release_date": "2021-02-05",
+      "revenue": 0,
+      "runtime": 103,
+      "spoken_languages": [
+        { "english_name": "English", "iso_639_1": "en", "name": "English" }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "Bliss: Em Busca da Felicidade",
+      "video": false,
+      "vote_average": 5.6,
+      "vote_count": 152,
+      "sessions": ["14:00", "17:30", "21:00"]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/drulhSX7P5TQlEMQZ3JoXKSDEfz.jpg",
+      "belongs_to_collection": null,
+      "budget": 21000000,
+      "genres": [
+        { "id": 18, "name": "Drama" },
+        { "id": 14, "name": "Fantasia" },
+        { "id": 878, "name": "Ficção científica" }
+      ],
+      "homepage": "https://www.netflix.com/br/Title/81094067",
+      "id": 581389,
+      "imdb_id": "tt12838766",
+      "original_language": "ko",
+      "original_title": "승리호",
+      "overview": "Perseguindo detritos espaciais e sonhos distantes no ano de 2092, quatro desajustados descobrem segredos explosivos durante a tentativa de comércio de um humanoide.‎",
+      "popularity": 2520.576,
+      "poster_path": "/f32ne52ClTPFL9Ew2aPUhKoVn9e.jpg",
+      "production_companies": [
+        {
+          "id": 11589,
+          "logo_path": null,
+          "name": "Bidangil Pictures",
+          "origin_country": "KR"
+        },
+        {
+          "id": 114519,
+          "logo_path": "/omfLDgUXKmXly7T7bWBpKstq3HP.png",
+          "name": "Merry Christmas",
+          "origin_country": "KR"
+        }
+      ],
+      "production_countries": [{ "iso_3166_1": "KR", "name": "South Korea" }],
+      "release_date": "2021-02-05",
+      "revenue": 0,
+      "runtime": 137,
+      "spoken_languages": [
+        { "english_name": "Arabic", "iso_639_1": "ar", "name": "العربية" },
+        { "english_name": "Mandarin", "iso_639_1": "zh", "name": "普通话" },
+        {
+          "english_name": "Korean",
+          "iso_639_1": "ko",
+          "name": "한국어/조선말"
+        },
+        { "english_name": "Danish", "iso_639_1": "da", "name": "Dansk" },
+        { "english_name": "French", "iso_639_1": "fr", "name": "Français" },
+        { "english_name": "English", "iso_639_1": "en", "name": "English" },
+        { "english_name": "Russian", "iso_639_1": "ru", "name": "Pусский" },
+        { "english_name": "Spanish", "iso_639_1": "es", "name": "Español" },
+        { "english_name": "Tagalog", "iso_639_1": "tl", "name": "" }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "Nova Ordem Espacial",
+      "video": false,
+      "vote_average": 7.3,
+      "vote_count": 207,
+      "sessions": ["14:00", "17:30", "21:00"]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/fatz1aegtBGh7KS0gipcsw9MqUn.jpg",
+      "belongs_to_collection": null,
+      "budget": 26000000,
+      "genres": [
+        { "id": 18, "name": "Drama" },
+        { "id": 36, "name": "História" }
+      ],
+      "homepage": "https://www.judasandtheblackmessiah.com/",
+      "id": 583406,
+      "imdb_id": "tt9784798",
+      "original_language": "en",
+      "original_title": "Judas and the Black Messiah",
+      "overview": "A história de Fred Hampton, um dos líderes do Partido dos Panteras Negras, que foi assassinado em 1969 sob as ordens do FBI, que coagiu um pequeno criminoso chamado William O'Neal para ajudá-los a silenciar Hampton.",
+      "popularity": 261.185,
+      "poster_path": "/4ep2AOWNbVeS0EKLpOBKcIZ8hZS.jpg",
+      "production_companies": [
+        {
+          "id": 174,
+          "logo_path": "/ky0xOc5OrhzkZ1N6KyUxacfQsCk.png",
+          "name": "Warner Bros. Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 79426,
+          "logo_path": "/8aEC7xem9YwHNCDojSFEPQgoFC3.png",
+          "name": "MACRO",
+          "origin_country": "US"
+        },
+        {
+          "id": 13240,
+          "logo_path": "/aTc07YaNHo8WNgkQSnvLmG6w4nW.png",
+          "name": "Bron Studios",
+          "origin_country": "CA"
+        },
+        {
+          "id": 6735,
+          "logo_path": "/6yyByQrmTAgJv0QzZ1Eh1jiGX4R.png",
+          "name": "Participant Media",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        { "iso_3166_1": "US", "name": "United States of America" }
+      ],
+      "release_date": "2021-02-12",
+      "revenue": 0,
+      "runtime": 125,
+      "spoken_languages": [
+        { "english_name": "English", "iso_639_1": "en", "name": "English" }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "Judas e o Messias Negro",
+      "video": false,
+      "vote_average": 7.5,
+      "vote_count": 61,
+      "sessions": ["14:00", "17:30", "21:00"]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/oi0yXLZTkkP7kZbXqf1BODuOD67.jpg",
+      "belongs_to_collection": null,
+      "budget": 0,
+      "genres": [
+        { "id": 53, "name": "Thriller" },
+        { "id": 80, "name": "Crime" },
+        { "id": 18, "name": "Drama" }
+      ],
+      "homepage": "https://www.focusfeatures.com/promising-young-woman",
+      "id": 582014,
+      "imdb_id": "tt9620292",
+      "original_language": "en",
+      "original_title": "Promising Young Woman",
+      "overview": "Uma jovem mulher assombrada por uma tragédia em seu passado se vinga nos homens predadores que cruzam seu caminho.",
+      "popularity": 44.107,
+      "poster_path": "/qjO6iJTW6McMLrbt6Xz6lDZu7bF.jpg",
+      "production_companies": [
+        {
+          "id": 82968,
+          "logo_path": "/pFfDKpip9r0PDTfpJ7hnK15Q03.png",
+          "name": "LuckyChap Entertainment",
+          "origin_country": "US"
+        },
+        {
+          "id": 7493,
+          "logo_path": "/452FO4LcI6lA6bfgl6w1kQYRBlr.png",
+          "name": "FilmNation Entertainment",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        { "iso_3166_1": "US", "name": "United States of America" }
+      ],
+      "release_date": "2020-12-13",
+      "revenue": 2707180,
+      "runtime": 113,
+      "spoken_languages": [
+        { "english_name": "English", "iso_639_1": "en", "name": "English" }
+      ],
+      "status": "Released",
+      "tagline": "",
+      "title": "Bela Vingança",
+      "video": false,
+      "vote_average": 7.6,
+      "vote_count": 298,
+      "sessions": ["14:00", "17:30", "21:00"]
+    }
+  ]
+}

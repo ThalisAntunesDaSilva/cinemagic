@@ -1,0 +1,6 @@
+@import-normalize;
+
+* {
+  border: 1px solid grey;
+  border: none;
+}
