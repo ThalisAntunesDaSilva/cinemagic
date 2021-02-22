@@ -21,12 +21,12 @@ public class GeneroResource {
 
 	@RequestMapping(value ="/{id}",method = RequestMethod.GET)
 	public ResponseEntity<Genero> findById(@PathVariable Integer id){
-		return null;
+		return findById(null); 
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Genero genero){
-		return null; 
+		return insert(genero); 
 	}
 	
 	@GetMapping("/produtos")
