@@ -31,8 +31,6 @@ public class FilmeResource {
 	 * @param filme
 	 * @return
 	 */
-	
-	/*
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody FilmeDTO filme){
 		Filme obj = filmeService.fromDTO(filme);
@@ -41,5 +39,5 @@ public class FilmeResource {
 				.toUri();
 		return ResponseEntity.created(url).build();
 	}
-	*/
+	
 }

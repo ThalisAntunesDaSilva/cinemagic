@@ -7,4 +7,5 @@ import com.cinemagic.domain.Genero;
 @Repository
 public interface GeneroRepository extends JpaRepository<Genero, Integer>{
 
+
 }
