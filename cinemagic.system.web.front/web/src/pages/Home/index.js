@@ -1,16 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logoImg from '../../assets/logo.png';
 import maravilha from '../../assets/maravilha.png';
 import hp from '../../assets/hp.png';
 import bandeira from '../../assets/bandeira.png';
 import './flexboxgrid.min.css';
+import api from '../../services/api';
 
 import {Link} from 'react-router-dom';
 import './styles.css';
 import { FiMenu, FiSearch, FiCreditCard, FiMapPin } from 'react-icons/fi'
 
-//api
+
 export default function Home(){
+    const [filme, setFilme] = useState('')
+    
+    function handleHome(e){
+e.preventDefault();
+    }    
+    
     return(
         <>
             
