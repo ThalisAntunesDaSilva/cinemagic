@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+    color: #323232;
+    border: none;
+}
+
+input,label{
+    display: block;
+    width: 100%;
+}
+
+input:focus,label:focus{
+    outline: none;
+}
+
+a{
+    color: brown;
+}
+
+body{
+    padding-top: 5vh; /* view heigy -> 5% da tela */
+    background-image: url('../../assets/cadastro.jpg');
+    background-size: cover;
+    background-position-y: -150px;
+}
+
+logo{
+        
+        width: 50px;
+}
+.logoENome {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.local {
+    padding: 0px 10px;
+    margin: 5px 2px;
+  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  
+    font-size: 0.7rem;
+  }
+
+/* form */
+
+#main-container{
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto; 
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+#main-container h1{
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.6rem; /* adaptada ao elemento root*/
+}
+
+form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.full-box{
+    flex: 1 1 100%;
+    position: relative;
+}
+
+.half-box{
+    flex: 1 1 46%;
+}
+
+.spacing {
+    margin-right: 3.5%;
+}
+
+label{
+    font-weight: bold;
+    font-size: .8rem;
+}
+input{
+    border-bottom: 2px solid #323232;
+    padding: 10px;
+    font-size: .9rem;
+    margin-bottom: 50px;
+}
+
+input:focus{
+    border-color: crimson;
+}
+
+input[type="submit"]{
+    background-color: crimson;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    height: 40px;
+    cursor: pointer;
+}
+
+#agreement{
+    margin-right: 5px;
+}
+
+#agreement, #agreement-label{
+    display: inline-block;
+    width: auto;
+
+}
+
+/* validações */
+.error-validation{
+    color: #ff1a1a;
+    position: absolute;
+    top:57px;
+    font-size: .8rem;
+
+}
+
+.template{
+    display: none;
+}
+
+.rodape{
+    background-color: #000000;
+    height: 20vh;
+    position:static;
+    width:100%;
+    bottom: 0;
+    margin-top: 30vh;  
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+    
+}
+
+
+.bandeira {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 5%;
+}
+
+
