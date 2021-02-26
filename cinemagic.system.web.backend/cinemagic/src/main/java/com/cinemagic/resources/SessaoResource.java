@@ -45,12 +45,9 @@ public class SessaoResource {
 	}
 	
 	@RequestMapping(value = "/cidade/{id}",method = RequestMethod.GET)
-	public ResponseEntity<Page<Sessao>> findByCity(@PathVariable Integer id,
-			@RequestParam(value = "page", defaultValue = "0") Integer page,
-			@RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage,
-			@RequestParam(value = "orderBy", defaultValue = "nome") String orderBy,
-			@RequestParam(value = "direction", defaultValue = "ASC") String direction){
-		return null;
+	public ResponseEntity<List<Sessao>> findByCity(@PathVariable Integer id){
+		List<Sessao> obj = service.findByCity(id);
+		return ResponseEntity.ok().body(obj);
 	}
 	
 	@GetMapping("/sessoes")
