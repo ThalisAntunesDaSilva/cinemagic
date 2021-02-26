@@ -22,13 +22,13 @@ a{
 
 body{
     padding-top: 5vh; /* view heigy -> 5% da tela */
-    background-image: url('../img/cadastro.jpg');
+    background-image: url('../../assets/cadastro.jpg');
     background-size: cover;
     background-position-y: -150px;
 }
 
 logo{
-        background-image: url('../img/logo.png');
+        
         width: 50px;
 }
 .logoENome {

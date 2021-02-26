@@ -19,8 +19,7 @@ e.preventDefault();
     }    
     
     return(
-        <>
-            
+        <>            
 <div className="body">
 <div className="home-container">
 
