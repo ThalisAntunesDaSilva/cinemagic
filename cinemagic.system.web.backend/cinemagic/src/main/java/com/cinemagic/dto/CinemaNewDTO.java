@@ -10,6 +10,18 @@ public class CinemaNewDTO implements Serializable{
 	private String nome;
 	private Integer cidadeId;
 	List<SalaDTO> salas = new ArrayList<>();
+	/*
+	 {
+	 	"nome": "CinemaAlegrete",
+	 	"cidadeId": 1,
+	 	"salas" :[
+	 		"numero": 1,
+	 		"capacidade": 50
+	 	]
+	 }
+	 
+	 */
+	
 	public CinemaNewDTO() {
 		
 	}
