@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Estado implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -23,6 +25,7 @@ public class Estado implements Serializable{
 	private String nome;
 	private String uf;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "estado")
 	private List<Cidade> cidades = new ArrayList<>();
 	

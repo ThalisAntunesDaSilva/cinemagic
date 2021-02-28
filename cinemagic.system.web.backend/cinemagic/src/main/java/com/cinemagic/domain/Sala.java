@@ -30,6 +30,7 @@ public class Sala implements Serializable{
 	@OneToMany(mappedBy = "sala")
 	private List<Sessao> sessoes= new ArrayList<>();
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "cinema_id")
 	private Cinema cinema;
