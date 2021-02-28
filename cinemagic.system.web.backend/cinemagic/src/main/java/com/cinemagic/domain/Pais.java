@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Pais implements Serializable{
 
@@ -21,6 +23,7 @@ public class Pais implements Serializable{
 	
 	private String nome;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "pais")
 	private List<Estado> estados = new ArrayList<>();
 	
