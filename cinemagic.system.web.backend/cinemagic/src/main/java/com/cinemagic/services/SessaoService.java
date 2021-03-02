@@ -34,7 +34,10 @@ public class SessaoService {
 	
 	public List<Sessao> findByCity(Integer id){
 		return repo.findByCity(id);
-		
+	}
+	
+	public List<Sessao> findBySessaos(){
+		return repo.findBySessaos();
 	}
 	
 	public Sessao insert(Sessao sessao) {
