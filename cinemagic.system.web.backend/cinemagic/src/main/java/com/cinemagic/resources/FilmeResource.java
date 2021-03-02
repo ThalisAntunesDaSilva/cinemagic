@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.cinemagic.domain.Filme;
+import com.cinemagic.domain.Sugestao;
 import com.cinemagic.dto.FilmeDTO;
+import com.cinemagic.dto.SugestaoDTO;
 import com.cinemagic.repositories.FilmeRepository;
 import com.cinemagic.services.FilmeService;
 
@@ -43,29 +45,25 @@ public class FilmeResource {
 		return ResponseEntity.created(url).build();
 	}
 	
-	@GetMapping("/filmes")
-	public List<Filme> listarFilmes(){
-		return repo.findAll();
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<FilmeDTO>> findAll(){
+		List<FilmeDTO> objDTO = filmeService.findAll();
+		return ResponseEntity.ok().body(objDTO);
 	}
 	
-	@GetMapping("/filme/{id}")
-	public Filme buscaFilme(@PathVariable(value = "id") int id) {
-		return repo.findById(id);
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable Integer id){
+		filmeService.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 	
-	@PostMapping("/filme")
-	public Filme salvarFilme(@RequestBody Filme filme) {
-		return repo.save(filme);
-	}
-	
-	@DeleteMapping("/filme")
-	public void deletarFilme(@RequestBody Filme filme) {
-		repo.delete(filme);
-	}
-	
-	@PutMapping("/filme")
-	public Filme atualizarFilme(@RequestBody Filme filme) {
-		return repo.save(filme);
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Filme> update(@RequestBody FilmeDTO objDTO,@PathVariable Integer id){
+		Filme filme = filmeService.fromDTO(objDTO);
+		filme.setId(id);
+		filme = filmeService.update(filme);
+		return ResponseEntity.ok().body(filme);
+		
 	}
 	
 }

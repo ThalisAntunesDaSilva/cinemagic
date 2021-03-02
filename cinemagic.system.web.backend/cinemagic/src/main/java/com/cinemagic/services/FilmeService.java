@@ -1,12 +1,16 @@
 package com.cinemagic.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cinemagic.domain.Filme;
+import com.cinemagic.domain.Sugestao;
 import com.cinemagic.dto.FilmeDTO;
+import com.cinemagic.dto.SugestaoDTO;
 import com.cinemagic.repositories.FilmeRepository;
 import com.cinemagic.services.exceptions.ObjectNotFoundException;
 
@@ -22,10 +26,22 @@ public class FilmeService {
 
 	}
 	
+	public List<FilmeDTO> findAll(){
+		List<Filme> filme = repo.findAll();
+		List<FilmeDTO> filmeDTO = new ArrayList<>();
+		filme.stream().forEach(obj -> filmeDTO.add(new FilmeDTO(obj.getTitulo(), obj.getDuracao())));
+		return filmeDTO;
+	}
+	
+	
 	public Filme update(Filme obj) {
 		Filme newObj = findById(obj.getId());
 		updateData(newObj,obj);
 		return repo.save(newObj);
+	}
+	
+	public void delete(Integer id) {
+		repo.deleteById(id);
 	}
 	
 	private void updateData(Filme newObj, Filme obj) {
