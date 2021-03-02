@@ -1,0 +1,237 @@
+.ano {
+    padding: 3px 10px;
+    margin: 5px 2px;
+  
+    font-size: 0.8rem;
+  }
+
+  .botaoComprar {
+    padding: 0px;
+    margin: 5px;
+  
+    background-color: #ab0032;
+    color: #fff9fd;
+    font-weight: bold;
+  
+    border-radius: 10px;
+  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .botaoComprar > * {
+    margin: 2px;
+  }
+
+  .titulo {
+    padding: 10px;
+  }
+  
+  .dados {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dados > * {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .duracao {
+    padding: 4px 10px;
+    margin: 5px 2px;
+  
+    border-radius: 15px;
+    background-color: #3a3a3a;
+    color: #fff9fd;
+  
+    font-weight: bold;
+    font-size: 0.8rem;
+  
+    min-width: fit-content;
+  }
+
+  .faixaEtaria {
+    padding: 4px 10px;
+    margin: 5px 2px;
+  border-radius: 15px;
+    background-color: #9e9e9e;
+    color: #fff9fd;
+  
+    font-weight: bold;
+    font-size: 0.8rem;
+  }
+  .filme {
+    padding: 15px 5px;
+    margin-left: 5%;
+  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  
+    /* justify-content: center; */
+  }
+  
+  .lateral {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  
+    padding: 5px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+  
+    width: 100%;
+  }
+
+  .footer {
+    padding: 20px;
+  
+    background-color: black;
+    color: white;
+  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .generos {
+    padding: 3px 10px;
+    margin: 5px 2px;
+  
+    border-radius: 15px;
+    background-color: #ab0032;
+    color: #fff9fd;
+  
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  
+  .header {
+    background-color: black;
+    color: white;
+  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  
+    padding: 20px;
+  }
+  
+  .left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .left > * {
+    margin-right: 20px;
+  }
+
+  .horario {
+    padding: 0px 10px;
+    margin: 5px 2px;
+  
+    border-radius: 15px;
+    background-color: #ab0032;
+    color: #fff9fd;
+  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  
+    font-weight: bold;
+    font-size: 0.8rem;
+  }
+  
+  .containerHorario {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .aMostra {
+    display: block;
+  
+    padding: 4px 10px;
+    background-color: #3a3a3a;
+    color: #fff9fd;
+  }
+  
+  .escondido {
+    display: none;
+  }
+
+  .local {
+    padding: 0px 10px;
+    margin: 5px 2px;
+  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  
+    font-size: 0.7rem;
+  }
+
+  .logotipo {
+    width: 50px;
+  }
+  
+  .logoENome {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .mainContainer {
+    border-radius: 10px;
+    background-color: #e5e5e5;
+  
+    margin: 20px auto;
+    min-width: fit-content;
+    max-width: 50%;
+  }
+
+  .poster {
+    margin-right: 5px;
+    border-radius: 5px;
+  
+    width: 100px;
+    object-fit: contain;
+  
+  }
+  
+  .titulo {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .app {
+    border: 1px solid grey;
+    font-family: Roboto, Helvetica, sans-serif;
+  
+    background-image: url('./img/background.jpg');
+    background-size: cover;
+    background-position: center bottom;
+  }
+
+  @import-normalize;
+
+* {
+  border: 1px solid grey;
+  border: none;
+}
+
+  
+  
+  
