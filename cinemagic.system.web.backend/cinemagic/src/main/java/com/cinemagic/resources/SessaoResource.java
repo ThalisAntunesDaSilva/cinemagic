@@ -48,6 +48,11 @@ public class SessaoResource {
 		return null;
 	}
 
+	/*@GetMapping("/sessoes")
+	public ResponseEntity<List<Sessao>> findBySessaos() {
+		return ResponseEntity.ok().body(service.findBySessaos());
+	}*/
+
 	
 //	@DeleteMapping("/sessoes")
 //	public void deletarSessao(@RequestBody Sessao sessao) {

@@ -19,25 +19,23 @@ public class FilmeService {
 		Optional<Filme> obj = repo.findById(id);
 		return obj.orElseThrow(
 				() -> new ObjectNotFoundException("Objeto não encontrado Id " + id + " Tipo" + Filme.class.getName()));
-
 	}
-	
-	
+
 	// Procura todos
 	public List<Filme> findAll() {
 		return repo.findAll();
 	}
 
-	
-	
-	
-	
 	public Filme update(Filme obj) {
 		Filme newObj = findById(obj.getId());
-		updateData(newObj,obj);
+		updateData(newObj, obj);
 		return repo.save(newObj);
 	}
-	
+
+	public void delete(Integer id) {
+		repo.deleteById(id);
+	}
+
 	private void updateData(Filme newObj, Filme obj) {
 		newObj.setTitulo(obj.getTitulo());
 		newObj.setGenero(obj.getGenero());
@@ -48,13 +46,7 @@ public class FilmeService {
 		filme.setId(null);
 		return repo.save(filme);
 	}
-	
-	/**
-	 * -Matheus 15/02
-	 * duvida do objetivo do metodo fromDTO para o Filme
-	 * @param objDto
-	 * @return
-	 */
+
 	@Transactional
 	public Filme fromDTO(FilmeDTO objDto) {
 		Filme filme = new Filme(null, null, null, null);

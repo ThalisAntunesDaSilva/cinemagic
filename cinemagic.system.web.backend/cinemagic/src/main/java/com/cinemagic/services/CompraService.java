@@ -51,11 +51,16 @@ public class CompraService {
 	@Transactional
 	public Compra edit(Compra compra) {
 		compra.setId(null);
+		//Salvo compras pra clientes
 		clienteService.update(compra.getCliente());
+		//salva todos os ingressos da compra
 		ingressoRepository.saveAll(compra.getIngressos());
+		
 		compra = repo.save(compra);
 		return compra;
 	}
+
+	
 	
 	// Procura todos
 		public List<Compra> findAll() {
@@ -64,6 +69,8 @@ public class CompraService {
 
 		// Exclui
 		public void delete(Compra compra) {
+			
+			
 			repo.delete(compra);
 		}
 	
