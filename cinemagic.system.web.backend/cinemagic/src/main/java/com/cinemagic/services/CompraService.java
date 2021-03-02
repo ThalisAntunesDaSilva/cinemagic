@@ -37,6 +37,7 @@ public class CompraService {
 		return obj.orElseThrow(
 				() -> new ObjectNotFoundException("Objeto não encontrado ID:" + id + "Tipo " + Compra.class.getName()));
 	}
+
 	@Transactional
 	public Compra insert(Compra compra) {
 		compra.setId(null);
@@ -46,25 +47,26 @@ public class CompraService {
 		return compra;
 
 	}
+
 	@Transactional
 	public Compra fromDTO(CompraNewDTO objDto) {
 		Cliente cliente = clienteService.findById(objDto.getClienteId());
 		Sessao sessao = sessaoService.findById(objDto.getSessaoId());
 		int quantidade = getQuantidadeIngressos(objDto.getIngressos());
 		CompraRN.validarRN(sessao, quantidade);
-		Compra compra = new Compra(null, new Date(), cliente,TipoPagamento.toEnum(objDto.getTipoPagamento()));
-		CompraRN.validarPagamento(compra,sessao,cliente);
+		Compra compra = new Compra(null, new Date(), cliente, TipoPagamento.toEnum(objDto.getTipoPagamento()));
+		CompraRN.validarPagamento(compra, sessao, cliente);
 		for (IngressoDTO i : objDto.getIngressos()) {
 			for (int index = 0; index < i.getQuantidade(); index++) {
 				Ingresso ingresso = new Ingresso(null, Integer.toString(sessao.getIngressos().size() + 1),
 						TipoIngresso.toEnum(i.getTipoIngresso()), sessao, compra);
 				sessao.getIngressos().add(ingresso);
 				compra.getIngressos().add(ingresso);
-				
+
 			}
 
 		}
-		if(compra.getTipoPagamento() == TipoPagamento.PONTOS) {
+		if (compra.getTipoPagamento() == TipoPagamento.PONTOS) {
 			compra.getCliente().setPontos(compra.getCliente().getPontos() - sessao.getValorEmCupons());
 		}
 		cliente.getCompras().add(compra);
@@ -80,5 +82,25 @@ public class CompraService {
 		return quantidade;
 	}
 	
+
+	// Salva
+	public Compra save(Compra compra) {
+		return repo.save(compra);
+	}
+
+	// Procura todos
+	public List<Compra> findAll() {
+		return repo.findAll();
+	}
+
+	// Exclui
+	public void delete(Compra compra) {
+		repo.delete(compra);
+	}
+
+	// Edita
+	public Compra edit(Compra compra) {
+		return repo.save(compra);
+	}
 
 }
