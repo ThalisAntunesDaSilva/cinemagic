@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.cinemagic.domain.Cliente;
 import com.cinemagic.domain.Filme;
 import com.cinemagic.dto.FilmeDTO;
 import com.cinemagic.repositories.FilmeRepository;
@@ -28,11 +30,20 @@ public class FilmeResource {
 	FilmeService filmeService;
 	FilmeRepository repo;
 	
+	
 	@RequestMapping(value = "/{id}",method = RequestMethod.GET)
 	public ResponseEntity<Filme> findById(@PathVariable Integer id){
 		Filme obj = filmeService.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
+	
+	//Lista todos
+	@GetMapping
+	public ResponseEntity<List<Filme>> listaClientes() {
+		return ResponseEntity.ok().body(filmeService.findAll());
+	}
+	
+	
 	
 	/**
 	 * -MATHEUS 10/02 Verificar se ah necessidade do metodo a baixo!
@@ -48,10 +59,9 @@ public class FilmeResource {
 		return ResponseEntity.created(url).build();
 	}
 	
-	@GetMapping("/filmes")
-	public List<Filme> listarFilmes(){
-		return repo.findAll();
-	}
+	
+	
+
 	
 	@GetMapping("/filme/{id}")
 	public Filme buscaFilme(@PathVariable(value = "id") int id) {

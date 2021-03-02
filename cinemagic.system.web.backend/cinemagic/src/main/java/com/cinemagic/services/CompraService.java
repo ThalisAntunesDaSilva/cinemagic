@@ -49,6 +49,25 @@ public class CompraService {
 	}
 
 	@Transactional
+	public Compra edit(Compra compra) {
+		compra.setId(null);
+		clienteService.update(compra.getCliente());
+		ingressoRepository.saveAll(compra.getIngressos());
+		compra = repo.save(compra);
+		return compra;
+	}
+	
+	// Procura todos
+		public List<Compra> findAll() {
+			return repo.findAll();
+		}
+
+		// Exclui
+		public void delete(Compra compra) {
+			repo.delete(compra);
+		}
+	
+	@Transactional
 	public Compra fromDTO(CompraNewDTO objDto) {
 		Cliente cliente = clienteService.findById(objDto.getClienteId());
 		Sessao sessao = sessaoService.findById(objDto.getSessaoId());
@@ -80,27 +99,6 @@ public class CompraService {
 			quantidade += i.getQuantidade();
 		}
 		return quantidade;
-	}
-	
-
-	// Salva
-	public Compra save(Compra compra) {
-		return repo.save(compra);
-	}
-
-	// Procura todos
-	public List<Compra> findAll() {
-		return repo.findAll();
-	}
-
-	// Exclui
-	public void delete(Compra compra) {
-		repo.delete(compra);
-	}
-
-	// Edita
-	public Compra edit(Compra compra) {
-		return repo.save(compra);
 	}
 
 }

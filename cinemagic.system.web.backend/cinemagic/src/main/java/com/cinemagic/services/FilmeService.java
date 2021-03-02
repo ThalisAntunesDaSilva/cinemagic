@@ -1,10 +1,10 @@
 package com.cinemagic.services;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.cinemagic.domain.Filme;
 import com.cinemagic.dto.FilmeDTO;
 import com.cinemagic.repositories.FilmeRepository;
@@ -21,6 +21,16 @@ public class FilmeService {
 				() -> new ObjectNotFoundException("Objeto não encontrado Id " + id + " Tipo" + Filme.class.getName()));
 
 	}
+	
+	
+	// Procura todos
+	public List<Filme> findAll() {
+		return repo.findAll();
+	}
+
+	
+	
+	
 	
 	public Filme update(Filme obj) {
 		Filme newObj = findById(obj.getId());

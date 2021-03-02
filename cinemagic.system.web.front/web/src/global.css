@@ -56,9 +56,51 @@
     font-size: 18px;
     line-height: 60px;
     transition: filter 0.2s;
+    
     }
     
     .button:hover {
         filter: brightness(90%);
+        transition:1s;
+        background-color:  #db3d5a;
+        
     }
+
+    .header{
+        background-color:#000000;
+        display:flex;
+        justify-content:space-between;
+         margin-top: -5vh;
+         height: 10vh;
+     }
+     
+     .header-esquerda{
+     display:flex;
+     flex-direction: row;
+     align-items:center;
+     width:20%;
+     font-size:30px;
+     }
+     .header-direita{
+         font-size: 100px;
+         display: flex;
+         align-items:center;
+         justify-content: center;
+     }
+     .head-opcoes{
+             padding: 0vh 3vw 0vh 1vw;
+             text-decoration: none;
+             color: #ffffff;    
+             }
+    
+     
+     .head-logoImg{
+         width:40px;
+         height:40px;
+         margin-left: 3px;
+     }
+
+     .head-searchIcon{
+         cursor: pointer;
+     }
     
