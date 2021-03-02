@@ -34,11 +34,6 @@ public class FilmeResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	/**
-	 * -MATHEUS 10/02 Verificar se ah necessidade do metodo a baixo!
-	 * @param filme
-	 * @return
-	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody FilmeDTO filme){
 		Filme obj = filmeService.fromDTO(filme);
@@ -68,7 +63,7 @@ public class FilmeResource {
 		repo.delete(filme);
 	}
 	
-	@PutMapping("/sugestao")
+	@PutMapping("/filme")
 	public Filme atualizarFilme(@RequestBody Filme filme) {
 		return repo.save(filme);
 	}

@@ -39,12 +39,7 @@ public class FilmeService {
 		return repo.save(filme);
 	}
 	
-	/**
-	 * -Matheus 15/02
-	 * duvida do objetivo do metodo fromDTO para o Filme
-	 * @param objDto
-	 * @return
-	 */
+	
 	@Transactional
 	public Filme fromDTO(FilmeDTO objDto) {
 		Filme filme = new Filme(null, null, null, null);
