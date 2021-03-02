@@ -1,14 +1,14 @@
 *{
-    margin: 0;
+    margin:0;
     padding: 0;
     box-sizing: border-box;
     font-family: Helvetica, sans-serif;
-    color: #323232;
+    color: #fff;
     border: none;
 }
 
 input,label{
-    display: block;
+    display:block;
     width: 100%;
 }
 
@@ -28,31 +28,13 @@ body{
 }
 
 logo{
-        
-        width: 50px;
+        width: 10px;
 }
-.logoENome {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.local {
-    padding: 0px 10px;
-    margin: 5px 2px;
-  
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  
-    font-size: 0.7rem;
-  }
 
 /* form */
 
 #main-container{
-    width: 700px;
+    width: 800px;
     margin-left: auto;
     margin-right: auto; 
     background-color: #fff;
@@ -68,9 +50,14 @@ logo{
 
 form{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    margin: 4vh 4vw 4vh 4vw;
+    padding: 2vh 2vw 2vh 2vw;
+    font-size: 20px;
+    font-weight: lighter;
 }
 
 .full-box{
@@ -88,13 +75,13 @@ form{
 
 label{
     font-weight: bold;
-    font-size: .8rem;
+    font-size: .9rem;
 }
 input{
-    border-bottom: 2px solid #323232;
-    padding: 10px;
+    border-bottom: 1px solid #fff;
+    padding: 9px;
     font-size: .9rem;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 input:focus{
@@ -105,13 +92,13 @@ input[type="submit"]{
     background-color: crimson;
     color: #fff;
     border: none;
-    border-radius: 20px;
-    height: 40px;
+    border-radius: 10px;
+    height: 43px;
     cursor: pointer;
 }
 
 #agreement{
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 #agreement, #agreement-label{
@@ -130,12 +117,12 @@ input[type="submit"]{
 }
 
 .template{
-    display: none;
+    display:center;
 }
 
 .rodape{
-    background-color: #000000;
-    height: 20vh;
+
+    height: 9vh;
     position:static;
     width:100%;
     bottom: 0;
@@ -146,12 +133,39 @@ input[type="submit"]{
     
 }
 
-
-.bandeira {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 5%;
+.header{
+    display:flex;
+    justify-content:space-between;
+    padding: 20px;
 }
+.title{
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+.header-esquerda{
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    font-size:30px;
+    }
+
+.header-direita{
+    font-size: 30px;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+.head-opcoes{
+    padding: 10px 10px;
+    text-decoration:dashed;
+    color: #ffffff;    
+}
+.head-menuIcon{
+    padding: 5px 5px;
+}
+
 
 
