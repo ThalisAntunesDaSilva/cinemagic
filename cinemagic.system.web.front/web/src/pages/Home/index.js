@@ -5,18 +5,30 @@ import hp from '../../assets/hp.png';
 import bandeira from '../../assets/bandeira.png';
 import './flexboxgrid.min.css';
 import api from '../../services/api';
-
 import {Link} from 'react-router-dom';
 import './styles.css';
 import { FiMenu, FiSearch, FiCreditCard, FiMapPin } from 'react-icons/fi'
-
+import {FlatList} from 'flatlist-react';
 
 export default function Home(){
-    const [filme, setFilme] = useState('')
-    
-    function handleHome(e){
-e.preventDefault();
-    }    
+
+//navegação para outra page
+const navigation = useNavigation();
+
+const [filmes, setFilmes] = useState([]);
+//Navegação para menu
+function navigateToMenu() {
+         navigation.navigate('Menu')*/
+     }
+   //Função chama de filmes 
+     async function loadFilmes() {
+         const response = await api.get('/filmes');
+          setFilmes(response.data);
+     }
+   
+    //Chamada do método de loadFilmes
+     useEffect(() => { loadFilmes() }, []);
+     
     
     return(
         <>            
@@ -64,6 +76,7 @@ e.preventDefault();
 
 <div className="filme">
 <img src={hp} alt="hp" className="filmeImg"/>
+   
     <Link className="nomeFilme">Harry Potter</Link>
     <div className="localizacao">
     <FiMapPin className="localizacaoIcon" size={60} color="#000000"/>
