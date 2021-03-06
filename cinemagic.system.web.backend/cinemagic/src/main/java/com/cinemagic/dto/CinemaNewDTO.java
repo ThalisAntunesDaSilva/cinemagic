@@ -9,27 +9,22 @@ public class CinemaNewDTO implements Serializable{
 	
 	private String nome;
 	private Integer cidadeId;
+	private String email;
+	private String senha;
 	List<SalaDTO> salas = new ArrayList<>();
-	/*
-	 {
-	 	"nome": "CinemaAlegrete",
-	 	"cidadeId": 1,
-	 	"salas" :[
-	 		"numero": 1,
-	 		"capacidade": 50
-	 	]
-	 }
-	 
-	 */
+	
 	
 	public CinemaNewDTO() {
 		
 	}
-	public CinemaNewDTO(String nome, Integer cidadeId, List<SalaDTO> salas) {
+	public CinemaNewDTO(String nome, Integer cidadeId, String email,List<SalaDTO> salas,String senha) {
 		super();
 		this.nome = nome;
 		this.cidadeId = cidadeId;
+		this.email = email;
 		this.salas = salas;
+		this.senha = senha;
+		
 	}
 	public String getNome() {
 		return nome;
@@ -48,6 +43,18 @@ public class CinemaNewDTO implements Serializable{
 	}
 	public void setSalas(List<SalaDTO> salas) {
 		this.salas = salas;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

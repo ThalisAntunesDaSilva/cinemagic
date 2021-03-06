@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.cinemagic.domain.Cliente;
@@ -12,7 +13,10 @@ import com.cinemagic.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class ClienteService {
-
+	
+	@Autowired
+	private BCryptPasswordEncoder pe;
+	
 	@Autowired
 	private ClienteRepository repo;
 

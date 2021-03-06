@@ -41,11 +41,6 @@ public class CinemaResource {
 		return ResponseEntity.ok().body(objDTO);
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> delete(@PathVariable Integer id){
-		service.delete(id);
-		return ResponseEntity.noContent().build();
-	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Cinema> update(@RequestBody CinemaDTO objDTO,@PathVariable Integer id){

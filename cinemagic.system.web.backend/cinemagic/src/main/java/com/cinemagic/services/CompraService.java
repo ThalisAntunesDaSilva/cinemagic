@@ -68,10 +68,8 @@ public class CompraService {
 		}
 
 		// Exclui
-		public void delete(Compra compra) {
-			
-			
-			repo.delete(compra);
+		public void delete(Integer id) {	
+			repo.deleteById(id);
 		}
 	
 	@Transactional

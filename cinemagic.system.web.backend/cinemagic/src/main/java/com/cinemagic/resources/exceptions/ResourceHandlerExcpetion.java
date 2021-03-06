@@ -1,5 +1,6 @@
 package com.cinemagic.resources.exceptions;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -41,6 +42,11 @@ public class ResourceHandlerExcpetion {
 	@ExceptionHandler(value = InsufficientCouponException.class)
 	public ResponseEntity<StandardErr> insufficientCoupon(InsufficientCouponException ex){
 		StandardErr err = new StandardErr(HttpStatus.BAD_REQUEST.value(),ex.getMessage(), System.currentTimeMillis());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+	}
+	@ExceptionHandler(value = DataIntegrityViolationException.class)
+	public ResponseEntity<StandardErr> dataIntegrityViolation(DataIntegrityViolationException ex){
+		StandardErr err = new StandardErr(HttpStatus.BAD_REQUEST.value(), ex.getMessage(), System.currentTimeMillis());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
 	}
 	

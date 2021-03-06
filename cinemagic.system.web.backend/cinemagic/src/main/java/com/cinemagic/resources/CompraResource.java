@@ -42,21 +42,9 @@ public class CompraResource {
 	}
 	
 	// V
-	@GetMapping
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Compra>> listaClientes() {
 		return ResponseEntity.ok().body(service.findAll());
-	}
-
-	// V
-	@DeleteMapping
-	public void deletaCompra(@RequestBody Compra compra) {
-		service.delete(compra);
-	}
-
-	
-	@PutMapping
-	public Compra editaCompra(@RequestBody Compra compra) {
-		return service.edit(compra);
 	}
 
 }

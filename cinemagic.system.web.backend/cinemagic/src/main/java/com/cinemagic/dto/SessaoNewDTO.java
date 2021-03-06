@@ -3,11 +3,14 @@ package com.cinemagic.dto;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class SessaoNewDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date data;
+	@JsonFormat(pattern = "HH:mm")
 	private Date hora;
 	private double valorInteira;
 	private double valorMeia;

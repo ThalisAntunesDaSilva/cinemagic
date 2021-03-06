@@ -3,8 +3,9 @@ package com.cinemagic.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.cinemagic.domain.Cidade;
 import com.cinemagic.domain.Compra;
-import com.cinemagic.domain.Endereco;
 
 public class ClienteDTO implements Serializable {
 
@@ -16,14 +17,14 @@ public class ClienteDTO implements Serializable {
 	private String email;
 	private String cpf;
 	private int pontos;
-	private Endereco endereco;
+	private Cidade cidade;
 	List<Compra> compras = new ArrayList<>();
 	
 	public ClienteDTO() {
 		
 	}
 
-	public ClienteDTO(Integer id, String nome, String email, String cpf, int pontos, Endereco endereco,
+	public ClienteDTO(Integer id, String nome, String email, String cpf, int pontos, Cidade cidade,
 			List<Compra> compras) {
 		super();
 		this.id = id;
@@ -31,7 +32,7 @@ public class ClienteDTO implements Serializable {
 		this.email = email;
 		this.cpf = cpf;
 		this.pontos = pontos;
-		this.endereco = endereco;
+		this.cidade = cidade;
 		this.compras = compras;
 	}
 
@@ -75,12 +76,12 @@ public class ClienteDTO implements Serializable {
 		this.pontos = pontos;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
+	public Cidade getCidade() {
+		return cidade;
 	}
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
 	}
 
 	public List<Compra> getCompras() {
