@@ -1,10 +1,12 @@
 package com.cinemagic.resources.exceptions;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.cinemagic.services.exceptions.AuthorizationException;
 import com.cinemagic.services.exceptions.InsufficientCouponException;
 import com.cinemagic.services.exceptions.ObjectNotFoundException;
 import com.cinemagic.services.exceptions.PromotionClosedException;
@@ -42,6 +44,16 @@ public class ResourceHandlerExcpetion {
 	public ResponseEntity<StandardErr> insufficientCoupon(InsufficientCouponException ex){
 		StandardErr err = new StandardErr(HttpStatus.BAD_REQUEST.value(),ex.getMessage(), System.currentTimeMillis());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+	}
+	@ExceptionHandler(value = DataIntegrityViolationException.class)
+	public ResponseEntity<StandardErr> dataIntegrityViolation(DataIntegrityViolationException ex){
+		StandardErr err = new StandardErr(HttpStatus.BAD_REQUEST.value(), ex.getMessage(), System.currentTimeMillis());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+	}
+	@ExceptionHandler(value = AuthorizationException.class)
+	public ResponseEntity<StandardErr> authorization(AuthorizationException ex){
+		StandardErr err = new StandardErr(HttpStatus.FORBIDDEN.value(), ex.getMessage(), System.currentTimeMillis());
+		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(err);
 	}
 	
 	

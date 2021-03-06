@@ -2,9 +2,15 @@ package com.cinemagic.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.cinemagic.domain.Enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -25,8 +32,13 @@ public class Cliente implements Serializable{
 	
 	private String nome;
 	private String email;
-	private String cpf;
 	private int pontos;
+	@JsonIgnore
+	private String senha;
+	
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "PERFIS")
+	private Set<Integer> perfis = new HashSet<>();
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
@@ -34,21 +46,22 @@ public class Cliente implements Serializable{
 	
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "endereco_id")
-	private Endereco endereco;
+	@JoinColumn(name = "cidade_id")
+	private Cidade cidade;
 	
 	public Cliente() {
-		
+		addPerfil(Perfil.CLIENTE);
 	}
 
-	public Cliente(Integer id, String nome, String email, String cpf,Endereco endereco) {
+	public Cliente(Integer id, String nome, String email,Cidade cidade,String senha) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
-		this.cpf = cpf;
-		this.endereco = endereco;
+		this.cidade = cidade;
 		this.pontos = 0;
+		this.senha = senha;
+		addPerfil(Perfil.CLIENTE);
 	}
 
 	public Integer getId() {
@@ -75,13 +88,7 @@ public class Cliente implements Serializable{
 		this.email = email;
 	}
 
-	public String getCpf() {
-		return cpf;
-	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
 	
 
 	public List<Compra> getCompras() {
@@ -93,16 +100,31 @@ public class Cliente implements Serializable{
 	}
 	
 
-	public Endereco getEndereco() {
-		return endereco;
+	public Cidade getCidade() {
+		return cidade;
 	}
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	public void setCidade(Cidade endereco) {
+		this.cidade = endereco;
 	}
 	
 	
 	
+	
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public Set<Perfil> getPerfis(){
+		return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
+	}
+	public void addPerfil(Perfil perfil) {
+		perfis.add(perfil.getCod());
+	}
 	
 	public int getPontos() {
 		return pontos;

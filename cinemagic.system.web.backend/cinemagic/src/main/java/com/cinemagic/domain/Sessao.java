@@ -28,7 +28,7 @@ public class Sessao implements Serializable{
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date data;
 	
-	@JsonFormat(pattern = "HH:mm")
+	@JsonFormat(pattern = "dd/MM/yyy HH:mm")
 	private Date hora;
 	
 	private double valorInteira;

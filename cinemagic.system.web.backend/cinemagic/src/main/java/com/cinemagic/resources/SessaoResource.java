@@ -5,6 +5,7 @@ import java.net.URI;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +28,7 @@ public class SessaoResource {
 	public ResponseEntity<Sessao> findById(@PathVariable Integer id){
 		return findById(id);
 	}
-	
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody SessaoNewDTO objDTO){
 		Sessao obj = service.fromDTO(objDTO);
@@ -41,22 +42,18 @@ public class SessaoResource {
 	public ResponseEntity<List<Sessao>> findByCity(@PathVariable Integer id){
 		List<Sessao> obj = service.findByCity(id);
 		return ResponseEntity.ok().body(obj);
-	}
-	
-	@GetMapping("/sessoes")
-	public List<Sessao> listaGeneros(){
-		return null;
-	}
+	} 
 
-	/*@GetMapping("/sessoes")
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Sessao>> findBySessaos() {
 		return ResponseEntity.ok().body(service.findBySessaos());
-	}*/
-
-	
-//	@DeleteMapping("/sessoes")
-//	public void deletarSessao(@RequestBody Sessao sessao) {
-//		return repo.delete(sessao);
-//	}
+	}
+	@PreAuthorize("hasAnyRole('ADMIN')")
+	@RequestMapping(value="/{id}" ,method = RequestMethod.DELETE)
+	public ResponseEntity<Void> deletarSessao(@PathVariable Integer id) {
+		service.delete(id);
+		return ResponseEntity.noContent().build();
+		
+	}
 	
 }
