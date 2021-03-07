@@ -4,7 +4,6 @@ import api from '../../services/api';
 import {Link} from 'react-router-dom';
 import './styles.css';
 import { FiPrinter } from 'react-icons/fi'
-import axios from 'axios';
 import jwt from 'jwt-decode'
 export default function Home(){
     
@@ -26,7 +25,7 @@ export default function Home(){
             localStorage.setItem('token',token)
             const clientRes = await api.get("/clientes",{
                 params:{
-                    email: "gabriel@gmail.com"
+                    email: decoded.sub
                 },
                 headers:{
                     authorization: localStorage.getItem("token")

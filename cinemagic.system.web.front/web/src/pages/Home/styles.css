@@ -35,22 +35,21 @@ background-image: url(../../assets/padrao.jpg);
    }
 
 
-   .filmesContainer{
-background-color: blanchedalmond;
-display: flex;
-justify-content: space-between;
-align-items: center;
-flex-direction: row;
-margin: 4vh 4vw 4vh 4vw;
-padding:  4vh 6vw 4vh 6vw;
-overflow: auto;
-border-radius: 3vh;
-border-style: solid;
-
-
+.filmesContainer{
+    background-color: blanchedalmond;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin: 4vh 4vw 4vh 4vw;
+    padding:  4vh 6vw 4vh 6vw;
+    overflow: auto;
+    border-radius: 3vh;
+    border-style: solid;
 
   
 }
+
 
 .filme{
     display: flex;
