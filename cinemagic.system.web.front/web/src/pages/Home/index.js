@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import logoImg from '../../assets/logo.png';
 import maravilha from '../../assets/maravilha.png';
 import hp from '../../assets/hp.png';
@@ -11,23 +11,21 @@ import { FiMenu, FiSearch, FiCreditCard, FiMapPin } from 'react-icons/fi'
 import {FlatList} from 'flatlist-react';
 
 export default function Home(){
+const [sessao, setSessao] = useState([]);
 
-//navegação para outra page
-const navigation = useNavigation();
+const id = localStorage.getItem('id');
 
-const [filmes, setFilmes] = useState([]);
-//Navegação para menu
-function navigateToMenu() {
-         navigation.navigate('Menu')*/
-     }
-   //Função chama de filmes 
-     async function loadFilmes() {
-         const response = await api.get('/filmes');
-          setFilmes(response.data);
-     }
-   
-    //Chamada do método de loadFilmes
-     useEffect(() => { loadFilmes() }, []);
+useEffect(() =>{
+
+    api.get('sessao', {
+        headers : {
+            Authorization: id,
+        }
+    }).then(resposta =>{
+        setSessao(resposta.data)
+    })}, [id])
+
+
      
     
     return(
@@ -64,35 +62,26 @@ function navigateToMenu() {
 
 {/* Container de Filmes */}
 <section className="filmesContainer col-xs-12 col-sm-12 col-md-12 col-lg-12">
-<div className="filme ">
+<ul>
+{sessao.map(sessao =>(
+<li key={sessao.id}>
+    <strong>Id : </strong>
+    <p>{sessao.id}</p>
 
-<img src={hp} alt="hp" className="filmeImg"/>
-    <Link className="nomeFilme">Harry Potter</Link>
-    <div className="localizacao">
-    <FiMapPin className="localizacaoIcon" size={60} color="#000000"/>
-    <label className="localizacao">Alegrete</label>
-    </div>
-</div>
+    <strong> Nome: </strong>
+            <p>{sessao.nome}</p>
 
-<div className="filme">
-<img src={hp} alt="hp" className="filmeImg"/>
-   
-    <Link className="nomeFilme">Harry Potter</Link>
-    <div className="localizacao">
-    <FiMapPin className="localizacaoIcon" size={60} color="#000000"/>
-    <label className="localizacao">Alegrete</label>
-    </div>
-    </div>
+              <strong> Valor: </strong>
+            <p>{Intl.NumberFormat('pt-BR', {style:'currency', currency: 'BRL'}).format(sessao.valor) }</p>
+</li>
 
-<div className="filme">
-<img src={hp} alt="hp" className="filmeImg"/>
-    <Link className="nomeFilme">Harry Potter</Link>
-    <div className="localizacao">
-    <FiMapPin className="localizacaoIcon" size={60} color="#000000"/>
-    <label className="localizacao">Alegrete</label>
-    </div>
-    </div>
+))}
+
+</ul>
+
 </section>
+
+
 
 
 
