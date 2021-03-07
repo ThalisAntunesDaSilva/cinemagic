@@ -104,3 +104,9 @@ border-style: solid;
     width: 5%;
   }
  
+  .lista{
+    font-size: 30px;  
+    color: #000000;
+      background-color: white;
+      height:30vh;
+  }
