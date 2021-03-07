@@ -11,15 +11,16 @@ import { FiMenu, FiSearch, FiCreditCard, FiMapPin } from 'react-icons/fi'
 import {FlatList} from 'flatlist-react';
 
 export default function Home(){
-
+/*
 //navegação para outra page
 const navigation = useNavigation();
 
 const [filmes, setFilmes] = useState([]);
 //Navegação para menu
 function navigateToMenu() {
-         navigation.navigate('Menu')*/
+         navigation.navigate('Menu')
      }
+     
    //Função chama de filmes 
      async function loadFilmes() {
          const response = await api.get('/filmes');
@@ -29,7 +30,7 @@ function navigateToMenu() {
     //Chamada do método de loadFilmes
      useEffect(() => { loadFilmes() }, []);
      
-    
+   */ 
     return(
         <>            
 <div className="body">

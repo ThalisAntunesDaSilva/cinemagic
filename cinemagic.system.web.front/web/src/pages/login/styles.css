@@ -1,0 +1,14 @@
+.body{
+    background-color: red;
+    margin: 200px;
+    padding: 20px 0px 20px 0px;
+    align-items: center;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.input{
+    color: black
+}
+

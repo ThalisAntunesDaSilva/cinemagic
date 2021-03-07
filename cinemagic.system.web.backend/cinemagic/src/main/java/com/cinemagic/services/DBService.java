@@ -112,9 +112,9 @@ public class DBService {
 
 	
 
-		Cliente cliente1 = new Cliente(null, "Gabriel Freitas", "gabriel@gmail.com", cidade1,pe.encode("manete12"));
+		Cliente cliente1 = new Cliente(null, "Gabriel Freitas", "gabriel@gmail.com", cidade1,pe.encode("123456"));
 		
-		Cliente cliente2 = new Cliente(null, "José", "josé@gmail.com", cidade1,pe.encode("manete12"));
+		Cliente cliente2 = new Cliente(null, "José", "josé@gmail.com", cidade1,pe.encode("123456"));
 		cliente2.addPerfil(Perfil.ADMIN);
 
 		Compra compra1 = new Compra(null, new Date(), cliente1, TipoPagamento.PONTOS);
