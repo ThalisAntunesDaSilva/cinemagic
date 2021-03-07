@@ -15,7 +15,7 @@ public class JWTUtil {
 	@Value("jwt.secret")
 	private String secret = "abc";
 
-	private long expiration = 60000;
+	private long expiration = 86400000;
 
 	public String generateToken(String username) {
 		return Jwts.builder().setSubject(username).setExpiration(new Date(System.currentTimeMillis() + expiration))

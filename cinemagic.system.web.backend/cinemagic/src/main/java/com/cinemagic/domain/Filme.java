@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,6 +26,8 @@ public class Filme implements Serializable{
 	private String titulo;
 	private String duracao;
 	
+	@Column(length = 1000)
+	private String pathImage;
 	
 	@ManyToOne
 	@JoinColumn(name = "genero_id")
@@ -101,6 +104,15 @@ public class Filme implements Serializable{
 
 	public void setSessoes(List<Sessao> sessoes) {
 		this.sessoes = sessoes;
+	}
+
+	
+	public String getPathImage() {
+		return pathImage;
+	}
+
+	public void setPathImage(String pathImage) {
+		this.pathImage = pathImage;
 	}
 
 	@Override

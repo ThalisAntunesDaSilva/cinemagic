@@ -11,6 +11,7 @@ import { FiMenu, FiSearch, FiCreditCard, FiMapPin } from 'react-icons/fi'
 import {FlatList} from 'flatlist-react';
 
 export default function Home(){
+
 const [sessao, setSessao] = useState([]);
 
 const id = localStorage.getItem('id');
@@ -26,8 +27,6 @@ useEffect(() =>{
     })}, [id])
 
 
-     
-    
     return(
         <>            
 <div className="body">

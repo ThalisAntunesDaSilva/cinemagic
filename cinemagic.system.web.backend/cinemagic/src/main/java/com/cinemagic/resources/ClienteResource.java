@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cinemagic.domain.Cliente;
+import com.cinemagic.resources.utils.URL;
 import com.cinemagic.services.ClienteService;
 
 @RestController()
@@ -25,11 +27,6 @@ public class ClienteResource {
 	@Autowired
 	ClienteService service;
 
-	@PreAuthorize("hasAnyRole('ADMIN')")
-	@GetMapping
-	public ResponseEntity<List<Cliente>> listaClientes() {
-		return ResponseEntity.ok().body(service.findAll());
-	}
 
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -37,6 +34,13 @@ public class ClienteResource {
 		Cliente cliente = service.findById(id);
 		return ResponseEntity.ok().body(cliente);
 
+	}
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<Cliente> findByEmail(@RequestParam(value = "email",required = true) String email){
+		String emailDecoded = URL.decodeParam(email);
+		Cliente cliente = service.findByEmail(emailDecoded);
+		return ResponseEntity.ok().body(cliente);
 	}
 
 	@PostMapping

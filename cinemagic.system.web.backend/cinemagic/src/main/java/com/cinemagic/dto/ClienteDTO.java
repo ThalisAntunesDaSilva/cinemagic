@@ -15,25 +15,25 @@ public class ClienteDTO implements Serializable {
 
 	private String nome;
 	private String email;
-	private String cpf;
 	private int pontos;
 	private Cidade cidade;
 	List<Compra> compras = new ArrayList<>();
+	private String pathImage;
 	
 	public ClienteDTO() {
 		
 	}
 
-	public ClienteDTO(Integer id, String nome, String email, String cpf, int pontos, Cidade cidade,
-			List<Compra> compras) {
+	public ClienteDTO(Integer id, String nome, String email,int pontos, Cidade cidade,
+			List<Compra> compras,String pathImage) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
-		this.cpf = cpf;
 		this.pontos = pontos;
 		this.cidade = cidade;
 		this.compras = compras;
+		this.pathImage = pathImage;
 	}
 
 	public Integer getId() {
@@ -60,13 +60,6 @@ public class ClienteDTO implements Serializable {
 		this.email = email;
 	}
 
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
 
 	public int getPontos() {
 		return pontos;
@@ -92,4 +85,13 @@ public class ClienteDTO implements Serializable {
 		this.compras = compras;
 	}
 
+	public String getPathImage() {
+		return pathImage;
+	}
+
+	public void setPathImage(String pathImage) {
+		this.pathImage = pathImage;
+	}
+
+	
 }

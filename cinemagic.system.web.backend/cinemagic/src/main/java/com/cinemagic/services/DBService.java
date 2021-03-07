@@ -76,6 +76,7 @@ public class DBService {
 		Ator ator1 = new Ator(null, "Tom Holland");
 		Genero genero1 = new Genero(null, "Herói");
 		Filme filme1 = new Filme(null, "Homem Aranha 3", "1h30", genero1);
+		filme1.setPathImage("https://www.google.com/imgres?imgurl=https%3A%2F%2Fcinepop.com.br%2Fwp-content%2Fuploads%2F2021%2F01%2Fhomem-aranha-3-1-696x392.jpg&imgrefurl=https%3A%2F%2Fcinepop.com.br%2Fhomem-aranha-3-sexteto-sinistro-ameaca-as-tres-versoes-do-heroi-em-incrivel-fan-poster-confira-281284%2F&tbnid=J3y3PkohUsmJqM&vet=12ahUKEwi4wLWmsp7vAhXFM7kGHUO3AYYQMygLegUIARDrAQ..i&docid=GSCByG6a6VYeJM&w=696&h=392&q=homem%20aranha%203&safe=active&ved=2ahUKEwi4wLWmsp7vAhXFM7kGHUO3AYYQMygLegUIARDrAQ");
 		genero1.getFilmes().addAll(Arrays.asList(filme1));
 		Atua atua1 = new Atua(null, "Petter Parker", ator1, filme1);
 
@@ -112,9 +113,10 @@ public class DBService {
 
 	
 
-		Cliente cliente1 = new Cliente(null, "Gabriel Freitas", "gabriel@gmail.com", cidade1,pe.encode("manete12"));
+		Cliente cliente1 = new Cliente(null, "Gabriel Freitas", "gabriel@gmail.com", cidade1,pe.encode("123456"));
+		cliente1.setPathImage("https://scontent.fpoa2-1.fna.fbcdn.net/v/t1.0-9/145484555_1834527760031472_2890076170825795635_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=dN1eHPhO9OwAX9YlZgd&_nc_ht=scontent.fpoa2-1.fna&oh=4700a4d7f13749800f9dcfb25c11c30f&oe=606BEE7D");
 		
-		Cliente cliente2 = new Cliente(null, "José", "josé@gmail.com", cidade1,pe.encode("manete12"));
+		Cliente cliente2 = new Cliente(null, "José", "josé@gmail.com", cidade1,pe.encode("123456"));
 		cliente2.addPerfil(Perfil.ADMIN);
 
 		Compra compra1 = new Compra(null, new Date(), cliente1, TipoPagamento.PONTOS);
