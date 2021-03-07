@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,6 +36,9 @@ public class Cliente implements Serializable{
 	private int pontos;
 	@JsonIgnore
 	private String senha;
+	
+	@Column(length = 1000)
+	private String pathImage;
 	
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "PERFIS")
@@ -132,6 +136,20 @@ public class Cliente implements Serializable{
 
 	public void setPontos(int pontos) {
 		this.pontos = pontos;
+	}
+
+	
+	
+	public String getPathImage() {
+		return pathImage;
+	}
+
+	public void setPathImage(String pathImage) {
+		this.pathImage = pathImage;
+	}
+
+	public void setPerfis(Set<Integer> perfis) {
+		this.perfis = perfis;
 	}
 
 	@Override

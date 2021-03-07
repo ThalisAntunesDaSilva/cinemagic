@@ -35,8 +35,7 @@ export default function Home(){
             localStorage.setItem('cliente',JSON.stringify(clientRes.data))
 
             const test = JSON.parse(localStorage.getItem('cliente'))
-            alert("foi")
-            history.push("/")
+            history.push("/Home")
         }catch(ex){
             alert(ex)
         }

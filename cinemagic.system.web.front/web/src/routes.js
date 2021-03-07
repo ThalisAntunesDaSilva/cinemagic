@@ -8,16 +8,16 @@ import Login from './pages/login';
 
 
 
-export default function Routes(){
-return(
-<BrowserRouter>
-<Switch>
-<Route path= "/" exact component={Home}/>
-<Route path= "/CadastroCliente" exact component={CadastroCliente}/>
-<Route path = "/Login" exact component={Login}/>
+export default function Routes() {
+    return (
+        <BrowserRouter>
+            <Switch>
+                <Route path="/" exact component={Login} />
+                <Route path="/CadastroCliente" exact component={CadastroCliente} />
+                <Route path="/Home" exact component={Home} />
 
-</Switch>
-</BrowserRouter>
-);
+            </Switch>
+        </BrowserRouter>
+    );
 
 }
