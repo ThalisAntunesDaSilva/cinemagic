@@ -14,6 +14,7 @@ export default function Home(){
     
     let history = useHistory()
     
+    const [erroLogin,setErroLogin] = useState("");
   
     const [email,setEmail] = useState('');
     const [senha,setSenha] = useState('');
@@ -41,7 +42,9 @@ export default function Home(){
             const test = JSON.parse(localStorage.getItem('cliente'))
             history.push("/Home")
         }catch(ex){
-            alert(ex)
+            setErroLogin(ex.response.data.message)
+            
+            alert(ex.response.data.message)
         }
         
     
@@ -68,6 +71,7 @@ export default function Home(){
             </div>
 
             <div className="body">
+                <label>{erroLogin}</label>
 
                 <label for="email"> E-mail</label>
                 <input className="input" type="email" name="email" id="email" placeholder="Digite seu e-mail" onChange={e => setEmail(e.target.value)} ></input>

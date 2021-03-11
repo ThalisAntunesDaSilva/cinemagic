@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   changeScreen() async {
-    Modular.to.pushReplacementNamed('/home');
+    Modular.to.pushReplacementNamed('/base');
   }
 
   @override
