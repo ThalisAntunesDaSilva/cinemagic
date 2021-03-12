@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logoImg from '../../assets/logo.png';
 import maravilha from '../../assets/maravilha.png';
 import hp from '../../assets/hp.png';
-import bandeira from '../../assets/bandeira.png';
+import bandeira from '../../assets/bandeira.png';                                 
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
 import './styles.css';
