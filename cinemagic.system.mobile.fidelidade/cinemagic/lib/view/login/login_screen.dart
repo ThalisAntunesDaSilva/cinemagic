@@ -34,13 +34,17 @@ class LoginScreen extends StatelessWidget {
                   TextCommonLogin(
                     title: "E-mail",
                   ),
-                  TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      isDense: true,
-                    ),
-                    keyboardType: TextInputType.emailAddress,
-                  ),
+                  Observer(builder: (_) {
+                    return TextField(
+                      enabled: !controllerLogin.loading,
+                      onChanged: controllerLogin.setEmail,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          isDense: true,
+                          errorText: controllerLogin.emailErr),
+                      keyboardType: TextInputType.emailAddress,
+                    );
+                  }),
                   SizedBox(
                     height: 16,
                   ),
@@ -62,9 +66,12 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Observer(builder: (_) {
+                  Observer(builder: (context) {
                     return TextField(
+                      enabled: !controllerLogin.loading,
+                      onChanged: controllerLogin.setPassword,
                       decoration: InputDecoration(
+                        errorText: controllerLogin.passErr,
                         border: OutlineInputBorder(),
                         isDense: true,
                         suffixIcon: !controllerLogin.obscure
@@ -85,7 +92,27 @@ class LoginScreen extends StatelessWidget {
                       keyboardType: TextInputType.text,
                       obscureText: controllerLogin.obscure,
                     );
-                  })
+                  }),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 15),
+                    color: Colors.orange,
+                    height: 50,
+                    child: Observer(builder: (_) {
+                      return FlatButton(
+                        onPressed: controllerLogin.loginPressed,
+                        child: controllerLogin.loading
+                            ? CircularProgressIndicator()
+                            : Text(
+                                "Entrar",
+                                style: TextStyle(fontSize: 18),
+                              ),
+                        color: Colors.orange,
+                      );
+                    }),
+                  ),
+                  Divider(
+                    color: Colors.black,
+                  )
                 ],
               ),
             ),
