@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.cinemagic.domain.Cidade;
 import com.cinemagic.domain.Cliente;
 import com.cinemagic.domain.Enums.Perfil;
+import com.cinemagic.dto.ClienteNewDTO;
 import com.cinemagic.repositories.ClienteRepository;
 import com.cinemagic.security.UserSS;
 import com.cinemagic.services.exceptions.AuthorizationException;
@@ -16,12 +18,15 @@ import com.cinemagic.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class ClienteService {
-
+	
+	
 	@Autowired
 	private BCryptPasswordEncoder pe;
 
 	@Autowired
 	private ClienteRepository repo;
+	@Autowired
+	private CidadeService cidadeService;
 
 	// Procura por id
 	public Cliente findById(Integer id) {
@@ -52,10 +57,16 @@ public class ClienteService {
 	}
 
 	// Salva
-	public Cliente save(Cliente cliente) {
+	public Cliente insert(Cliente cliente) {
 		return repo.save(cliente);
 	}
 
+	public Cliente fromDTO(ClienteNewDTO objDTO) {
+		Cidade cidade = cidadeService.findById(objDTO.getCidadeId());
+		Cliente cliente = new Cliente(null, objDTO.getNome(), objDTO.getEmail(), cidade, pe.encode(objDTO.getSenha()));
+		return cliente;
+	}
+	
 	// Exclui
 	public void delete(Cliente cliente) {
 		repo.delete(cliente);
