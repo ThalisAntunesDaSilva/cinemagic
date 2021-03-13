@@ -1,3 +1,4 @@
+import 'package:cinemagic/repositories/ClienteRepository.dart';
 import 'package:mobx/mobx.dart';
 import 'package:cinemagic/helpers/extensions.dart';
 part 'controller_login.g.dart';
@@ -5,6 +6,7 @@ part 'controller_login.g.dart';
 class ControllerLogin = _ControllerLogin with _$ControllerLogin;
 
 abstract class _ControllerLogin with Store {
+  ClienteRepository _clienteRepository = ClienteRepository();
   @observable
   bool obscure = true;
 
@@ -59,6 +61,7 @@ abstract class _ControllerLogin with Store {
   Future<void> _login() async {
     loading = true;
     await Future.delayed(Duration(seconds: 3));
+    await _clienteRepository.login(email, password);
     loading = false;
   }
 }
