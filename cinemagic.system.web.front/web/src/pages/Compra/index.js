@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import api from '../../services/api';
-
+import './styles.css'
 
 export default function Compra() {
     const [tipoPagamento, setTipoPagamento] = useState('');
@@ -33,9 +33,9 @@ export default function Compra() {
                     authorization: token
                 }
             })
-            alert("foi")
+            alert("Compra realizada com sucesso")
         }catch(e){
-            alert(e)
+            alert(e.response.data.message)
         }
     
     }

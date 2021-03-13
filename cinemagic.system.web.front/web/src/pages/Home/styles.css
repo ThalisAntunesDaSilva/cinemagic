@@ -2,11 +2,15 @@
 background-image: url(../../assets/padrao.jpg);
 }
 .carrousel{
-    display: flex;
+    display: grid;
     justify-content: center;
     flex-direction:column;
     margin: 7vh 10vw 7vh 10vw;
     background-color: #000000;
+}
+.inf-user{
+    width: 10px;
+    height: 10px;
 }
 .botaoDeCompra{
  

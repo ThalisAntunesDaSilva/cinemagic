@@ -24,16 +24,11 @@ import com.cinemagic.services.CompraService;
 public class CompraResource {
 	@Autowired
 	CompraService service;
-
-	// V
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Compra> findById(@PathVariable Integer id) {
 		Compra obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
-	
-	
-	// V
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody CompraNewDTO compra) {
 		Compra obj = service.fromDTO(compra);
@@ -41,7 +36,6 @@ public class CompraResource {
 		URI url = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(url).build();
 	}
-	
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Compra>> listaClientes() {

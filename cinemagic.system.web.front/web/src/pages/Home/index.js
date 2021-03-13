@@ -9,7 +9,8 @@ import { Link } from 'react-router-dom';
 import './styles.css';
 import { FiMenu, FiSearch, FiCreditCard, FiMapPin } from 'react-icons/fi'
 import { FlatList } from 'flatlist-react';
-
+import avatar from '../Components/avatar/index.js'
+import {getToken, isAuthenticaded} from '../../services/auth/auth.js'
 export default function Home() {
     const [sessao, setSessao] = useState([]);
     const token = localStorage.getItem('token');
@@ -17,10 +18,11 @@ export default function Home() {
     async function getApi() {
         try {
             const res = await api.get("sessoes")
+            localStorage.removeItem("cinemagic-Token")
             setSessao(res.data)
             setTest(res.data[0])
         } catch (ex) {
-            alert(ex)
+            alert(ex.response.data.message)
         }
     }
     useEffect(() => {
@@ -42,7 +44,10 @@ export default function Home() {
                         </div>
                         <div className="header-direita">
                             <FiSearch className="head-searchIcon" size={30} color="#ffffff" />
-
+                            
+                        </div>
+                        <div className ="inf-user">  
+                            {avatar()}
                         </div>
                     </section>
 

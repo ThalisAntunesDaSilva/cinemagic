@@ -30,7 +30,10 @@ dependencies:
   cupertino_icons: ^1.0.0
   mobx: ^1.2.1+4
   flutter_mobx: ^1.1.0+2
-
+  dio: ^3.0.10
+  get_it:
+  jwt_decoder: ^1.0.4
+  shared_preferences:    
 
 dev_dependencies:
   flutter_test:
@@ -38,7 +41,7 @@ dev_dependencies:
   build_runner: ^1.11.1
   mobx_codegen: ^1.1.2
   flutter_modular: ^2.0.1
-  dio: ^3.0.10
+  
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

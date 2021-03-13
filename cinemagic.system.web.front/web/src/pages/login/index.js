@@ -1,25 +1,27 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom'
 import api from '../../services/api';
-import login from '../../assets/login.jpeg'
 import cinemagic from '../../assets/cinemagic.jpeg';
 import logo from '../../assets/logo.png'
 import {Link} from 'react-router-dom';
 import './styles.css';
 import { FiMenu, FiSearch, FiCreditCard, FiMapPin } from 'react-icons/fi'
 import { FiPrinter } from 'react-icons/fi'
-import axios from 'axios';
 import jwt from 'jwt-decode'
+import {login,getToken} from '../../services/auth/auth.js';
+
 export default function Home(){
     
     let history = useHistory()
     
+    const [erroLogin,setErroLogin] = useState("");
   
     const [email,setEmail] = useState('');
     const [senha,setSenha] = useState('');
 
 
     async function AcaoBotao (e){
+        e.preventDefault();
        try{
             const res = await api.post("/login", {
                 "email": email,
@@ -27,21 +29,22 @@ export default function Home(){
             })
             const token = res.headers["authorization"]   
             const decoded = jwt(token)
-            localStorage.setItem('token',token)
+            login(token);
+            alert(getToken());
             const clientRes = await api.get("/clientes",{
                 params:{
                     email: "gabriel@gmail.com"
                 },
                 headers:{
-                    authorization: localStorage.getItem("token")
+                    authorization: getToken()
                 }
             })
             localStorage.setItem('cliente',JSON.stringify(clientRes.data))
-
-            const test = JSON.parse(localStorage.getItem('cliente'))
-            history.push("/Home")
+            history.push("/")
         }catch(ex){
-            alert(ex)
+            setErroLogin(ex.response.data.message)
+            
+            alert(ex.response.data.message)
         }
         
     
@@ -68,6 +71,7 @@ export default function Home(){
             </div>
 
             <div className="body">
+                <label>{erroLogin}</label>
 
                 <label for="email"> E-mail</label>
                 <input className="input" type="email" name="email" id="email" placeholder="Digite seu e-mail" onChange={e => setEmail(e.target.value)} ></input>
