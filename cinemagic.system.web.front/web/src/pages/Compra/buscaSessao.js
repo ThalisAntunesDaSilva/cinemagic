@@ -17,6 +17,11 @@ useEffect(() => {
     })
 }, [id]);
 
+
+
+
+
+
 async function loadSessoes() {
     const response = await api.get('/sessoes');
 

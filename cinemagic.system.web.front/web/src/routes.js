@@ -4,7 +4,8 @@ import Home from './pages/Home';
 import CadastroCliente from './pages/CadastroCliente';
 import Login from './pages/login';
 import Compra from './pages/Compra';
-import Teste from './pages/Teste'
+import Teste from './pages/Teste';
+import PaginaInicial from './pages/PaginaInicial'
 import {isAuthenticaded} from './services/auth/auth.js';
 
 
@@ -44,8 +45,9 @@ export default function Routes() {
                 <Route path="/CadastroCliente" exact component={CadastroCliente} />
                 <PrivateRouteLogin path="/Login" exact component={Login} />
                 <PrivateRoute path= "/Compra" exact component ={Compra} />
-                <Route path= "*" component={()=> <h1>Page not found</h1>}  /> 
+             
                 <Route path= "/Teste" exact component ={Teste} />
+                <Route path= "/PaginaInicial" exact component ={PaginaInicial} />
             </Switch>
         </BrowserRouter>
     );
