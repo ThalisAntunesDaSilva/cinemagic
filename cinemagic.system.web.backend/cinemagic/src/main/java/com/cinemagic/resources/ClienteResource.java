@@ -1,6 +1,9 @@
 package com.cinemagic.resources;
 
+import java.net.URI;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.cinemagic.domain.Cliente;
+import com.cinemagic.dto.ClienteNewDTO;
 import com.cinemagic.resources.utils.URL;
 import com.cinemagic.services.ClienteService;
 
@@ -43,10 +48,12 @@ public class ClienteResource {
 		return ResponseEntity.ok().body(cliente);
 	}
 
-	@PostMapping
-	public Cliente salvaCliente(@RequestBody Cliente cliente) {
-		return service.save(cliente);
-
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Void> salvaCliente(@Valid @RequestBody ClienteNewDTO objDTO) {
+		Cliente obj = service.fromDTO(objDTO);
+		service.insert(obj);
+		URI url = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(url).build();
 	}
 
 	@PreAuthorize("hasAnyRole('ADMIN')")

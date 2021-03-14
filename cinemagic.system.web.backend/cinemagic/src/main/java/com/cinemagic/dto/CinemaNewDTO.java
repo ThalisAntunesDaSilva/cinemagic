@@ -4,26 +4,27 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
 public class CinemaNewDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	@NotEmpty(message ="Preenchimento obrigatório")
 	private String nome;
+	@NotEmpty(message = "Preenchimento obrigatório")
 	private Integer cidadeId;
-	private String email;
-	private String senha;
 	List<SalaDTO> salas = new ArrayList<>();
 	
 	
 	public CinemaNewDTO() {
 		
 	}
-	public CinemaNewDTO(String nome, Integer cidadeId, String email,List<SalaDTO> salas,String senha) {
+	public CinemaNewDTO(String nome, Integer cidadeId,List<SalaDTO> salas) {
 		super();
 		this.nome = nome;
 		this.cidadeId = cidadeId;
-		this.email = email;
 		this.salas = salas;
-		this.senha = senha;
 		
 	}
 	public String getNome() {
@@ -44,18 +45,6 @@ public class CinemaNewDTO implements Serializable{
 	public void setSalas(List<SalaDTO> salas) {
 		this.salas = salas;
 	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
+
 	
 }
