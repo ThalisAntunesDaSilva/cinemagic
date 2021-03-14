@@ -1,11 +1,29 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
+import Login from './pages/Login';
+
 import {isAuthenticaded} from './services/auth/auth.js';
+
+export default function Routes() {
+    return (
+        <BrowserRouter>
+            <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/Login" exact component={Login} />
+                
+            </Switch>
+        </BrowserRouter>
+    );
+
 
 
 const PrivateRoute = ({component: Component, ...rest}) => (
-  <Route
+ 
+ 
+ 
+ 
+    <Route
     {...rest}
     render = {props =>
         isAuthenticaded()? (
@@ -32,13 +50,6 @@ const PrivateRouteLogin = ({component: Component, ...rest}) => (
   );
 
 
-export default function Routes() {
-    return (
-        <BrowserRouter>
-            <Switch>
-                <Route path="/" exact component={Home} />
-            </Switch>
-        </BrowserRouter>
-    );
+
 
 }
