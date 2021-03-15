@@ -7,12 +7,14 @@
 
 body{
     background-image: url('../../assets/login.jpeg');
-    display:flex;
-    flex-direction:column;
-    align-items: center;
-    padding-top: 15vh;
+   
+   
 
 
 
 
+}
+
+.corpo{
+    margin: 30vh 5vw 10vh 60vw;
 }

@@ -1,7 +1,10 @@
 import React from 'react';
+import hp from '../../assets/hp.png'
+import './styles.css';
+
 import {
   Card, CardText, CardBody, CardLink,
-  CardTitle, CardSubtitle
+  CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 
 const Example = (props) => {
@@ -9,14 +12,24 @@ const Example = (props) => {
     <div>
       <Card>
         <CardBody>
-          <CardTitle tag="h5">Card title</CardTitle>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle>
+          <CardTitle tag="h5">Seção Alegrete-RS</CardTitle>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">Filmes em sessão</CardSubtitle>
         </CardBody>
-        <img width="100%" src="/assets/318x180.svg" alt="Card image cap" />
+       <div className="filmes">
+        <img width="20%" height="20%" src={hp} alt="Card image cap" />
+        <img width="20%" height="20%" src={hp} alt="Card image cap" />
+        <img width="20%" height="20%" src={hp} alt="Card image cap" />
+
+        </div>
         <CardBody>
-          <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-          <CardLink href="#">Card Link</CardLink>
-          <CardLink href="#">Another Link</CardLink>
+        <div className="filmes">
+          <CardText>Harry Potter: 13:00</CardText>
+          <CardText>Homem-Aranha: 16:00</CardText>
+          <CardText>Todo Poderoso: 20:00</CardText>
+          </div>
+         <div className="compra"> <Button color="danger">Compre já</Button></div>
+
+
         </CardBody>
       </Card>
     </div>
