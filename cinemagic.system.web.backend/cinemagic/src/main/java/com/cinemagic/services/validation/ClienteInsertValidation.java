@@ -2,7 +2,6 @@ package com.cinemagic.services.validation;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -13,7 +12,6 @@ import com.cinemagic.domain.Cliente;
 import com.cinemagic.dto.ClienteNewDTO;
 import com.cinemagic.repositories.ClienteRepository;
 import com.cinemagic.resources.exceptions.FieldMessage;
-import com.cinemagic.services.ClienteService;
 
 public class ClienteInsertValidation implements ConstraintValidator<ClienteInsert, ClienteNewDTO>{
 	@Autowired
