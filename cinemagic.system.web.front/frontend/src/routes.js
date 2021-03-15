@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Compra from './pages/Compra';
+import Pesquisa from './pages/Pesquisa';
 
 
 
@@ -14,9 +14,7 @@ export default function Routes() {
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/Login" exact component={Login} />
-                <Route path="/Compra" exact component={Compra} />
-              
-                
+                <Route path="/Pesquisa" exact component={Pesquisa} />
             </Switch>
         </BrowserRouter>
     );
