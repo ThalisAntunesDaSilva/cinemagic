@@ -7,15 +7,15 @@ const Example = (props) => {
   return (
    <div>
           <Form column>
-      <FormGroup className="oi mb-2 me-sm-2 mb-sm-0">
-        <Label for="exampleEmail" className="me-sm-2">Email</Label>
-        <Input type="email" name="email" id="exampleEmail" placeholder="something@idk.cool" />
+      <FormGroup className="oi mb-2 me-sm-2 mb-sm-0 ">
+        <Label for="exampleEmail" className="me-sm-2 mt-3 text-light">Email</Label>
+        <Input className="input mt-3"type="email" name="email" id="exampleEmail" placeholder="something@idk.cool" />
       </FormGroup>
       <FormGroup className="mb-2 me-sm-2 mb-sm-0">
-        <Label for="examplePassword" className="me-sm-2">Senha</Label>
-        <Input className="input"type="password" name="password" id="examplePassword" placeholder="don't tell!" />
+        <Label for="examplePassword" className="me-sm-2 mt-3 text-light">Senha</Label>
+        <Input className="input mt-3"type="password" name="password" id="examplePassword" placeholder="don't tell!" />
       </FormGroup>
-      <Button color="danger" className="button">Login</Button>
+      <Button color="danger" className="button mt-3">Login</Button>
     </Form>
     </div>
 

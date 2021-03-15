@@ -17,7 +17,7 @@ export default function Home() {
                         <div className="body">  
                             {navBar()}
                             {carrousel()}
-                    <div className="card"> {cards()} </div>
+                    <div className="card bg-dark"> {cards()} </div>
                            
                            
                            <div className="chamada">{secaocards()} </div>

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Pesquisa from './pages/Pesquisa';
+
+
 
 import {isAuthenticaded} from './services/auth/auth.js';
 
@@ -11,7 +14,7 @@ export default function Routes() {
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/Login" exact component={Login} />
-                
+                <Route path="/Pesquisa" exact component={Pesquisa} />
             </Switch>
         </BrowserRouter>
     );
