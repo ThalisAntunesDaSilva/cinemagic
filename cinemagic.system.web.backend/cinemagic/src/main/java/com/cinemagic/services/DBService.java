@@ -113,10 +113,10 @@ public class DBService {
 
 	
 
-		Cliente cliente1 = new Cliente(null, "Gabriel Freitas", "gabriel@gmail.com", cidade1,pe.encode("123456"));
+		Cliente cliente1 = new Cliente(null, "Gabriel Freitas", "gabriel@gmail.com", cidade1,pe.encode("123456"),"55","999765189","04111073050");
 		cliente1.setPathImage("https://scontent.fpoa2-1.fna.fbcdn.net/v/t1.0-9/145484555_1834527760031472_2890076170825795635_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=dN1eHPhO9OwAX9YlZgd&_nc_ht=scontent.fpoa2-1.fna&oh=4700a4d7f13749800f9dcfb25c11c30f&oe=606BEE7D");
 		
-		Cliente cliente2 = new Cliente(null, "José", "josé@gmail.com", cidade1,pe.encode("123456"));
+		Cliente cliente2 = new Cliente(null, "José", "josé@gmail.com", cidade1,pe.encode("123456"),"55","996861486","62594664049");
 		cliente2.addPerfil(Perfil.ADMIN);
 
 		Compra compra1 = new Compra(null, new Date(), cliente1, TipoPagamento.PONTOS);

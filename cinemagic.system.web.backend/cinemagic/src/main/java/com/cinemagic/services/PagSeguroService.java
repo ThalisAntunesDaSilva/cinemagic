@@ -70,50 +70,9 @@ public class PagSeguroService {
 				.queryParam("email", EMAIL)
 				.queryParam("token", TOKEN);
 		
-		String xml = "<checkout>\r\n"
-				+ "  <sender>\r\n"
-				+ "    <name>Jose Comprador</name>\r\n"
-				+ "    <email>comprador@uol.com.br</email>\r\n"
-				+ "    <phone>\r\n"
-				+ "      <areaCode>99</areaCode>\r\n"
-				+ "      <number>999999999</number>\r\n"
-				+ "    </phone>\r\n"
-				+ "    <documents>\r\n"
-				+ "      <document>\r\n"
-				+ "        <type>CPF</type>\r\n"
-				+ "        <value>11475714734</value>\r\n"
-				+ "      </document>\r\n"
-				+ "    </documents>\r\n"
-				+ "  </sender>\r\n"
-				+ "  <currency>BRL</currency>\r\n"
-				+ "  <items>\r\n"
-				+ "    <item>\r\n"
-				+ "      <id>0001</id>\r\n"
-				+ "      <description>Produto PagSeguroI</description>\r\n"
-				+ "      <amount>99999.99</amount>\r\n"
-				+ "      <quantity>1</quantity>\r\n"
-				+ "      <weight>10</weight>\r\n"
-				+ "      <shippingCost>1.00</shippingCost>\r\n"
-				+ "    </item>\r\n"
-				+ "  </items>\r\n"
-				+ "  <redirectURL>http://lojamodelo.com.br/return.html</redirectURL>\r\n"
-				+ "  <extraAmount>10.00</extraAmount>\r\n"
-				+ "  <reference>REF1234</reference>\r\n"
-				+ "  <shipping>\r\n"
-				+ "    <addressRequired>false</addressRequired>\r\n"
-				+ "  </shipping>\r\n"
-				+ "  <timeout>25</timeout>\r\n"
-				+ "  <maxAge>999999999</maxAge>\r\n"
-				+ "  <maxUses>999</maxUses>\r\n"
-				+ "  <receiver>\r\n"
-				+ "    <email>gabrielcamposfreitas12@gmail.com</email>\r\n"
-				+ "  </receiver>\r\n"
-				+ "</checkout>";
 			
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map,headers);
-
-		
-		
+	
 		ResponseEntity<CheckoutDTO> response = rest.postForEntity(builder.toUriString(), request,CheckoutDTO.class);
 		return response.getBody();
 		
