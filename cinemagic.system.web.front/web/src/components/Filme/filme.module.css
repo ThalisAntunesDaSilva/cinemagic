@@ -1,0 +1,16 @@
+.filme {
+  padding: 15px 5px;
+  margin-left: 5%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.lateral {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  padding: 5px;
+}
