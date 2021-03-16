@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Pesquisa from './pages/Pesquisa';
 import Compra from './pages/Compra';
+import CadastroCliente from './pages/CadastroCliente';
 
 
 
@@ -17,6 +18,7 @@ export default function Routes() {
                 <Route path="/Login" exact component={Login} />
                 <Route path="/Pesquisa" exact component={Pesquisa} />
                 <Route path="/Compra" exact component={Compra} />
+                <Route path="/CadastroCliente" exact component={CadastroCliente} />
             </Switch>
         </BrowserRouter>
     );
