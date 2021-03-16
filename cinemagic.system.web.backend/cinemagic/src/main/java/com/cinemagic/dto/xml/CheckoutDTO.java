@@ -1,4 +1,4 @@
-package com.cinemagic.dto;
+package com.cinemagic.dto.xml;
 
 import java.io.Serializable;
 

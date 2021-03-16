@@ -13,9 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.cinemagic.domain.Enums.StatusCompra;
 import com.cinemagic.domain.Enums.TipoIngresso;
 import com.cinemagic.domain.Enums.TipoPagamento;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Compra implements Serializable{
@@ -31,6 +33,7 @@ public class Compra implements Serializable{
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date instante;
 	
+	private Integer statusCompra;
 	
 	private Integer tipoPagamento;
 	
@@ -53,6 +56,7 @@ public class Compra implements Serializable{
 		this.instante = instante;
 		this.cliente = cliente;
 		this.tipoPagamento = tipoPagamento.getCod();
+		this.statusCompra = 0;
 	}
 
 	public Integer getId() {
@@ -117,7 +121,35 @@ public class Compra implements Serializable{
 	public void setTipoPagamento(TipoPagamento tipoPagamento) {
 		this.tipoPagamento = tipoPagamento.getCod();
 	}
+	public StatusCompra getStatusCompra() {
+		return StatusCompra.toStatusCompra(statusCompra);
+	}
+	public void setStatusCompra(StatusCompra statusCompra) {
+		this.statusCompra = statusCompra.getCod();
+	}
 
+	@JsonIgnore
+	public int getIngressosInteira() {
+		int i = 0;
+		for(Ingresso x : ingressos) {
+			if(x.getTipoIngresso() == TipoIngresso.INTEIRA) {
+				i++;
+			}
+		}
+		return i;
+	}
+	@JsonIgnore
+	public int getIngressosMeia() {
+		int i = 0;
+		for(Ingresso x: ingressos) {
+			if(x.getTipoIngresso() == TipoIngresso.MEIA) {
+				i++;
+			}
+		}
+		return i;
+	}
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

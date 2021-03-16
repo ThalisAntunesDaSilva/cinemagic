@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.cinemagic.domain.Compra;
-import com.cinemagic.dto.CheckoutDTO;
 import com.cinemagic.dto.CompraNewDTO;
+import com.cinemagic.dto.xml.CheckoutDTO;
 import com.cinemagic.services.CompraService;
 import com.cinemagic.services.PagSeguroService;
 
@@ -36,7 +36,7 @@ public class CompraResource {
 		Compra obj = service.fromDTO(compra);
 		service.insert(obj);
 		URI url = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		CheckoutDTO checkout = pagSeguroService.criarPagamento();
+		CheckoutDTO checkout = pagSeguroService.criarPagamento(obj.getCliente(),obj);
 		return ResponseEntity.created(url).body(checkout);
 	}
 	@PreAuthorize("hasAnyRole('ADMIN')")

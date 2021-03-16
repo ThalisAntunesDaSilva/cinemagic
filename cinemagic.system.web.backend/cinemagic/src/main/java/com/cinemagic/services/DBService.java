@@ -1,5 +1,6 @@
 package com.cinemagic.services;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -94,8 +95,10 @@ public class DBService {
 		Sala sala1 = new Sala(null, 01, 50, cinema2);
 		cinema2.getSalas().addAll(Arrays.asList(sala1));
 
+		 
+		
 		Sessao sessao1 = new Sessao(null, new SimpleDateFormat("dd/MM/yyyy").parse("15/02/2021"),
-				new SimpleDateFormat("HH:mm").parse("22:00"), 20, 10, filme1, sala1);
+				new SimpleDateFormat("HH:mm").parse("22:00"), 20.00,10.00, filme1, sala1);
 		sala1.getSessoes().addAll(Arrays.asList(sessao1));
 		sessao1.setTrocaPorCupons(true);
 		sessao1.setValorEmCupons(10);

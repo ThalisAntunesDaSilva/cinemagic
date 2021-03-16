@@ -159,6 +159,32 @@ public class Cliente implements Serializable{
 	public void setPerfis(Set<Integer> perfis) {
 		this.perfis = perfis;
 	}
+	
+	
+
+	public String getAreaCode() {
+		return areaCode;
+	}
+
+	public void setAreaCode(String areaCode) {
+		this.areaCode = areaCode;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
 	@Override
 	public int hashCode() {
