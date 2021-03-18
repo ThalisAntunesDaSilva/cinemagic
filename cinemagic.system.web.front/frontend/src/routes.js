@@ -5,10 +5,11 @@ import Login from './pages/Login';
 import Pesquisa from './pages/Pesquisa';
 import Compra from './pages/Compra';
 import CadastroCliente from './pages/CadastroCliente';
+import CadastroFilme from './pages/CadastroFilme';
 
 
 
-import {isAuthenticaded} from './services/auth/auth.js';
+import { isAuthenticaded } from './services/auth/auth.js';
 
 export default function Routes() {
     return (
@@ -19,42 +20,43 @@ export default function Routes() {
                 <Route path="/Pesquisa" exact component={Pesquisa} />
                 <Route path="/Compra" exact component={Compra} />
                 <Route path="/CadastroCliente" exact component={CadastroCliente} />
+                <Route path="/CadastroFilme" exact component={CadastroFilme} />
             </Switch>
         </BrowserRouter>
     );
 
 
 
-const PrivateRoute = ({component: Component, ...rest}) => (
- 
- 
- 
- 
-    <Route
-    {...rest}
-    render = {props =>
-        isAuthenticaded()? (
-            <Component {...props}/>
-        ): (
-            <Redirect to = {{ pathname: "/Login",state: {from: props.location}}} />
-        )
+    const PrivateRoute = ({ component: Component, ...rest }) => (
 
-    }
-  />  
-);
-const PrivateRouteLogin = ({component: Component, ...rest}) => (
-    <Route
-      {...rest}
-      render = {props =>
-          !isAuthenticaded()? (
-              <Component {...props}/>
-          ): (
-              <Redirect to = {{ pathname: "/",state: {from: props.location}}} />
-          )
-  
-      }
-    />  
-  );
+
+
+
+        <Route
+            {...rest}
+            render={props =>
+                isAuthenticaded() ? (
+                    <Component {...props} />
+                ) : (
+                    <Redirect to={{ pathname: "/Login", state: { from: props.location } }} />
+                )
+
+            }
+        />
+    );
+    const PrivateRouteLogin = ({ component: Component, ...rest }) => (
+        <Route
+            {...rest}
+            render={props =>
+                !isAuthenticaded() ? (
+                    <Component {...props} />
+                ) : (
+                    <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+                )
+
+            }
+        />
+    );
 
 
 
