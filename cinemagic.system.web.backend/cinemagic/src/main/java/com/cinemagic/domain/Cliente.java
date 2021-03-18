@@ -37,6 +37,11 @@ public class Cliente implements Serializable{
 	@JsonIgnore
 	private String senha;
 	
+	private String areaCode;
+	private String phone;
+	
+	private String cpf;
+	
 	@Column(length = 1000)
 	private String pathImage;
 	
@@ -57,7 +62,7 @@ public class Cliente implements Serializable{
 		addPerfil(Perfil.CLIENTE);
 	}
 
-	public Cliente(Integer id, String nome, String email,Cidade cidade,String senha) {
+	public Cliente(Integer id, String nome, String email,Cidade cidade,String senha,String areaCode,String phone,String cpf) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -65,6 +70,9 @@ public class Cliente implements Serializable{
 		this.cidade = cidade;
 		this.pontos = 0;
 		this.senha = senha;
+		this.areaCode = areaCode;
+		this.phone = phone;
+		this.cpf = cpf;
 		addPerfil(Perfil.CLIENTE);
 	}
 
@@ -150,6 +158,32 @@ public class Cliente implements Serializable{
 
 	public void setPerfis(Set<Integer> perfis) {
 		this.perfis = perfis;
+	}
+	
+	
+
+	public String getAreaCode() {
+		return areaCode;
+	}
+
+	public void setAreaCode(String areaCode) {
+		this.areaCode = areaCode;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	@Override

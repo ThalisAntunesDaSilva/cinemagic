@@ -63,7 +63,7 @@ public class ClienteService {
 
 	public Cliente fromDTO(ClienteNewDTO objDTO) {
 		Cidade cidade = cidadeService.findById(objDTO.getCidadeId());
-		Cliente cliente = new Cliente(null, objDTO.getNome(), objDTO.getEmail(), cidade, pe.encode(objDTO.getSenha()));
+		Cliente cliente = new Cliente(null, objDTO.getNome(), objDTO.getEmail(), cidade, pe.encode(objDTO.getSenha()),objDTO.getAreaCode(),objDTO.getPhone(),objDTO.getCpf());
 		return cliente;
 	}
 	

@@ -23,13 +23,23 @@ public class ClienteNewDTO implements Serializable{
 	String senha;
 	@NotNull
 	Integer cidadeId;
+	@NotEmpty
+	String areaCode;
+	@NotEmpty
+	String phone;
+	@NotEmpty
+	String cpf;
+	
 	public ClienteNewDTO(){
 		
 	}
-	public ClienteNewDTO(String nome, String email, String senha, Integer cidadeId) {
+	public ClienteNewDTO(String nome, String email, String senha, Integer cidadeId,String areaCode,String phone,String cpf) {
 		super();
 		this.nome = nome;
 		this.email = email;
+		this.areaCode = areaCode;
+		this.phone = phone;
+		this.cpf = cpf;
 		this.senha = senha;
 		this.cidadeId = cidadeId;
 	}
@@ -57,5 +67,24 @@ public class ClienteNewDTO implements Serializable{
 	public void setCidadeId(Integer cidadeId) {
 		this.cidadeId = cidadeId;
 	}
+	public String getAreaCode() {
+		return areaCode;
+	}
+	public void setAreaCode(String areaCode) {
+		this.areaCode = areaCode;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	
 	
 }

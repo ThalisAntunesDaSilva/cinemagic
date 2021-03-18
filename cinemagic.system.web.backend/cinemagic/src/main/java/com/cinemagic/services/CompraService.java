@@ -49,15 +49,11 @@ public class CompraService {
 	}
 
 	@Transactional
-	public Compra edit(Compra compra) {
-		compra.setId(null);
-		//Salvo compras pra clientes
-		clienteService.update(compra.getCliente());
-		//salva todos os ingressos da compra
-		ingressoRepository.saveAll(compra.getIngressos());
-		
-		compra = repo.save(compra);
-		return compra;
+	public Compra update(Compra compra) {	
+		Compra newObj = findById(compra.getId());
+		updateData(newObj, compra);
+		newObj = repo.save(newObj);
+		return newObj;
 	}
 
 	
@@ -104,6 +100,10 @@ public class CompraService {
 			quantidade += i.getQuantidade();
 		}
 		return quantidade;
+	}
+	
+	private void updateData(Compra newObj, Compra obj) {
+		newObj.setStatusCompra(obj.getStatusCompra());
 	}
 
 }
