@@ -54,13 +54,14 @@ export default function Login(){
     return (
         <>
 
-         <body>
+       
+<div className="corpo">
 
          {formularioLogin()}
+         </div>
 
 
 
-         </body>
         </>
     );
 

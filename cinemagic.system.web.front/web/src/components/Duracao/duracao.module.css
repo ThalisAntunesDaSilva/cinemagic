@@ -1,0 +1,13 @@
+.duracao {
+  padding: 4px 10px;
+  margin: 5px 2px;
+
+  border-radius: 15px;
+  background-color: #3a3a3a;
+  color: #fff9fd;
+
+  font-weight: bold;
+  font-size: 0.8rem;
+
+  min-width: fit-content;
+}

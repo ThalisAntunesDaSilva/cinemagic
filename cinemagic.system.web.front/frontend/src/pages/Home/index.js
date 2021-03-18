@@ -13,8 +13,8 @@ export default function Home() {
     return (
         <>
          
-                    
-                        <div className="body">  
+                    <body>
+                      
                             {navBar()}
                             {carrousel()}
                     <div className="card bg-dark"> {cards()} </div>
@@ -22,8 +22,9 @@ export default function Home() {
                            
                            <div className="chamada">{secaocards()} </div>
                          
-                        </div>
-
+                           
+                           </body>
+                     
 
 
             
