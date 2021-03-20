@@ -45,6 +45,7 @@ export default function Routes() {
                 
                 <Route path="/" exact component={Home} />
                 <Route path="/CadastroCliente" exact component={CadastroCliente} />
+                <Route path="/Sessao" exact component={Sessoes} />
                 <PrivateRouteLogin path="/Login" exact component={Login} />
                 <PrivateRoute path= "/Compra" exact component ={Compra} />
                 <Route path= "/ResultadoPesquisaTeste" exact component ={ResultadoPesquisaTeste} />
