@@ -25,8 +25,7 @@ public class NotificacaoResource {
 			@RequestParam(value = "notificationCode") String code,
 			@RequestParam(value = "notificationType") String type){
 		
-		
-		
+		service.atualizarTransacao(code);			
 		URI url = ServletUriComponentsBuilder.fromCurrentRequest().build().toUri();
 		return ResponseEntity.created(url).build();
 	}
