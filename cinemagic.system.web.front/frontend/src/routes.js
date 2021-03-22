@@ -6,6 +6,7 @@ import Pesquisa from './pages/Pesquisa';
 import Compra from './pages/Compra';
 import CadastroCliente from './pages/CadastroCliente';
 import CadastroFilme from './pages/CadastroFilme';
+import CadastroCinema from './pages/CadastroCinema';
 
 
 
@@ -21,6 +22,7 @@ export default function Routes() {
                 <Route path="/Compra" exact component={Compra} />
                 <Route path="/CadastroCliente" exact component={CadastroCliente} />
                 <Route path="/CadastroFilme" exact component={CadastroFilme} />
+                <Route path="/CadastroCinema" exact component={CadastroCinema} />
             </Switch>
         </BrowserRouter>
     );
