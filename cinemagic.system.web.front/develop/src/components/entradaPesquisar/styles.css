@@ -1,0 +1,12 @@
+.input-div{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    margin: 30px 0px 30px 0px;
+
+}
+
+.button{
+    border-radius: 100%;
+    margin-left: 15px;
+}
