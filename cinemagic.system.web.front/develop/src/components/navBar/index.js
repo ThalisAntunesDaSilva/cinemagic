@@ -35,7 +35,7 @@ export default function navbar() {
           <Nav className="me-auto" navbar>
             {/*Seções*/}
             <NavItem>
-              <NavLink className="link" href="/components/">Seções</NavLink>
+              <NavLink className="link" href="/ListaSessoes">Seções</NavLink>
             </NavItem>
         
 
