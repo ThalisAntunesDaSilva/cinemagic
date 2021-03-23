@@ -76,7 +76,7 @@ const Example = (props) => {
                             <option>Rio de Janeiro (RJ)</option>
                             <option>Rio Grande do Norte (RN)</option>
                             <option>Rio Grande do Sul (RS)</option>
-                            <option>Rondônia (RO))</option>
+                            <option>Rondônia (RO)</option>
                             <option>Roraima (RR)</option>
                             <option>Santa Catarina (SC)</option>
                             <option>São Paulo (SP)</option>
