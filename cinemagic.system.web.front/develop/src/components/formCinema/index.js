@@ -4,12 +4,6 @@ import './styles.css';
 
 
 const Example = (props) => {
-   
-   
-   function teste(){
- alert("Oi")
-   }
-   
     return (
 
         <Form className="forme">
@@ -18,134 +12,43 @@ const Example = (props) => {
             <Row forme>
                 <Col sm="12" md={{ size: 7, offset: 3 }}>
                     <FormGroup >
-                        <Label for="Nome" className="Nome">Nome Completo</Label>
+                        <Label for="Nome" className="Nome">Nome do Cinema</Label>
                         <Input type="text" name="nome" id="nome" placeholder="Nome Completo" />
                     </FormGroup>
                 </Col>
             </Row>
 
-
             <Row forme>
-                <Col sm="12" md={{ size: 3, offset: 3 }}>
-                    <FormGroup >
-                        <Label for="Telefone" className="me-sm-2">Telefone (DDD + Número)</Label>
-                        <Input type="text" name="telefone" id="telefone" placeholder="Telefone" />
-                    </FormGroup>
-                </Col>
-
-                <Col md={4}>
-                    <FormGroup>
-                        <Label for="Celular" className="me-sm-2">Celular (DDD + Número)</Label>
-                        <Input type="text" name="celular" id="celular" placeholder="Celular" />
-                    </FormGroup>
-                </Col>
-            </Row>
-
-            <Row forme>
-                <Col sm="12" md={{ size: 3, offset: 3 }}>
-                    <FormGroup >
-                        <Label for="Cep" className="me-sm-2">CEP</Label>
-                        <Input type="text" name="cep" id="cep" placeholder="CEP" />
-                    </FormGroup>
-                </Col>
-
-
-                <Col md={2}>
+                <Col  sm="12" md={{ size: 7, offset: 3 }}>
                     <FormGroup >
                         <Label for="Cidade" className="me-sm-2">Cidade</Label>
                         <Input type="text" name="cidade" id="cidade" placeholder="Cidade" />
                     </FormGroup>
                 </Col>
+                </Row>
 
-                <Col md={2}>
+                <Row forme>
+                <Col  sm="12" md={{ size: 3, offset: 3 }}>
                     <FormGroup className="mb-2 me-sm-2 mb-sm-2">
-                        <Label for="Estado" className="me-sm-2">Estado</Label>
-                        <Input type="select" name="estado" id="estado">
-                            <option>Acre (AC)</option>
-                            <option>Alagoas (AL)</option>
-                            <option>Amapá (AP)</option>
-                            <option>Amazonas (AM)</option>
-                            <option>Bahia (BA)</option>
-                            <option>Ceará (CE)</option>
-                            <option>Distrito Federal (DF)</option>
-                            <option>Espírito Santo (ES)</option>
-                            <option>Goiás (GO)</option>
-                            <option>Maranhão (MA)</option>
-                            <option>Mato Grosso (MT)</option>
-                            <option>Mato Grosso do Sul (MS)</option>
-                            <option>Minas Gerais (MG)</option>
-                            <option>Pará (PA)</option>
-                            <option>Paraíba (PB)</option>
-                            <option>Paraná (PR)</option>
-                            <option>Pernambuco (PE)</option>
-                            <option>Piauí (PI)</option>
-                            <option>Rio de Janeiro (RJ)</option>
-                            <option>Rio Grande do Norte (RN)</option>
-                            <option>Rio Grande do Sul (RS)</option>
-                            <option>Rondônia (RO)</option>
-                            <option>Roraima (RR)</option>
-                            <option>Santa Catarina (SC)</option>
-                            <option>São Paulo (SP)</option>
-                            <option>Sergipe (SE)</option>
-                            <option>Tocantins (TO)</option>
-                        </Input>
+                        <Label for="Numero" className="me-sm-2">Numero de Salas</Label>
+                        <Input type="numero" name="numero" id="numero" placeholder="Numero" />
                     </FormGroup>
                 </Col>
-            </Row>
+                
 
-            <Row forme>
-                <Col sm="12" md={{ size: 7, offset: 3 }}>
-                    <FormGroup className="mb-2 me-sm-2 mb-sm-2">
-                        <Label for="Endereço" className="me-sm-2">Endereço do Cinema</Label>
-                        <Input type="text" name="endereço" id="endereço" placeholder="Endereço" />
-                    </FormGroup>
-                </Col>
-            </Row>
-
-
-            <Row forme>
-                <Col sm="12" md={{ size: 3, offset: 3 }}>
+                <Col  sm="12" md={{ size: 4, offset: 0 }}>
                     <FormGroup >
-                        <Label for="Bairro" className="me-sm-2">Bairro</Label>
-                        <Input type="text" name="bairro" id="bairro" placeholder="Bairro" />
+                        <Label for="Capacidade" className="me-sm-2">Capacidade</Label>
+                        <Input type="text" name="capacidade" id="capacidade" placeholder="Capacidade" />
                     </FormGroup>
                 </Col>
+                </Row>
 
-                <Col md={1}>
-                    <FormGroup className="mb-2 me-sm-2 mb-sm-2">
-                        <Label for="Número" className="me-sm-2">Número</Label>
-                        <Input type="text" name="número" id="número" placeholder="Número" />
-                    </FormGroup>
-                </Col>
-
-                <Col md={3}>
-                    <FormGroup className="mb-2 me-sm-2 mb-sm-2">
-                        <Label for="Complemento" className="me-sm-2">Complemento</Label>
-                        <Input type="text" name="complemento" id="complemento" placeholder="Complemento" />
-                    </FormGroup>
-                </Col>
-            </Row>
-
-            <Row forme>
-                <Col sm="12" md={{ size: 7, offset: 3 }}>
-                    <FormGroup className="mb-2 me-sm-2 mb-sm-2">
-                        <Label for="exampleEmail" className="me-sm-2">Email</Label>
-                        <Input type="email" name="email" id="email" placeholder="Email" />
-                    </FormGroup>
-                </Col>
-
-                <Col sm="12" md={{ size: 7, offset: 3 }}>
-                    <FormGroup className="mb-2 me-sm-2 mb-sm-2">
-                        <Label for="examplePassword" className="me-sm-2">Senha</Label>
-                        <Input type="password" name="password" id="password" placeholder="********" />
-                    </FormGroup>
-                </Col>
-            </Row>
 
 
             <Row forme>
                 <Col sm="12" md={{ size: 7, offset: 3 }}>
-                    <Button onClick={teste()} outline color="danger" size="lg" block>Cadastrar-se</Button>
+                    <Button outline color="danger" size="lg" block>Cadastrar-se</Button>
                 </Col>
             </Row>
 
