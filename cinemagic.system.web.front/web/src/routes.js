@@ -49,6 +49,9 @@ export default function Routes() {
                 <Route path= "/Teste" exact component ={Teste} />
 
                 <Route path= "/PaginaInicial" exact component ={PaginaInicial} />
+                <Route path="/BuscarSessao" exact component={BuscarSessao} />
+                <Route path="/Sessoes" exact component={Sessoes} />
+
             </Switch>
         </BrowserRouter>
     );
