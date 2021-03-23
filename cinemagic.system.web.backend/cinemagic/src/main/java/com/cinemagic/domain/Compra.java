@@ -56,7 +56,7 @@ public class Compra implements Serializable{
 		this.instante = instante;
 		this.cliente = cliente;
 		this.tipoPagamento = tipoPagamento.getCod();
-		this.statusCompra = 0;
+		this.statusCompra = 2;
 	}
 
 	public Integer getId() {
