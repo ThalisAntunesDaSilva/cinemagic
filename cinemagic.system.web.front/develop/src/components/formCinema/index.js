@@ -4,6 +4,12 @@ import './styles.css';
 
 
 const Example = (props) => {
+   
+   
+   function teste(){
+ alert("Oi")
+   }
+   
     return (
 
         <Form className="forme">
@@ -139,7 +145,7 @@ const Example = (props) => {
 
             <Row forme>
                 <Col sm="12" md={{ size: 7, offset: 3 }}>
-                    <Button outline color="danger" size="lg" block>Cadastrar-se</Button>
+                    <Button onClick={teste()} outline color="danger" size="lg" block>Cadastrar-se</Button>
                 </Col>
             </Row>
 

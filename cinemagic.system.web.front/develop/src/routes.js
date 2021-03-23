@@ -7,6 +7,7 @@ import Compra from './pages/Compra';
 import CadastroCliente from './pages/CadastroCliente';
 import CadastroCinema from './pages/CadastroCinema';
 import CadastroFilme from './pages/CadastroFilme';
+import ListaSessoes from './pages/ListaSessoes';
 
 
 
@@ -23,6 +24,7 @@ export default function Routes() {
                 <Route path="/CadastroCliente" exact component={CadastroCliente} />
                 <Route path="/CadastroCinema" exact component={CadastroCinema} />
                 <Route path="/CadastroFilme" exact component={CadastroFilme} />
+                <Route path="/ListaSessoes" exact component={ListaSessoes} />
             </Switch>
         </BrowserRouter>
     );
