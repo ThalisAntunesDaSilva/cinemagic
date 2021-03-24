@@ -34,6 +34,7 @@ public class CinemaResource {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody CinemaNewDTO objDTO){
 		Cinema cinema = service.fromDTO(objDTO);
+		cinema = service.insert(cinema);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(cinema.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}

@@ -26,7 +26,8 @@ public class SessaoResource {
 	
 	@RequestMapping(value ="/{id}",method = RequestMethod.GET)
 	public ResponseEntity<Sessao> findById(@PathVariable Integer id){
-		return findById(id);
+		Sessao sessao = service.findById(id);
+		return ResponseEntity.ok().body(sessao);
 	}
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method = RequestMethod.POST)

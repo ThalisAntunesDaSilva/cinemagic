@@ -65,7 +65,9 @@ public class CinemaService {
 	public Cinema fromDTO(CinemaNewDTO objDTO) {
 		Cidade cidade = cidadeService.findById(objDTO.getCidadeId());
 		Cinema cinema = new Cinema(null, objDTO.getNome(), cidade);
-		objDTO.getSalas().stream().map((obj)-> cinema.getSalas().add(new Sala(null, obj.getNumero(), obj.getCapacidade(), cinema)));
+		//objDTO.getSalas().stream().map((obj)-> cinema.getSalas().add(new Sala(null, obj.getNumero(), obj.getCapacidade(), cinema)));
+		List<Sala> salas = objDTO.getSalas().stream().map(obj -> new Sala(null, obj.getNumero(), obj.getCapacidade(), cinema)).collect(Collectors.toList());
+		cinema.setSalas(salas);
 		return cinema;
 	}
 	
