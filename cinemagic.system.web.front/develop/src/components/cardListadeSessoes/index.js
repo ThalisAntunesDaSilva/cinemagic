@@ -7,26 +7,37 @@ const Example = (props) => {
   const history = useHistory();
     const [sessao, setSessao] = useState([]);
     const token = localStorage.getItem('token');
-    const [test,setTest] = useState('')
+    const [id,setId] = useState('');
   
-    async function comprarSessao(){
-      history.push('/Compra');
-    }
+    async function encaminhaCompraSessao(){
+     
+      try{
+         
+        const resposta = await api.get('sessoes');
+          
+          localStorage.setItem('sessaoAtual', JSON.stringify(resposta.data));
+
+      
+            
+          
+
+         alert(resposta.data);
+          history.push('/Compra');
+      }catch(err){
+        alert(err);
+    }}
   
   
     async function getApi() {
         try {
             const res = await api.get("sessoes")
             setSessao(res.data)
-            setTest(res.data[0])
+            
         } catch (ex) {
             alert(ex)
         }
       }
 
-    async function comprarSessao(){
-      history.push('/Compra');
-    }
 
     useEffect(() => {
         getApi()
@@ -71,7 +82,7 @@ const Example = (props) => {
 
 
                                     
-                                    <Button color="danger" onClick={comprarSessao}>Comprar</Button>
+                                    <Button color="danger" onClick={encaminhaCompraSessao}>Comprar</Button>
         
         </Jumbotron>
 

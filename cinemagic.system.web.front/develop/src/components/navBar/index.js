@@ -46,11 +46,15 @@ export default function navbar() {
               <DropdownMenu right>
                
                 <DropdownItem>
-                <NavLink>  Cadastro de Filmes    </NavLink>
+                <NavLink href="/CadastroFilme">  Cadastro de Filmes    </NavLink>
+                </DropdownItem>
+
+                <DropdownItem>
+                <NavLink href="/CadastroSessoes">  Cadastro de Sessões    </NavLink>
                 </DropdownItem>
                 
                 <DropdownItem>
-                <NavLink>  Cadastro de Clientes   </NavLink>
+                <NavLink href="/CadastroCliente">  Cadastro de Clientes   </NavLink>
                 </DropdownItem>
                
                 <DropdownItem divider />
