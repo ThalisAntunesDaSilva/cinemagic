@@ -49,6 +49,11 @@ public class SessaoResource {
 	public ResponseEntity<List<Sessao>> findBySessaos() {
 		return ResponseEntity.ok().body(service.findBySessaos());
 	}
+	@RequestMapping(value = "/filme/{nome}",method = RequestMethod.GET)
+	public ResponseEntity<List<Sessao>> findByFilme(@PathVariable String nome){
+		List<Sessao> obj = service.findByFilme(nome);
+		return ResponseEntity.ok().body(obj);
+	}
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value="/{id}" ,method = RequestMethod.DELETE)
 	public ResponseEntity<Void> deletarSessao(@PathVariable Integer id) {

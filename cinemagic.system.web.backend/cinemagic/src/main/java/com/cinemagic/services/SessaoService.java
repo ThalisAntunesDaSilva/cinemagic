@@ -38,7 +38,12 @@ public class SessaoService {
 		return repo.findAll();
 
 	}
-
+	
+	public List<Sessao> findByFilme(String filme){
+		return repo.findByFilme(filme);
+	}
+	
+	
 	public Sessao insert(Sessao sessao) {
 		sessao.setId(null);
 		return repo.save(sessao);
