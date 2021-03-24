@@ -13,8 +13,7 @@ import {Button,
     UncontrolledDropdown,
     DropdownToggle,
     DropdownMenu,
-    DropdownItem,
-    NavbarText} from 'reactstrap'
+    DropdownItem} from 'reactstrap'
 
 export default function navbar() {
     
@@ -36,12 +35,9 @@ export default function navbar() {
           <Nav className="me-auto" navbar>
             {/*Seções*/}
             <NavItem>
-              <NavLink className="link" href="/components/">Seções</NavLink>
+              <NavLink className="link" href="/ListaSessoes">Seções</NavLink>
             </NavItem>
-            {/*Pesquisar*/}
-               <NavItem>
-              <NavLink className="link" href="https://github.com/reactstrap/reactstrap">Pesquisar</NavLink>
-            </NavItem>
+        
 
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle className="link" nav caret>
@@ -50,11 +46,15 @@ export default function navbar() {
               <DropdownMenu right>
                
                 <DropdownItem>
-                  Cadastro de Filmes
+                <NavLink href="/CadastroFilme">  Cadastro de Filmes    </NavLink>
+                </DropdownItem>
+
+                <DropdownItem>
+                <NavLink href="/CadastroSessoes">  Cadastro de Sessões    </NavLink>
                 </DropdownItem>
                 
                 <DropdownItem>
-                  Cadastro de Clientes
+                <NavLink href="/CadastroCliente">  Cadastro de Clientes   </NavLink>
                 </DropdownItem>
                
                 <DropdownItem divider />
