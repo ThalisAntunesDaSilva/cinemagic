@@ -9,12 +9,12 @@ import {
 } from 'reactstrap';
 
 
-const Example = (props) => {
+const Example =  (props) => {
   const history = useHistory();
   const [sessao, setSessao] = useState([]);
   const sessaoSelecionada = localStorage.getItem('id');
  // sessao = JSON.parse(sessaoSelecionada);
-  
+  const sessaoAtual =  JSON.parse(localStorage.getItem("sessaoAtual"));
   
   
   async function getSessaoSelecionada(evento){
@@ -29,7 +29,7 @@ const Example = (props) => {
 
 
   useEffect(() => {
-    getSessaoSelecionada()
+   // getSessaoSelecionada()
   })
  
  
@@ -56,7 +56,7 @@ const Example = (props) => {
         <CardBody>
     <div className="filmes">
           <CardText></CardText>
-          <CardText>sessao.nome</CardText>
+          <CardText>{sessaoAtual.filme.titulo}</CardText>
           <CardText>Todo Poderoso: 20:00</CardText>
       </div>
          </CardBody>
