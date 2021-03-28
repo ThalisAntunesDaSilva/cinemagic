@@ -14,8 +14,6 @@ const Example = (props) => {
   const encaminhaCompraSessao =  ses => async e =>{
 
     try {
-      alert(ses.id);
-      //const resposta = await api.get(`sessoes/${id}`);
       localStorage.setItem('sessaoAtual', JSON.stringify(ses));
       history.push('/Compra');
     } catch (err) {

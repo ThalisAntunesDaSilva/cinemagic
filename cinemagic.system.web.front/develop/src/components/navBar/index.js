@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import {logout} from '../../services/auth/auth.js';
 import './styles.css';
-
 
 import {Button,  
     Collapse,
@@ -15,12 +15,21 @@ import {Button,
     DropdownMenu,
     DropdownItem} from 'reactstrap'
 
+
+
+function sair(e){
+  logout()
+}
+
 export default function navbar() {
     
     const Example = (props) => {
         const [isOpen, setIsOpen] = useState(false);
       
         const toggle = () => setIsOpen(!isOpen);}
+
+
+    
     
     return (
         <>
@@ -58,7 +67,7 @@ export default function navbar() {
                 </DropdownItem>
                
                 <DropdownItem divider />
-                <DropdownItem>
+                <DropdownItem onClick={sair} >
                   Sair
                 </DropdownItem>
               </DropdownMenu>

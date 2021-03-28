@@ -14,10 +14,38 @@ import ListaFilmes from './pages/ListaFilmes'
 
 import { isAuthenticaded } from './services/auth/auth.js';
 
+const PrivateRouteLogin = ({ component: Component, ...rest }) => (
+    <Route
+        {...rest}
+        render={props =>
+            !isAuthenticaded() ? (
+                <Component {...props} />
+            ) : (
+                <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+            )
+        }
+    />
+);
+const PrivateRoute = ({ component: Component, ...rest }) => (
+    <Route
+        {...rest}
+        render={props =>
+            isAuthenticaded() ? (
+                <Component {...props} />
+            ) : (
+                <Redirect to={{ pathname: "/Login", state: { from: props.location } }} />
+            )
+
+        }
+    />
+);
+
+
 export default function Routes() {
     return (
         <BrowserRouter>
             <Switch>
+                <PrivateRoute path="/Compra" component ={Compra}/>
                 <Route path="/" exact component={Home} />
                 <Route path="/Login" exact component={Login} />
                 <Route path="/Pesquisa" exact component={Pesquisa} />
@@ -33,29 +61,6 @@ export default function Routes() {
 
 
 
-    const PrivateRoute = ({ component: Component, ...rest }) => (
-        <Route
-            {...rest}
-            render={props =>
-                isAuthenticaded() ? (
-                    <Component {...props} />
-                ) : (
-                    <Redirect to={{ pathname: "/Login", state: { from: props.location } }} />
-                )
 
-            }
-        />
-    );
-    const PrivateRouteLogin = ({ component: Component, ...rest }) => (
-        <Route
-            {...rest}
-            render={props =>
-                !isAuthenticaded() ? (
-                    <Component {...props} />
-                ) : (
-                    <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-                )
-            }
-        />
-    );
+
 }
