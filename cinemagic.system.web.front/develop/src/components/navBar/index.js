@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {logout} from '../../services/auth/auth.js';
 import './styles.css';
+import {logout} from '../../services/auth/auth.js';
 
 import {Button,  
     Collapse,
@@ -18,7 +18,7 @@ import {Button,
 
 
 function sair(e){
-  logout()
+  logout();
 }
 
 export default function navbar() {
@@ -67,7 +67,7 @@ export default function navbar() {
                 </DropdownItem>
                
                 <DropdownItem divider />
-                <DropdownItem onClick={sair} >
+                <DropdownItem onClick= {sair} >
                   Sair
                 </DropdownItem>
               </DropdownMenu>
