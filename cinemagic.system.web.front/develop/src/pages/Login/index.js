@@ -32,7 +32,7 @@ export default function Login(){
             alert(getToken());
             const clientRes = await api.get("/clientes",{
                 params:{
-                    email: "gabriel@gmail.com"
+                    email:decoded
                 },
                 headers:{
                     authorization: getToken()
