@@ -50,6 +50,7 @@ public class PagSeguroService {
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
 
 		ResponseEntity<CheckoutDTO> response = rest.postForEntity(builder.toUriString(), request, CheckoutDTO.class);
+		response.getBody().setCode("https://pagseguro.uol.com.br/v2/checkout/payment.html?code=" + response.getBody().getCode());
 		return response.getBody();
 
 	}
