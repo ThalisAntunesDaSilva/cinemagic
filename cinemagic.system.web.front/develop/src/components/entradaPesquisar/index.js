@@ -8,23 +8,21 @@ import api from '../../services/api';
 
 const Example = (props) => {
  
- const [id, setId] = useState('')
+ const [nomeCidade, setNomeCidade] = useState('')
   const history = useHistory();
+  const [sessao, setSessao] = useState([]);
 
 
   async function pesquisar(evento){
-   
-   
     evento.preventDefault();
-    id = localStorage.getItem('id');
-  alert('chegou 1');
-  history.push('/Pesquisa');
+
   try{
-   const resposta = await api.get(`sessoes/${id}`);
-   setId(resposta.data);
+   const resposta = await api.get(`sessoes/cidade/nome/${nomeCidade}`);
    
-   
-   alert(id);
+
+  const cidade = localStorage.setItem('cidadePesquisada', JSON.stringify(resposta));
+
+  history.push('/ResultadoPesquisa');
   
 }catch(err){
     alert('Ops, nada encontrado');
@@ -38,9 +36,9 @@ const Example = (props) => {
     
     <Input type="text"
         placeholder="Search"
-        value={id}
+        value={nomeCidade}
         className="input w-25 p-3"
-        onChange={evento => setId(evento.target.value)}
+        onChange={evento => setNomeCidade(evento.target.value)}
        /> 
      
       <Button color="danger" className="button" type="submit"  onClick={pesquisar}>
