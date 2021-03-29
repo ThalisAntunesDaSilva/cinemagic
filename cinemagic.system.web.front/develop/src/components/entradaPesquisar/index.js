@@ -19,13 +19,13 @@ const Example = (props) => {
   try{
    const resposta = await api.get(`sessoes/cidade/nome/${nomeCidade}`);
    
-
-  const cidade = localStorage.setItem('cidadePesquisada', JSON.stringify(resposta));
+   alert(resposta.data)
+  const cidade = localStorage.setItem('cidadePesquisada', JSON.stringify(resposta.data));
 
   history.push('/ResultadoPesquisa');
   
 }catch(err){
-    alert('Ops, nada encontrado');
+    alert(err.message);
 }
 
 }

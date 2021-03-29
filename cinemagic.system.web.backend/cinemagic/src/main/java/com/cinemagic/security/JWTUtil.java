@@ -15,7 +15,7 @@ public class JWTUtil {
 	@Value("jwt.secret")
 	private String secret = "abc";
 
-	private long expiration = 60000000;
+	private long expiration = 999999999;
 	//86400000
 
 	public String generateToken(String username) {
