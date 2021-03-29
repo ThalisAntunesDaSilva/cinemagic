@@ -45,7 +45,7 @@ export default function Routes() {
     return (
         <BrowserRouter>
             <Switch>
-                <PrivateRoute path="/Compra" component ={Compra}/>
+                <PrivateRoute path="/Compra" component ={Compra}/>  
                 <Route path="/" exact component={Home} />
                 <Route path="/Login" exact component={Login} />
                 <Route path="/Pesquisa" exact component={Pesquisa} />

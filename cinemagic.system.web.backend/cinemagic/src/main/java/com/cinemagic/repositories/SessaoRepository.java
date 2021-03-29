@@ -20,4 +20,9 @@ public interface SessaoRepository extends JpaRepository<Sessao, Integer>{
 	@Query("SELECT DISTINCT obj FROM Sessao obj INNER JOIN obj.filme filme ON obj.filme.id = filme.id WHERE filme.titulo LIKE :filme%")
 	List<Sessao> findByFilme(@Param("filme") String filme);
 	
+	@Transactional(readOnly = true)
+	@Query("SELECT DISTINCT obj FROM Sessao obj INNER JOIN obj.sala sala ON obj.sala.id = sala.id INNER JOIN sala.cinema cinema ON cinema.id = sala.cinema.id WHERE cinema.cidade.nome LIKE :cidade_nome%")
+	List<Sessao> findByCityName(@Param("cidade_nome") String cidade_nome);
+	
+	
 }

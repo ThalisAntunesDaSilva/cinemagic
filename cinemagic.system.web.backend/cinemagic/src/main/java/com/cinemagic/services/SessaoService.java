@@ -34,16 +34,19 @@ public class SessaoService {
 		return repo.findByCity(id);
 	}
 
+	public List<Sessao> findByCityName(String nome) {
+		return repo.findByCityName(nome);
+	}
+
 	public List<Sessao> findBySessaos() {
 		return repo.findAll();
 
 	}
-	
-	public List<Sessao> findByFilme(String filme){
+
+	public List<Sessao> findByFilme(String filme) {
 		return repo.findByFilme(filme);
 	}
-	
-	
+
 	public Sessao insert(Sessao sessao) {
 		sessao.setId(null);
 		return repo.save(sessao);
@@ -56,13 +59,13 @@ public class SessaoService {
 	}
 
 	public void delete(Integer id) {
-		try{
+		try {
 			repo.deleteById(id);
-		}catch(DataIntegrityViolationException ex) {
+		} catch (DataIntegrityViolationException ex) {
 			throw new DataIntegrityViolationException("Não é possível deletar sessões que tenha ingressos");
 		}
 	}
-	
+
 	public Sessao fromDTO(SessaoNewDTO objDTO) {
 		Filme filme = filmeService.findById(objDTO.getFilmeId());
 		Sala sala = salaService.findById(objDTO.getSalaId());
