@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
     Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, Navbar, NavItem,
-    NavLink
+    CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 import api from '../../services/api'
 import './styles.css';
@@ -35,6 +34,8 @@ export default function Teste() {
         <>  
             <ul>
                 <li><a href="">Home</a></li>
+                <li><a href="">Cinemas</a></li>
+                <li><a href="">Sessoes</a></li>
             </ul>
             <div>
                 <ul>

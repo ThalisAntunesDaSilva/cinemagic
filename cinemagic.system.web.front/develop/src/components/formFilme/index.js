@@ -4,18 +4,23 @@ import './styles.css';
 
 import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
+import jwt from 'jwt-decode';
+
+import { login, getToken } from '../../services/auth/auth.js';
 
 
 
 
 const Example = (props) => {
-  let history = useHistory()
+  let history = useHistory();
+
+  const [erroLogin, setErroLogin] = useState("");
 
   const [titulo, setTitulo] = useState('');
   const [genero, setGenero] = useState('');
   const [duracao, setDuracao] = useState('');
 
-  async function AcaoBotao(e) {
+  async function acaoBotao(e) {
     e.preventDefault();
     try {
 
@@ -24,9 +29,25 @@ const Example = (props) => {
         "genero": genero,
         "duracao": duracao
       })
+      const token = res.headers["authorization"]
+      const decoded = jwt(token)
+      login(token);
+      alert(getToken());
+
+      const clientRes = await api.get("/", {
+        params: {
+          email: "josé@gmail.com"
+        },
+        headers: {
+          authorization: getToken()
+        }
+      })
+      localStorage.setItem('cliente', JSON.stringify(clientRes.data))
+      history.push("/")
 
     } catch (ex) {
-      alert("Erro caiu no try");
+      setErroLogin(ex.response.data.message)
+      alert(ex.response.data.message)
     }
   }
 
@@ -35,19 +56,7 @@ const Example = (props) => {
       <Col sm="20" md={{ size: 4, offset: 4 }}>
         <FormGroup >
           <Label for="titulo" >Título</Label>
-          <Input type="text" name="titulo" id="titulo" placeholder="Título do filme" />
-        </FormGroup>
-      </Col>
-      <Col sm="20" md={{ size: 4, offset: 4 }}>
-        <FormGroup>
-          <Label for="produtor">Produtor</Label>
-          <Input type="produtor" name="produtor" id="produtor" placeholder="Produtor" />
-        </FormGroup>
-      </Col>
-      <Col sm="20" md={{ size: 4, offset: 4 }}>
-        <FormGroup>
-          <Label for="ano">Ano</Label>
-          <Input type="ano" name="ano" id="ano" placeholder="Ano" />
+          <Input type="text" name="titulo" onChange={e => setTitulo(e.target.value)} id="titulo" placeholder="Título do filme" />
         </FormGroup>
       </Col>
       <Col sm="20" md={{ size: 4, offset: 4 }}>
@@ -79,25 +88,9 @@ const Example = (props) => {
           </Input>
         </FormGroup>
       </Col>
-      <Col sm="20" md={{ size: 4, offset: 4 }}>
-        <FormGroup>
-          <Label for="descricao">Descrição</Label>
-          <Input type="descricao" name="descricao" id="descricao" placeholder="Descrição do Filme" />
-        </FormGroup>
-      </Col>
-      <Col sm="20" md={{ size: 4, offset: 4 }}>
-        <FormGroup>
-          <Label for="exampleFile">Cartaz do Filme</Label>
-          <Input type="file" name="file" id="exampleFile" />
-          <FormText color="muted">
-            This is some placeholder block-level help text for the above input.
-            It's a bit lighter and easily wraps to a new line.
-        </FormText>
-        </FormGroup>
-      </Col>
       <Row form>
         <Col sm="20" md={{ size: 4, offset: 4 }}>
-          <Button outline color="danger" size="lg" block>Inserir</Button>
+          <Button outline color="danger" size="lg" onClick={acaoBotao}>Inserir</Button>
         </Col>
       </Row>
     </Form>

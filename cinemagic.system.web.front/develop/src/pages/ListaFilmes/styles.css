@@ -1,8 +1,31 @@
+h1 {
+    text-align: center;
+}
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+
+li a:hover {
+    background-color: #111;
 }
 
 .card {
@@ -10,7 +33,6 @@ ul {
     grid-template-columns: 300px;
     grid-template-rows: 210px 210px 80px;
     grid-template-areas: "image" "text" "stats";
-
     font-family: roboto;
     border-radius: 18px;
     background: white;
@@ -31,7 +53,7 @@ ul {
 }
 
 .card-text .date {
-    color: rgb(255,7,110);
+    color: rgb(255, 7, 110);
     font-size: 13px;
 }
 
@@ -44,5 +66,4 @@ ul {
 .card-text h2 {
     margin-top: 0px;
     font-size: 28px;
-
 }
