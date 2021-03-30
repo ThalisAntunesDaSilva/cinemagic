@@ -5,44 +5,46 @@ import { getToken } from '../../services/auth/auth'
 import { useHistory } from 'react-router-dom';
 import './styles.css';
 
-const sessao = JSON.parse(localStorage.getItem('sessaoAtual'));
-const cliente = JSON.parse(localStorage.getItem('cliente'));
-
-
-
 
 
 const Example = (props) => {
   const history = useHistory();
-  const [qtdInteira,setQtdInteira] = useState(0);
-  const [qtdMeia,setQtdMeia] = useState(0);
-  async function click(e) {
-    alert(qtdMeia);
-    const data = {
-      clienteId: sessao.id,
-      sessaoId: cliente.id,
-      ingressos: [
-        {
-          quantidade: qtdMeia,
-          tipoIngresso: 1
-        },
-        {
-          quantidade: qtdInteira,
-          tipoIngresso: 0
-        }
-      ],
-      tipoPagamento: 0
-    };
-    try {
+  const [sessao,setSessao] = useState([]);
+  const [dataa,setDataa] = useState('');
+  const [hora,setHora] = useState('');
+  const [valorInteira,setValorInteira] = useState('');
+  const [valorMeia,setValorMeia] = useState('');
+  const [situacao,setSituacao] = useState([]);
+  const [valeCupons,setValeCupons] = useState([]);
+  const [valorCupons,setValorCupons] = useState('');
+  const [filmes,setFilmes] = useState([]);
+  const [sala,setSalas] = useState([]);
+  const [pais,setPais] = useState([]);
+  const [estado,setEstado] = useState([]);
+  const [cidade,setCidade] = useState([]);
 
-      const response = await api.post("compras", data, {
-        headers: {
-          authorization: getToken()
-        }
-      },
-      );
-      window.location.href = response.data.code;
-      history.push(response.data.code);
+  
+  async function click(e) {
+   e.preventDefault();
+    
+    const data = {
+       "data": dataa,
+        "hora": hora,
+        "valorInteira": valorInteira,
+        "valorMeia": valorMeia,
+        "sessaoEncerrada": situacao,
+        "trocaPorCupons": valeCupons,
+        "valorEmCupons": valorCupons,
+        "filmeId": 1,
+        "salaId": 1
+       };
+    try {
+    const response = await api.post("sessoes", data, 
+    {headers: {authorization: getToken()}});
+     
+    alert (`sucesso: ${response.status}`);
+
+     
     } catch (ex) {
       alert(ex.response.data.message)
     }
@@ -50,59 +52,37 @@ const Example = (props) => {
   }
 
   return (
-    <bodu>
+    <body>
       <Form className="formularioDeSessao">
 
       <Label for="Nome" type="text" size="5" className="Nome text-light mt-3 w-25">Data</Label>
-        <Input onChange={value => setQtdInteira(value.target.value)}/>
+        <Input onChange={e => setDataa(e.target.value)}/>
         
         <Label for="Nome" className="Nome text-light mt-3">Hora</Label>
-        <Input onChange = {value => setQtdMeia(value.target.value)}/>
+        <Input onChange = {e => setHora(e.target.value)}/>
 
         <Label for="Nome" className="Nome text-light mt-3">Valor Inteira</Label>
-        <Input onChange = {value => setQtdMeia(value.target.value)}/>
+        <Input onChange = {e => setValorInteira(e.target.value)}/>
 
         <Label for="Nome" className="Nome text-light mt-3">Valor Meia</Label>
-        <Input onChange = {value => setQtdMeia(value.target.value)}/>
-
-        <Label for="Nome" className="Nome text-light mt-3">Situação sessão</Label>
-        <Input type="select" onChange = {value => setQtdMeia(value.target.value)}>
-          <option value = "1">Encerrada</option>
-          <option value = "2">Em andamento</option>
-        </Input>
-
-        <Label for="Nome" className="Nome text-light mt-3">Troca por cupons</Label>
-        <Input type="select" onChange = {value => setQtdMeia(value.target.value)}>
-          <option value = "1">Sim</option>
-          <option value = "2">Não</option>
-        </Input>
+        <Input onChange = {e => setValorMeia(e.target.value)}/>
 
         <Label for="Nome" className="Nome text-light mt-3">Valor em pontos</Label>
-        <Input onChange = {value => setQtdMeia(value.target.value)}/>
+        <Input onChange = {e => setValorCupons(e.target.value)}/>
 
         <Label for="Nome" className="Nome text-light mt-3">Filmes em cartaz</Label>
-        <Input type="select" onChange = {value => setQtdMeia(value.target.value)}>
-          <option value = "1">Homem Aranha</option>
+        <Input  onChange = {e => setFilmes(e.target.value)}>
+          
         </Input>
 
         <Label for="Nome" className="Nome text-light mt-3">Número Sala</Label>
-        <Input type="select" onChange = {value => setQtdMeia(value.target.value)}>
+        <Input  onChange = {e => setSalas(e.target.value)}>
+      
+        </Input>
+
+        <Label for="Nome" className="Nome text-light mt-3">Filmes em cartaz</Label>
+        <Input type="select">
           <option value = "1">Homem Aranha</option>
-        </Input>
-
-        <Label for="Nome" className="Nome text-light mt-3">País</Label>
-        <Input type="select" onChange = {value => setQtdMeia(value.target.value)}>
-          <option value = "1">Brasil</option>
-        </Input>
-
-        <Label for="Nome" className="Nome text-light mt-3">Estado</Label>
-        <Input type="select" onChange = {value => setQtdMeia(value.target.value)}>
-          <option value = "1">Rio Grande do Sul</option>
-        </Input>
-
-        <Label for="Nome" className="Nome text-light mt-3">Cidade</Label>
-        <Input type="select" onChange = {value => setQtdMeia(value.target.value)}>
-          <option value = "1">Alegrete-RS</option>
         </Input>
 
         <Button color="danger" className="mt-3" onClick={click}>Cadastrar</Button>
@@ -110,7 +90,7 @@ const Example = (props) => {
       </Form>
 
       
-      </bodu>
+      </body>
     
   );
 }
