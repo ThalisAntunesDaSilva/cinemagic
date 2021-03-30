@@ -49,7 +49,7 @@ public class FilmeService {
 
 	@Transactional
 	public Filme fromDTO(FilmeDTO objDto) {
-		Filme filme = new Filme(null, null, null, null);
+		Filme filme = new Filme(null,objDto.getTitulo(),objDto.getDuracao(),null);
 		return filme;
 	}
 
