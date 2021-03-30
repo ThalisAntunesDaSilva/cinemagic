@@ -33,9 +33,10 @@ public class FilmeResource {
 
 	// Lista todos
 	@GetMapping
-	public ResponseEntity<List<Filme>> listaClientes() {
+	public ResponseEntity<List<Filme>> listaFilmes() {
 		return ResponseEntity.ok().body(filmeService.findAll());
 	}
+	
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody FilmeDTO filme) {
@@ -44,12 +45,16 @@ public class FilmeResource {
 		URI url = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(url).build();
 	}
+	
+	
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		filmeService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+	
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Filme> update(@RequestBody FilmeDTO objDTO, @PathVariable Integer id) {

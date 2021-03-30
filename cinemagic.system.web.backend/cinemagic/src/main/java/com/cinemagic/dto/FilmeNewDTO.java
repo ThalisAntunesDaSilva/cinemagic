@@ -4,9 +4,10 @@ import java.io.Serializable;
 
 import javax.validation.constraints.NotEmpty;
 
-import com.cinemagic.services.validation.ClienteInsert;
+import com.cinemagic.domain.Genero;
 
-@ClienteInsert
+
+
 public class FilmeNewDTO implements Serializable{
 
 	/**
@@ -18,15 +19,18 @@ public class FilmeNewDTO implements Serializable{
 	String titulo;
 	@NotEmpty(message = "Preenchimento obrigatório")
 	String duracao;
+	//novo
+	Genero genero;
 	
 	public FilmeNewDTO(){
 		
 	}
 	
-	public FilmeNewDTO(String titulo, String duracao) {
+	public FilmeNewDTO(String titulo, String duracao, Genero genero) {
 		super();
 		this.titulo = titulo;
 		this.duracao = duracao;
+		this.genero = genero;
 	}
 	
 	public String getTitulo() {
@@ -44,6 +48,18 @@ public class FilmeNewDTO implements Serializable{
 	public void setDuracao(String duracao) {
 		this.duracao = duracao;
 	}
+
+	//novo
+	public Genero getGenero() {
+		return genero;
+	}
+
+	public void setGenero(Genero genero) {
+		this.genero = genero;
+	}
+	
+	
+	
 
 	
 	

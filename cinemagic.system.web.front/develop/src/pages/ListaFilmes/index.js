@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import api from '../../services/api';
+import {
+    Card, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle, Button, Navbar, NavItem,
+    NavLink
+} from 'reactstrap';
+import api from '../../services/api'
 import './styles.css';
 
 
 
 export default function Teste() {
-    //aqui começa films
-    //teste
     const [filme, setFilmes] = useState([]);
-
-
-    //const [sessao, setSessao] = useState([]);
     const token = localStorage.getItem('token');
     const [test, setTest] = useState('')
+
     async function getApi() {
         try {
             const res = await api.get("filmes")
@@ -26,26 +27,29 @@ export default function Teste() {
         getApi()
     }, [token])
 
+    /*
+    <CardText>Genero: {ses.genero.descricao}</CardText>
+    */
 
     return (
-        <>
-            <div className="list-filmes">
+        <>  
+            <ul>
+                <li><a href="">Home</a></li>
+            </ul>
+            <div>
                 <ul>
-                    {filme.map(ses => (
-                        <li key={ses.id}>
-                            <strong>Id:</strong>
-                            <p className="test">{ses.id}</p>
-                            <strong>Titulo:</strong>
-                            <p className="test">{ses.titulo}</p>
-                            <strong>Duração:</strong>
-                            <p className="test">{ses.duracao}</p>
-                            <strong>Genero:</strong>
-                            <p className="test">{ses.genero.id}</p>
-                            <strong>Descriçao genro:</strong>
-                            <p className="test">{ses.genero.descricao}</p>
-                            <strong>Foto:</strong>
-                        </li>
-                    ))}
+                    <h1 className="title">Filmes cadastrados:</h1>
+                    <Card body inverse color="primary">
+                        {filme.map(ses => (
+                            <CardBody key={ses.id}>
+                                <CardImg top width="100%" src="" alt="Imagem" />
+                                <CardTitle tag="h5">{ses.titulo}</CardTitle>
+                                <CardSubtitle tag="h6" className="mb-2 text-muted">ID: {ses.id}</CardSubtitle>
+                                <CardText>Tempo do filme: {ses.duracao}</CardText>
+                                <Button>Assistir</Button>
+                            </CardBody>
+                        ))}
+                    </Card>
                 </ul>
             </div>
         </>

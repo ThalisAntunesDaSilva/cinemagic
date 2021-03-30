@@ -11,7 +11,6 @@ export default function CadastroFilme() {
             {ferramentasFilme()}
                 {formFilme()}
             </div>
-
         </>
     );
 }

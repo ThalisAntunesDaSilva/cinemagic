@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.cinemagic.domain.Filme;
 import com.cinemagic.dto.FilmeDTO;
+import com.cinemagic.dto.FilmeNewDTO;
 import com.cinemagic.repositories.FilmeRepository;
 import com.cinemagic.services.exceptions.ObjectNotFoundException;
 
@@ -14,6 +15,9 @@ import com.cinemagic.services.exceptions.ObjectNotFoundException;
 public class FilmeService {
 	@Autowired
 	FilmeRepository repo;
+	
+	@Autowired
+	private GeneroService GeneroService;
 
 	public Filme findById(Integer id) {
 		Optional<Filme> obj = repo.findById(id);
@@ -46,11 +50,17 @@ public class FilmeService {
 		filme.setId(null);
 		return repo.save(filme);
 	}
+	
+	public Filme fromDTO(FilmeDTO objDto) {
+		return new Filme(null, objDto.getTitulo(), objDto.getDuracao(), objDto.getGenero());
+	}
 
 	@Transactional
-	public Filme fromDTO(FilmeDTO objDto) {
-		Filme filme = new Filme(null, null, null, null);
-		return filme;
+	public Filme fromDTO(FilmeNewDTO objDto) {
+		//Filme filme = new Filme(null, null, null, null);
+		//Genero genero = GeneroService.findById(objDto.getGenero());
+		Filme f = new Filme(null,objDto.getTitulo(),objDto.getDuracao(),null);
+		return f;
 	}
 
 }
