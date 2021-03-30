@@ -1,0 +1,7 @@
+.app {
+  font-family: Roboto, Helvetica, sans-serif;
+
+  background-image: url('./img/background.jpg');
+  background-size: cover;
+  background-position: center bottom;
+}

@@ -1,0 +1,7 @@
+.form{
+    padding: 35px 30px 35px 30px;
+    color:aliceblue;
+    background-image: url('../../assets/padrao.jpg');
+    background-repeat:space;
+    background-position:center;
+}

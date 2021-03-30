@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding:0;
+}
+
+.body{
+    background-color: red;
+    margin: 200px;
+    align-items: center;
+    width: 500px;
+    display:auto;
+    flex-direction: column;
+    justify-content: center;
+    position: center;
+    font-family: Helvetica, sans-serif;
+}
+
+.body{
+    padding: 8px 8px 8px 8px;
+    margin: 23vh 56vw 23vh 56vw;
+}
+
+body input[type = "email"],
+body input[type = "password"]{
+    color:black;
+    width: 100%;
+    height: 45px;
+    border: 1px solid black;
+    padding-left: 10px;
+    margin: 10px 0;
+}
+
+
+body{
+    background-image: url('../../assets/login.jpeg');
+    background-repeat: no-repeat;
+    background-position:center;
+}
+input:focus{
+    border-color: crimson;
+    margin: center;
+}
+
+.button{
+
+    width: 100%;
+    height: 45px;
+    border-bottom: 1px;
+    padding: 9px;
+    font-size: .9rem;
+    margin-bottom:10px;
+    position: center;
+    border-radius: 20px;
+
+}
+.home-container{
+    margin:auto;
+}
+.header-centro{
+    margin:auto;
+    padding: 5px 5px 5px 5px;
+}
+.header-centro2{
+    margin: auto;
+    padding: -2px -2px -2px -2px;
+    margin: -15vh 9vw -15vh 9vw;
+    
+}
+
+.agreement{
+    margin:auto;
+
+}
+
