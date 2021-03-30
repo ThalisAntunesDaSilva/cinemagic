@@ -8,8 +8,8 @@ import api from '../../services/api';
 
 const Example = (props) => {
  
- //const [nomeCidade, setNomeCidade] = useState('')
- const [tituloFilme, setTituloFilme] = useState('')
+ const [nomeCidade, setNomeCidade] = useState('')
+ //const [tituloFilme, setTituloFilme] = useState('')
   const history = useHistory();
 
 
