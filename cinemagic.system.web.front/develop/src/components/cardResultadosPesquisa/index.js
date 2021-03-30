@@ -1,48 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Button } from 'reactstrap';
-import api from '../../services/api';
 import { useHistory } from 'react-router-dom';
 import './styles.css';
 
 const Example = (props) => {
   const history = useHistory();
-  const [sessao, setSessao] = useState([]);
   const resultadoPesquisaNome =  JSON.parse(localStorage.getItem("cidadePesquisada"));
-
-
-
-  
-  
-  async function getSessaoPesquisada(evento){
-    evento.preventDefault(); 
-  try{
-   setSessao(sessao);
-  
-  }catch(err){
-    alert('Ops, nada encontrado');
-}}
-
-  async function getApi() {
-    try {
-      const res = await api.get("sessoes")
-      setSessao(res.data)
-
-    } catch (ex) {
-      alert(ex)
-    }
-  }
-
-   const encaminhaCompraSessao =  ses => async e =>{
-
-    try {
+  //const resultadoPesquisaFilme =  JSON.parse(localStorage.getItem("tituloFilme"));
+ 
+ 
+ 
+  const encaminhaCompraSessao =  ses => async e =>{
+  try {
       localStorage.setItem('sessaoAtual', JSON.stringify(ses));
       history.push('/Compra');
     } catch (err) {
       alert(err);
     }
   }
-
-
 
   return (
 
@@ -85,23 +60,10 @@ const Example = (props) => {
                   <Button color="danger" onClick = {encaminhaCompraSessao(ses)}>Comprar</Button>
                 </div>
               </div>
-
-
             </Jumbotron>
-
-
-
           </li>
-
         ))}
-
       </ul>
-
-
-
-
-
-
     </div>
   );
 };

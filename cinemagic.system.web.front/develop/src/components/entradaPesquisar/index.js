@@ -8,20 +8,19 @@ import api from '../../services/api';
 
 const Example = (props) => {
  
- const [nomeCidade, setNomeCidade] = useState('')
+ //const [nomeCidade, setNomeCidade] = useState('')
+ const [tituloFilme, setTituloFilme] = useState('')
   const history = useHistory();
-  const [sessao, setSessao] = useState([]);
+
 
 
   async function pesquisar(evento){
     evento.preventDefault();
 
   try{
-   const resposta = await api.get(`sessoes/cidade/nome/${nomeCidade}`);
-   
-   alert(resposta.data)
+  const resposta = await api.get(`sessoes/cidade/nome/${nomeCidade}`);
+  alert(resposta.data)
   const cidade = localStorage.setItem('cidadePesquisada', JSON.stringify(resposta.data));
-
   history.push('/ResultadoPesquisa');
   
 }catch(err){
@@ -30,6 +29,19 @@ const Example = (props) => {
 
 }
 
+/*
+async function pesquisarPorFilme(evento){
+  evento.preventDefault();
+  try{
+  const response = await api.get(`sessoes/filme/${tituloFilme}`);  
+  alert(response.data) 
+   const filme = localStorage.setItem('filmePesquisado', JSON.stringify(response.data));
+   history.push('/ResultadoPesquisa');   
+  }catch(err){
+    alert(err.message);
+  }
+}
+*/
  
   return (
         <form className="input-div" onSubmit={pesquisar}>
