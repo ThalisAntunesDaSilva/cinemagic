@@ -36,11 +36,22 @@ public class FilmeResource {
 	public ResponseEntity<List<Filme>> listaClientes() {
 		return ResponseEntity.ok().body(filmeService.findAll());
 	}
+	
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method = RequestMethod.POST)
+	
 	public ResponseEntity<Void> insert(@RequestBody FilmeDTO filme) {
+		List<Filme>listaFilmes=filmeService.findAll();
 		Filme obj = filmeService.fromDTO(filme);
-		filmeService.insert(obj);
+
+		for(int i = 0; i<listaFilmes.size();i++) {
+			if(listaFilmes.get(i).getTitulo().compareTo(obj.getTitulo())==0) {
+				return ResponseEntity.notFound().build();
+
+			}
+			
+		}
+				filmeService.insert(obj);
 		URI url = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(url).build();
 	}
