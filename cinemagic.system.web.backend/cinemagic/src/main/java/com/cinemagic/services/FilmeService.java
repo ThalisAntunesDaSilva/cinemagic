@@ -46,7 +46,6 @@ public class FilmeService {
 
 	private void updateData(Filme newObj, Filme obj) {
 		newObj.setTitulo(obj.getTitulo());
-		//newObj.setGenero(obj.getGenero());
 		newObj.setDuracao(obj.getDuracao());
 	}
 
@@ -64,12 +63,10 @@ public class FilmeService {
 	
 	@Transactional
 	public Filme fromDTO(FilmeNewDTO objDto) {
-		//Filme filme = new Filme(null, null, null, null);
-		//Genero genero = GeneroService.findById(objDto.getGenero());
 		Filme f = new Filme(null, objDto.getTitulo(), objDto.getDuracao(), null);
 		
-		List<Genero> generos = objDto.getGeneros().stream().map(obj -> new Genero(null, obj.getDescricao())).collect(Collectors.toList());
-		f.setGeneros(generos);
+		//List<Genero> generos = objDto.getGeneros().stream().map(obj -> new Genero(null, obj.getDescricao())).collect(Collectors.toList());
+		//f.setGeneros(generos);
 		return f;
 	}
 
