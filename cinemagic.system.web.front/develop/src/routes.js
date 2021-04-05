@@ -8,8 +8,8 @@ import CadastroCliente from './pages/CadastroCliente';
 import CadastroCinema from './pages/CadastroCinema';
 import CadastroFilme from './pages/CadastroFilme';
 import ListaSessoes from './pages/ListaSessoes';
-import ListaFilmes from './pages/ListaFilmes'
-import ListaResultadoPesquisa from './pages/ListaResultadoPesquisa'
+import ListaFilmes from './pages/ListaFilmes';
+import ListaResultadoPesquisa from './pages/ListaResultadoPesquisa';
 
 
 
