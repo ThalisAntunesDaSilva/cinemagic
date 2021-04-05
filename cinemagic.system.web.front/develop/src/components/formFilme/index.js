@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import './styles.css';
-
 import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
-import jwt from 'jwt-decode';
-
 import { login, getToken } from '../../services/auth/auth.js';
-
+import './styles.css';
 
 
 
@@ -22,31 +18,30 @@ const Example = (props) => {
 
   async function acaoBotao(e) {
     e.preventDefault();
+
+    const data = {
+      titulo: titulo,
+      duracao: duracao,
+      filmes: [
+        {
+          titulo: titulo,
+          duracao: duracao
+        }
+      ]
+    };
+
     try {
 
-      const res = await api.post("/filmes", {
-        "titulo": titulo,
-        "genero": genero,
-        "duracao": duracao
-      })
-      const token = res.headers["authorization"]
-      const decoded = jwt(token)
-      login(token);
-      alert(getToken());
-
-      const clientRes = await api.get("/", {
-        params: {
-          email: "josé@gmail.com"
-        },
+      const res = await api.post("/filmes", data, {
         headers: {
           authorization: getToken()
         }
-      })
-      localStorage.setItem('cliente', JSON.stringify(clientRes.data))
-      history.push("/")
+      },
+      );
+      window.location.href = res.data.code;
+      history.push(res.data.code);
 
     } catch (ex) {
-      setErroLogin(ex.response.data.message)
       alert(ex.response.data.message)
     }
   }
@@ -57,6 +52,10 @@ const Example = (props) => {
         <FormGroup >
           <Label for="titulo" >Título</Label>
           <Input type="text" name="titulo" onChange={e => setTitulo(e.target.value)} id="titulo" placeholder="Título do filme" />
+        </FormGroup>
+        <FormGroup >
+          <Label for="duracao" >Duraçao</Label>
+          <Input type="text" name="duracao" onChange={e => setDuracao(e.target.value)} id="duracao" placeholder="Duraçao do filme" />
         </FormGroup>
       </Col>
       <Col sm="20" md={{ size: 4, offset: 4 }}>

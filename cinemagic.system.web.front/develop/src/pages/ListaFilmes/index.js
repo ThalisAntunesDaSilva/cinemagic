@@ -47,6 +47,7 @@ export default function Teste() {
                                 <CardTitle tag="h5">{ses.titulo}</CardTitle>
                                 <CardSubtitle tag="h6" className="mb-2 text-muted">ID: {ses.id}</CardSubtitle>
                                 <CardText>Tempo do filme: {ses.duracao}</CardText>
+                                <CardText>Genero do filme:</CardText>
                                 <Button>Assistir</Button>
                             </CardBody>
                         ))}
