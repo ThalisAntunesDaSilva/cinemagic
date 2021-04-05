@@ -12,22 +12,18 @@ public class FilmeDTO implements Serializable{
 	
 	private String titulo;
 	private String duracao;
-	private String pathImage;
-	//novo
+	//private String pathImage;
 	private Genero genero;
-	List<Integer> generosId = new ArrayList<>();
 	public FilmeDTO() {
 		
 		
 	}
 
-	public FilmeDTO(String titulo, String duracao,String pathImage, Genero genero,  List<Integer> generosId) {
-		super();
+	public FilmeDTO(String titulo, String duracao, Genero genero) {
 		this.titulo = titulo;
 		this.duracao = duracao;
-		this.pathImage = pathImage;
+		//this.pathImage = pathImage;
 		this.genero = genero;
-		this.generosId = generosId;
 	}
 
 	public String getTitulo() {
@@ -46,13 +42,13 @@ public class FilmeDTO implements Serializable{
 		this.duracao = duracao;
 	}
 
-	public String getPathImage() {
-		return pathImage;
-	}
-
-	public void setPathImage(String pathImage) {
-		this.pathImage = pathImage;
-	}
+//	public String getPathImage() {
+//		return pathImage;
+//	}
+//
+//	public void setPathImage(String pathImage) {
+//		this.pathImage = pathImage;
+//	}
 
 	//novos
 	public Genero getGenero() {
@@ -63,18 +59,4 @@ public class FilmeDTO implements Serializable{
 		this.genero = genero;
 	}
 
-	public List<Integer> getGenerosId() {
-		return generosId;
-	}
-
-	public void setGenerosId(List<Integer> generosId) {
-		this.generosId = generosId;
-	}
-	
-	
-	
-	
-	
-	
-	
 }

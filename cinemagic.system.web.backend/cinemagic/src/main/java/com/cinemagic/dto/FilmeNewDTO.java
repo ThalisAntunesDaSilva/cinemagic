@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
 
+import com.cinemagic.domain.Genero;
+
 
 
 
@@ -21,6 +23,8 @@ public class FilmeNewDTO implements Serializable{
 	@NotEmpty(message = "Preenchimento obrigatório")
 	private String duracao;
 	//novo
+	private Genero genero;
+
 	private List<GeneroDTO> generos = new ArrayList<>();
 
 	
@@ -61,6 +65,17 @@ public class FilmeNewDTO implements Serializable{
 
 	public void setGeneros(List<GeneroDTO> salas) {
 		this.generos = salas;
+	}
+	
+	
+	public Genero getGenero() {
+		return genero;
+	}
+
+
+
+	public void setGenero(Genero genero) {
+		this.genero = genero;
 	}
 	
 	

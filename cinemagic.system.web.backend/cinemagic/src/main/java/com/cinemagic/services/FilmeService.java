@@ -63,7 +63,8 @@ public class FilmeService {
 	
 	@Transactional
 	public Filme fromDTO(FilmeNewDTO objDto) {
-		Filme f = new Filme(null, objDto.getTitulo(), objDto.getDuracao(), null);
+		Genero newGenero = objDto.getGenero();
+		Filme f = new Filme(null, objDto.getTitulo(), objDto.getDuracao(), objDto.getGenero());
 		
 		//List<Genero> generos = objDto.getGeneros().stream().map(obj -> new Genero(null, obj.getDescricao())).collect(Collectors.toList());
 		//f.setGeneros(generos);
