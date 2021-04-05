@@ -2,10 +2,14 @@ package com.cinemagic.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.cinemagic.domain.Filme;
+import com.cinemagic.domain.Genero;
+import com.cinemagic.domain.Sala;
 import com.cinemagic.dto.FilmeDTO;
 import com.cinemagic.dto.FilmeNewDTO;
 import com.cinemagic.repositories.FilmeRepository;
@@ -42,7 +46,7 @@ public class FilmeService {
 
 	private void updateData(Filme newObj, Filme obj) {
 		newObj.setTitulo(obj.getTitulo());
-		newObj.setGenero(obj.getGenero());
+		//newObj.setGenero(obj.getGenero());
 		newObj.setDuracao(obj.getDuracao());
 	}
 
@@ -51,15 +55,21 @@ public class FilmeService {
 		return repo.save(filme);
 	}
 	
+	
 	public Filme fromDTO(FilmeDTO objDto) {
 		return new Filme(null, objDto.getTitulo(), objDto.getDuracao(), objDto.getGenero());
+	
 	}
-
+	
+	
 	@Transactional
 	public Filme fromDTO(FilmeNewDTO objDto) {
 		//Filme filme = new Filme(null, null, null, null);
 		//Genero genero = GeneroService.findById(objDto.getGenero());
-		Filme f = new Filme(null,objDto.getTitulo(),objDto.getDuracao(),null);
+		Filme f = new Filme(null, objDto.getTitulo(), objDto.getDuracao(), null);
+		
+		List<Genero> generos = objDto.getGeneros().stream().map(obj -> new Genero(null, obj.getDescricao())).collect(Collectors.toList());
+		f.setGeneros(generos);
 		return f;
 	}
 

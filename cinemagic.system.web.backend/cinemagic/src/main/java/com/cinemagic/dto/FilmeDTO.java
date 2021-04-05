@@ -1,6 +1,8 @@
 package com.cinemagic.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.cinemagic.domain.Genero;
 
@@ -13,16 +15,19 @@ public class FilmeDTO implements Serializable{
 	private String pathImage;
 	//novo
 	private Genero genero;
+	List<Integer> generosId = new ArrayList<>();
 	public FilmeDTO() {
+		
 		
 	}
 
-	public FilmeDTO(String titulo, String duracao,String pathImage, Genero genero) {
+	public FilmeDTO(String titulo, String duracao,String pathImage, Genero genero,  List<Integer> generosId) {
 		super();
 		this.titulo = titulo;
 		this.duracao = duracao;
 		this.pathImage = pathImage;
 		this.genero = genero;
+		this.generosId = generosId;
 	}
 
 	public String getTitulo() {
@@ -57,6 +62,16 @@ public class FilmeDTO implements Serializable{
 	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
+
+	public List<Integer> getGenerosId() {
+		return generosId;
+	}
+
+	public void setGenerosId(List<Integer> generosId) {
+		this.generosId = generosId;
+	}
+	
+	
 	
 	
 	
