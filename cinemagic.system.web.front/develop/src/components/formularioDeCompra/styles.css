@@ -1,16 +1,5 @@
-.formularioCompra{
-    padding: 0px 150px 0px 150px;
-    background-image: url(../../assets/padrao.jpg);
-    background-repeat:no-repeat;
-    background-position:  right left;
-    background-size: 100%;
-    
-}
-
-.compra{
+.formulario{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    margin: -70px 450px 10px 450px;
 }
-

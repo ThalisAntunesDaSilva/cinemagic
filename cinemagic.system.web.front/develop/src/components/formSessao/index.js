@@ -54,12 +54,13 @@ const Example = (props) => {
   return (
     <body>
       <Form className="formularioDeSessao">
-
+   
+        <div className="lado1">
       <Label for="Nome" type="text" size="5" className="Nome text-light mt-3 w-25">Data</Label>
         <Input onChange={e => setDataa(e.target.value)}/>
         
         <Label for="Nome" className="Nome text-light mt-3">Hora</Label>
-        <Input onChange = {e => setHora(e.target.value)}/>
+        <Input size="md" onChange = {e => setHora(e.target.value)}/>
 
         <Label for="Nome" className="Nome text-light mt-3">Valor Inteira</Label>
         <Input onChange = {e => setValorInteira(e.target.value)}/>
@@ -69,7 +70,8 @@ const Example = (props) => {
 
         <Label for="Nome" className="Nome text-light mt-3">Valor em pontos</Label>
         <Input onChange = {e => setValorCupons(e.target.value)}/>
-
+        </div>
+        <div className="lado2">
         <Label for="Nome" className="Nome text-light mt-3">Filmes em cartaz</Label>
         <Input  onChange = {e => setFilmes(e.target.value)}>
           
@@ -84,8 +86,9 @@ const Example = (props) => {
         <Input type="select">
           <option value = "1">Homem Aranha</option>
         </Input>
-
-        <Button color="danger" className="mt-3" onClick={click}>Cadastrar</Button>
+        <Button color="danger" className="mt-5" onClick={click}>Cadastrar</Button>
+        </div>
+        
 
       </Form>
 

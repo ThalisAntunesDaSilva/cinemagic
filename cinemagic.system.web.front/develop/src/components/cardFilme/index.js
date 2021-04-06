@@ -37,29 +37,18 @@ const Example =  (props) => {
  
  
   return (
-    <div>
+    <div className="filmes">
   
       <Card>
         <CardBody>
 
           <CardTitle tag="h5">Seção Alegrete-RS</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 text-muted">Filmes em sessão</CardSubtitle>
+        <img width="60%" height="80%" src={hp} alt="Card image cap" />
+        <CardText>{sessaoAtual.filme.titulo}</CardText>
+              
         </CardBody>
-
-
-       <div className="filmes">
-        <img width="20%" height="20%" src={hp} alt="Card image cap" />
-        <img width="20%" height="20%" src={hp} alt="Card image cap" />
-        <img width="20%" height="20%" src={hp} alt="Card image cap" />
-              </div>
-       
-        <CardBody>
-    <div className="filmes">
-          <CardText></CardText>
-          <CardText>{sessaoAtual.filme.titulo}</CardText>
-          <CardText>Todo Poderoso: 20:00</CardText>
-      </div>
-         </CardBody>
+     
     
       </Card>
     </div>

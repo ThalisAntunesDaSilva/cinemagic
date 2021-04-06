@@ -50,9 +50,8 @@ const Example = (props) => {
   }
 
   return (
-    <body>
+    <div className="formulario">
       <Form className="formularioCompra">
-
 
         <Label for="Nome" className="Nome text-light mt-3">Ingressos Inteira</Label>
         <Input type="select" onChange={value => setQtdInteira(value.target.value)}>
@@ -72,13 +71,13 @@ const Example = (props) => {
           <option value = "5">5</option>
         </Input>
 
-
+        <Button color="danger" onClick={click}>Compre já</Button>
 
       </Form>
+      </div>
+   
 
-      <div className="compra"> <Button color="danger" onClick={click}>Compre já</Button></div>
-
-    </body>
+    
   );
 }
 

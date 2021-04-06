@@ -16,11 +16,28 @@ export default function Compra() {
 
 
 
-                        <div className="formCompre">  
+                     
                             {navBar()}
+
+
+                       <div className="layout">
+
+
+
+                       <div className="ladoE">
                            {cardFilme()}
+                           </div>
+                          
+                          
+                           <div className="ladoR">
                            {formularioDeCompra()}
-                         </div>
+
+                           </div>
+                           
+                           
+                           
+                           </div>
+                        
                         
                         
 

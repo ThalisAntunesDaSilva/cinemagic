@@ -59,7 +59,7 @@ export default function navbar() {
                 </DropdownItem>
 
                 <DropdownItem>
-                <NavLink href="/CadastroSessoes">  Cadastro de Sessões    </NavLink>
+                <NavLink href="/CadastroSessao">  Cadastro de Sessões    </NavLink>
                 </DropdownItem>
                 
                 <DropdownItem>

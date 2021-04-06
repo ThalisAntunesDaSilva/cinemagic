@@ -8,7 +8,6 @@ export default function CadastroFilme() {
     return (
         <>
             <div className="body">
-            {ferramentasFilme()}
                 {formSessao()}
             </div>
 
