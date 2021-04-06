@@ -33,7 +33,10 @@ public class ClienteResource {
 	ClienteService service;
 
 
-	
+	@RequestMapping(value="/all", method = RequestMethod.GET)
+	public ResponseEntity<List<Cliente>> findClientes() {
+		return ResponseEntity.ok().body(service.findAll());
+	}
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Cliente> findById(@PathVariable Integer id) {
 		Cliente cliente = service.findById(id);
