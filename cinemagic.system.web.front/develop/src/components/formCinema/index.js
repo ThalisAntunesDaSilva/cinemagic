@@ -28,18 +28,10 @@ const Example = (props) => {
                 </Row>
 
                 <Row forme>
-                <Col  sm="12" md={{ size: 3, offset: 3 }}>
+                <Col  sm="12" md={{ size: 7, offset: 3 }}>
                     <FormGroup className="mb-2 me-sm-2 mb-sm-2">
                         <Label for="Numero" className="me-sm-2">Numero de Salas</Label>
                         <Input type="numero" name="numero" id="numero" placeholder="Numero" />
-                    </FormGroup>
-                </Col>
-                
-
-                <Col  sm="12" md={{ size: 4, offset: 0 }}>
-                    <FormGroup >
-                        <Label for="Capacidade" className="me-sm-2">Capacidade</Label>
-                        <Input type="text" name="capacidade" id="capacidade" placeholder="Capacidade" />
                     </FormGroup>
                 </Col>
                 </Row>
