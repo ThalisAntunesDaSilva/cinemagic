@@ -5,7 +5,9 @@ import './styles.css';
 
 const Example = (props) => {
     return (
-        <Form className="formularioDeSessao">
+        <Form>
+          <h1>Insira os dados do Cinema</h1>
+  <div className="formularioDeSessao">
    
         <div className="lado1">
       <Label for="Nome" type="text" size="5" className="Nome text-light mt-3 w-25">Estado</Label>
@@ -28,7 +30,7 @@ const Example = (props) => {
 
 
      
-                         
+        </div>      
                      
 
         </Form>

@@ -1,7 +1,7 @@
-.form{
-    padding: 35px 30px 35px 30px;
+.layout{
     color:aliceblue;
     background-image: url('../../assets/padrao.jpg');
-    background-repeat:space;
-    background-position:center;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
 }

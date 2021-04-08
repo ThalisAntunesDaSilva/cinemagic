@@ -6,36 +6,21 @@ import './styles.css';
 
 const Example = (props) => {
   return (
+   
+   <Form className="form">
+   <h1>Insira os dados do Filme</h1>
+   <div className="layout">
 
-    <Form className="form">
-
-
-    <Col sm="20" md={{ size: 4, offset: 4 }}>
-      <FormGroup >
+       <div className="ld1">
         <Label for="titulo" >Título</Label>
         <Input type="text" name="titulo" id="titulo" placeholder="Título do filme" />
-      </FormGroup>
-      </Col>
-      
-
-      <Col sm="20" md={{ size: 4, offset: 4 }}>
-      <FormGroup>
         <Label for="produtor">Produtor</Label>
         <Input type="produtor" name="produtor" id="produtor" placeholder="Produtor" />
-      </FormGroup>
-      </Col>
-
-      <Col sm="20" md={{ size: 4, offset: 4 }}>
-      <FormGroup>
-        <Label for="ano">Ano</Label>
+       <Label for="ano">Ano</Label>
         <Input type="ano" name="ano" id="ano" placeholder="Ano" />
-      </FormGroup>
-      </Col>
-
-
-      <Col sm="20" md={{ size: 4, offset: 4 }}>
-      <FormGroup>
-        <Label for="generos">Gêneros</Label>
+        </div>
+      <div className="ld2">
+       <Label for="generos">Gêneros</Label>
         <Input type="select" name="select" id="exampleSelect">
           <option>Ação</option>
           <option>Aventura</option>
@@ -60,36 +45,16 @@ const Example = (props) => {
           <option>Suspense</option>
           <option>Terror</option>
         </Input>
-      </FormGroup>
-      </Col>
-
-      <Col sm="20" md={{ size: 4, offset: 4 }}>
-      <FormGroup>
         <Label for="descricao">Descrição</Label>
         <Input type="descricao" name="descricao" id="descricao" placeholder="Descrição do Filme" />
-      </FormGroup>
-      </Col>
-
-
-      <Col sm="20" md={{ size: 4, offset: 4 }}>
-      <FormGroup>
-        <Label for="exampleFile">Cartaz do Filme</Label>
+        <Label for="exampleFile">Cartaz do Filme</Label>      
         <Input type="file" name="file" id="exampleFile" />
-        <FormText color="muted">
-          This is some placeholder block-level help text for the above input.
-          It's a bit lighter and easily wraps to a new line.
-        </FormText>
-      </FormGroup>
-      </Col>
-
-
-      <Row form>
-      <Col sm="20" md={{ size: 4, offset: 4 }}>
-        <Button outline color="danger" size="lg" block>Inserir</Button>
-        </Col>
-      </Row>
-      
+        <Input type="descricao"  className="mt-3"  name="descricao" id="descricao" placeholder="url imagem" />
+        <Button  color="danger"  className="mt-3" size="lg" block>Inserir</Button>
+        </div>
+        </div>
     </Form>
+
   );
 }
 

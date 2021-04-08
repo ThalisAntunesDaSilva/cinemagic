@@ -1,12 +1,11 @@
 .formularioDeSessao{
-   
   display: flex;
   flex-direction: row;
  justify-content: center;
  align-items:center;
  margin-top: 10vh;
 background-color: black;
-padding-bottom: 34vh;
+height:100vh;
 
 }
 

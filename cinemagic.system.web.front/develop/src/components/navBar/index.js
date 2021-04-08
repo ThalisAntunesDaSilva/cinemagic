@@ -44,7 +44,7 @@ export default function navbar() {
           <Nav className="me-auto" navbar>
             {/*Seções*/}
             <NavItem>
-              <NavLink className="link" href="/ListaSessoes">Seções</NavLink>
+              <NavLink className="link" href="/ListaSessoes">Sessões</NavLink>
             </NavItem>
         
 
@@ -54,6 +54,10 @@ export default function navbar() {
               </DropdownToggle>
               <DropdownMenu right>
                
+                <DropdownItem>
+                <NavLink href="/CadastroCinema">  Cadastro de Cinemas    </NavLink>
+                </DropdownItem>
+
                 <DropdownItem>
                 <NavLink href="/CadastroFilme">  Cadastro de Filmes    </NavLink>
                 </DropdownItem>
