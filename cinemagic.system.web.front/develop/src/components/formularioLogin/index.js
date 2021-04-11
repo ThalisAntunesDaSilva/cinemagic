@@ -25,10 +25,9 @@ const Example = (props) => {
         const token = res.headers["authorization"]   
         const decoded = jwt(token)
         login(token);
-        alert(getToken());
         const clientRes = await api.get("/clientes",{
             params:{
-                email: "gabriel@gmail.com"
+                email: decoded
             },
             headers:{
                 authorization: getToken()
