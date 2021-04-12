@@ -5,81 +5,37 @@ import {
 import { useHistory } from 'react-router-dom';
 import api from '../../services/api'
 import { login, getToken } from '../../services/auth/auth.js';
-//import './styles.css';
+
+import axios from "axios";
+
+
+
 
 const Example = (props) => {
-    let history = useHistory();
-    const token = localStorage.getItem('token');
-    const [test, setTest] = useState('')
-    const [titulo, setTitulo] = useState('');
-    const [id, setId] = useState('');
-    const [genero, setGenero] = useState('');
-    const [duracao, setDuracao] = useState('');
+
 
     async function acaoBotao(e) {
-        e.preventDefault();
-
-        const data = {
-            //id: id,
-            titulo: titulo,
-            duracao: duracao,
-            filmes: [
-                {
-                    //id: id,
-                    titulo: titulo,
-                    duracao: duracao
-                }
-            ]
+        const options = {
+            method: 'PUT',
+            url: 'http://localhost:8080/filmes/1',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: '	Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb3PDqUBnbWFpbC5jb20iLCJleHAiOjE2MTg3MzE2MzF9.LsPF9ZhKoPOA0sqsbYFAAHF1_F95sTVEbbgLemVrqIiRon7UfbuhxOi3lIElxk5eeuzoqgJf_qEkEj1xLipMGA'
+            },
+            data: { titulo: '3000', duracao: '2h00', genero: { id: 2, descricao: 'Crime' } }
         };
 
-        try {
-            const res = await api.put(`/filmes/${id}`, data, {
-                headers: {
-                    authorization: getToken()
-                }
-            },
-            );
-            window.location.href = res.data.code;
-            history.push(res.data.code);
-
-
-        } catch (ex) {
-            
-        }
+        axios.request(options).then(function (response) {
+            console.log(response.data);
+        }).catch(function (error) {
+            console.error(error);
+        });
 
     }
 
+
     return (
-        <div className="body-section">
-            <ul className="super">
-                <li><a href="">Home</a></li>
-                <li><a href="">Cinemas</a></li>
-                <li><a href="">Sessoes</a></li>
-            </ul>
-            <ul>
-                <h1 className="title">Editar filme</h1>
-                <li>
-                    <Jumbotron>
-                        <div>
-                            <FormGroup >
-                                <Label for="id" >ID do filme a ser modificado:</Label>
-                                <Input type="number" name="id" onChange={e => setId(e.target.value)} id="id" placeholder="ID do filme" />
-                            </FormGroup>
-                            <FormGroup >
-                                <Label for="titulo" >Novo titulo:</Label>
-                                <Input type="text" name="titulo" onChange={e => setTitulo(e.target.value)} id="titulo" placeholder="Título do filme" />
-                            </FormGroup>
-                            <FormGroup >
-                                <Label for="duracao" >Nova duração:</Label>
-                                <Input type="text" name="duracao" onChange={e => setDuracao(e.target.value)} id="duracao" placeholder="Duraçao do filme" />
-                            </FormGroup>
-                            <Button color="danger" onClick={acaoBotao}>Editar</Button>
-                        </div>
-                    </Jumbotron>
-                </li>
-            </ul>
-        </div>
+        <Button color="danger" onClick={acaoBotao}>Editar</Button>
     );
 }
-
 export default Example;
