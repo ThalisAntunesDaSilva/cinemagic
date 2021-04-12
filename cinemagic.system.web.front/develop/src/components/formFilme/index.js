@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button } from 'reactstrap';
+import React, { useState } from 'react';
+import { Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './styles.css';
 import axios from "axios";
 
@@ -13,6 +13,8 @@ const Example = (props) => {
 
 
   async function acaoBotao(e) {
+    e.preventDefault();
+
     const options = {
       method: 'POST',
       url: 'http://localhost:8080/filmes',
@@ -20,10 +22,9 @@ const Example = (props) => {
         'Content-Type': 'application/json',
         authorization: getToken()
       },
-      data: { titulo: 'TESTE DEDECU', duracao: '1h50', genero: { id: 1 } }
+      data: { titulo: titulo, duracao: duracao, genero: { id: genero } }
     };
 
-    e.preventDefault();
 
     axios.request(options).then(function (response) {
       console.log(response.data);
@@ -31,10 +32,32 @@ const Example = (props) => {
       console.error(error);
     });
 
+    alert("Filme cadastrado");
+
   }
   return (
+    <Form className="form">
+      <Col sm="20" md={{ size: 4, offset: 4 }}>
+        <FormGroup >
+          <Label for="titulo" >Título</Label>
+          <Input type="text" name="titulo" onChange={e => setTitulo(e.target.value)} id="titulo" placeholder="Título do filme" />
+        </FormGroup>
+        <FormGroup >
+          <Label for="duracao" >Duraçao</Label>
+          <Input type="text" name="duracao" onChange={e => setDuracao(e.target.value)} id="duracao" placeholder="Duraçao do filme" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="genero">Gênero</Label>
+          <Input type="number" name="genero" id="genero" onChange={e => setGenero(e.target.value)}/>
+        </FormGroup>
+      </Col>
+      <Row form>
+        <Col sm="20" md={{ size: 4, offset: 4 }}>
+          <Button outline color="danger" size="lg" onClick={acaoBotao}>Inserir</Button>
+        </Col>
+      </Row>
+    </Form>
 
-    <Button outline color="danger" size="lg" onClick={acaoBotao}>Inserir</Button>
 
   );
 }
