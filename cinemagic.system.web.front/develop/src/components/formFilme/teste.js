@@ -1,59 +1,55 @@
-import React, { useState, useEffect } from 'react';
-import { Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import { useHistory } from 'react-router-dom';
-import api from '../../services/api';
-import { login, getToken } from '../../services/auth/auth.js';
+import React, { useState } from 'react';
+import { Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './styles.css';
 
+import axios from "axios";
+import { login, getToken } from '../../services/auth/auth.js';
+import api from '../../services/api';
+import { useHistory } from 'react-router-dom';
 
 
 const Example = (props) => {
     let history = useHistory();
 
-    const [erroLogin, setErroLogin] = useState("");
-    const [generos, setGeneros] = useState([]);
-
     const [titulo, setTitulo] = useState('');
     const [genero, setGenero] = useState('');
     const [duracao, setDuracao] = useState('');
 
+
     async function acaoBotao(e) {
         e.preventDefault();
-
-        const data = {
-            titulo: titulo,
-            duracao: duracao,
-            filmes: [
-                {
-                    titulo: titulo,
-                    duracao: duracao
-                }
-            ]
-        };
-
-        try {
-
-            const res = await api.post("/filmes", data, {
-                headers: {
-                    authorization: getToken()
-                }
+        /*
+        const options = {
+            method: 'POST',
+            url: 'http://localhost:8080/filmes',
+            headers: {
+            'Content-Type': 'application/json',
+            authorization: getToken()
             },
-            );
-            window.location.href = res.data.code;
-            history.push(res.data.code);
+            data: { titulo: titulo, duracao: duracao, genero: { id: genero } }
+        };
+        */
 
-        } catch (ex) {
-            alert(ex.response.data.message)
-        }
-    }
+        const options = await api.post("/filmes", {
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: getToken()
+            },
+            data: { titulo: titulo, duracao: duracao, genero: { id: genero } }
+        },
+        );
+        window.location.href = options.data.code;
+        history.push(options.data.code);
 
-    async function getGeneros() {
-        try {
-            const res = await api.get("generos");
-            setGeneros(res.data);
-        } catch (e) {
-            alert(e);
-        }
+
+        axios.request(options).then(function (response) {
+            console.log(response.data);
+        }).catch(function (error) {
+            console.error(error);
+        });
+
+        alert("Filme cadastrado");
+
     }
 
     return (
@@ -67,19 +63,9 @@ const Example = (props) => {
                     <Label for="duracao" >Duraçao</Label>
                     <Input type="text" name="duracao" onChange={e => setDuracao(e.target.value)} id="duracao" placeholder="Duraçao do filme" />
                 </FormGroup>
-
-            </Col>
-            <Col sm="20" md={{ size: 4, offset: 4 }}>
                 <FormGroup>
-                    <Label for="generos">Gêneros</Label>
-                    <Input type="select" name="select" id="exampleSelect" onChange={e => getGeneros(e.target.value)}>
-                        <select name="estado" id="estado" onChange={e => setGenero(e.target.value)} onClick={getGeneros}>
-                            <option>Selecione um genro</option>
-                            {generos.map(genero => (
-                                <option value={genero.id}>{genero.nome}</option>
-                            ))}
-                        </select>
-                    </Input>
+                    <Label for="genero">Gênero</Label>
+                    <Input type="number" name="genero" id="genero" onChange={e => setGenero(e.target.value)} />
                 </FormGroup>
             </Col>
             <Row form>
