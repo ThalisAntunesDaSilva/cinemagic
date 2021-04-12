@@ -51,7 +51,7 @@ export default function Teste() {
                                     <strong>Duracao: </strong>
                                     <p className="test">{ses.duracao}</p>
                                     <strong>Genero: </strong>
-                                    <p className="test">{ses.genero.descricao}</p>
+                                    <p className="test"></p>
                                     <Button color="danger" onClick={encaminhaCompra(ses)}>Comprar</Button>
                                 </div>
                             </Jumbotron>

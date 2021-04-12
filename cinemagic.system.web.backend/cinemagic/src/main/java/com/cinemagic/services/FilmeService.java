@@ -49,6 +49,7 @@ public class FilmeService {
 	private void updateData(Filme newObj, Filme obj) {
 		newObj.setTitulo(obj.getTitulo());
 		newObj.setDuracao(obj.getDuracao());
+		newObj.setGenero(obj.getGenero());
 	}
 
 	public Filme insert(Filme filme) {
