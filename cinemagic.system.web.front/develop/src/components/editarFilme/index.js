@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import {
     Button, Jumbotron, Row, Col, Form, FormGroup, Label, Input
 } from 'reactstrap';
+import { useHistory } from 'react-router-dom';
 import api from '../../services/api'
 import { login, getToken } from '../../services/auth/auth.js';
-import { useHistory } from 'react-router-dom';
 //import './styles.css';
 
 const Example = (props) => {
@@ -20,34 +20,33 @@ const Example = (props) => {
         e.preventDefault();
 
         const data = {
-            id: id,
+            //id: id,
             titulo: titulo,
             duracao: duracao,
             filmes: [
                 {
-                    id: id,
+                    //id: id,
                     titulo: titulo,
                     duracao: duracao
                 }
             ]
         };
-        const res = await api.put(`/filmes/${this.id}`, data, {
-            headers: {
-                authorization: getToken()
-            }
-        },
-        );
-        window.location.href = res.data.code;
-        history.push(res.data.code);
 
-        /*
         try {
+            const res = await api.put(`/filmes/${id}`, data, {
+                headers: {
+                    authorization: getToken()
+                }
+            },
+            );
+            window.location.href = res.data.code;
+            history.push(res.data.code);
 
 
         } catch (ex) {
-            alert(ex.response.data.message)
+            
         }
-        */
+
     }
 
     return (
@@ -64,7 +63,7 @@ const Example = (props) => {
                         <div>
                             <FormGroup >
                                 <Label for="id" >ID do filme a ser modificado:</Label>
-                                <Input type="text" name="id" onChange={e => setId(e.target.value)} id="id" placeholder="Título do filme" />
+                                <Input type="number" name="id" onChange={e => setId(e.target.value)} id="id" placeholder="ID do filme" />
                             </FormGroup>
                             <FormGroup >
                                 <Label for="titulo" >Novo titulo:</Label>
