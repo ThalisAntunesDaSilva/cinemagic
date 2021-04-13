@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Row, Col, Button, Form, FormGroup, Label, Input, Jumbotron } from 'reactstrap';
 import { Redirect, useHistory } from 'react-router-dom';
 import api from '../../services/api';
 import { login, getToken } from '../../services/auth/auth.js';
@@ -10,9 +10,28 @@ import './styles.css';
 const Example = (props) => {
     let history = useHistory();
 
+    //PARA GENEROS
+    const [generos, setGeneros] = useState([]);
+    const token = localStorage.getItem('token');
+    const [test, setTest] = useState('')
+
+    //PARA CADASTRO
     const [titulo, setTitulo] = useState('');
     const [genero, setGenero] = useState('');
     const [duracao, setDuracao] = useState('');
+
+    async function getApi() {
+        try {
+            const res = await api.get("generos")
+            setGeneros(res.data)
+            setTest(res.data[0])
+        } catch (ex) {
+            alert(ex)
+        }
+    }
+    useEffect(() => {
+        getApi()
+    }, [token])
 
     async function acaoBotao(e) {
         e.preventDefault();
@@ -21,7 +40,7 @@ const Example = (props) => {
             titulo: titulo,
             duracao: duracao,
             genero: {
-              id: genero
+                id: genero
             },
             filmes: [
                 {
@@ -45,30 +64,56 @@ const Example = (props) => {
         } catch (ex) {
             alert(ex.response.data.message)
         }
-        
     }
+
+
+
+
+
+
     return (
-        <Form className="form">
-            <Col sm="20" md={{ size: 4, offset: 4 }}>
-                <FormGroup >
-                    <Label for="titulo" >Título</Label>
-                    <Input type="text" name="titulo" onChange={e => setTitulo(e.target.value)} id="titulo" placeholder="Título do filme" />
-                </FormGroup>
-                <FormGroup >
-                    <Label for="duracao" >Duraçao</Label>
-                    <Input type="text" name="duracao" onChange={e => setDuracao(e.target.value)} id="duracao" placeholder="Duraçao do filme" />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="genero">Gênero</Label>
-                    <Input type="number" name="genero" id="genero" onChange={e => setGenero(e.target.value)} placeholder="ID do genero"/>
-                </FormGroup>
-            </Col>
-            <Row form>
-                <Col sm="20" md={{ size: 4, offset: 4 }}>
-                    <Button outline color="danger" size="lg" onClick={acaoBotao}>Inserir</Button>
-                </Col>
-            </Row>
-        </Form>
+        <div className="body-section">
+            <ul className="super">
+                <li><a href="">Home</a></li>
+                <li><a href="/ListaFilmes">Lista Filmes</a></li>
+                <li><a href="">Sessoes</a></li>
+            </ul>
+            <div>
+                <Form className="form">
+                    <Col sm="20" md={{ size: 4, offset: 4 }}>
+                        <FormGroup >
+                            <Label for="titulo" >Título</Label>
+                            <Input type="text" name="titulo" onChange={e => setTitulo(e.target.value)} id="titulo" placeholder="Título do filme" />
+                        </FormGroup>
+                        <FormGroup >
+                            <Label for="duracao" >Duraçao</Label>
+                            <Input type="text" name="duracao" onChange={e => setDuracao(e.target.value)} id="duracao" placeholder="Duraçao do filme" />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="genero">Gênero</Label>
+                            <Input type="number" name="genero" id="genero" onChange={e => setGenero(e.target.value)} placeholder="ID do genero" />
+                        </FormGroup>
+                    </Col>
+                    <Row form>
+                        <Col sm="20" md={{ size: 4, offset: 4 }}>
+                            <Button outline color="danger" size="lg" onClick={acaoBotao}>Inserir</Button>
+                        </Col>
+                    </Row>
+                </Form>
+                <div>
+                    <ul>
+                        <h3 className="title">Generos cadastrados</h3>
+                        {generos.map(ses => (
+                            <li key={ses.id}>
+                                <div>
+                                    <h5>Genero ID: {ses.id}, Descrição: {ses.descricao} </h5>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
     );
 }
 
