@@ -14,8 +14,8 @@ const cliente = JSON.parse(localStorage.getItem('cliente'));
 
 const Example = (props) => {
   const history = useHistory();
-  const [qtdInteira,setQtdInteira] = useState(0);
-  const [qtdMeia,setQtdMeia] = useState(0);
+  const [qtdInteira,setQtdInteira] = useState(1);
+  const [qtdMeia,setQtdMeia] = useState(1);
   async function click(e) {
     alert(qtdMeia);
     const data = {

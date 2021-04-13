@@ -27,15 +27,17 @@ const Example = (props) => {
         login(token);
         const clientRes = await api.get("/clientes",{
             params:{
-                email: decoded
+                email: "gabriel@gmail.com"
             },
             headers:{
                 authorization: getToken()
             }
         })
         localStorage.setItem('cliente',JSON.stringify(clientRes.data))
+        
         history.push("/")
     }catch(ex){
+      
         setErroLogin(ex.response.data.message)
         
         alert(ex.response.data.message)

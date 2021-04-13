@@ -14,6 +14,7 @@ const Example = (props) => {
   const encaminhaCompraSessao =  ses => async e =>{
 
     try {
+      localStorage.removeItem('sessaoAtual');
       localStorage.setItem('sessaoAtual', JSON.stringify(ses));
       history.push('/Compra');
     } catch (err) {
