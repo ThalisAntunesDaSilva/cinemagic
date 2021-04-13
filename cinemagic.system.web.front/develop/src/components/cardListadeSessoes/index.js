@@ -8,13 +8,10 @@ const Example = (props) => {
   const history = useHistory();
   const [sessao, setSessao] = useState([]);
   const token = localStorage.getItem('token');
-  const [id, setId] = useState('');
 
   
   const encaminhaCompraSessao =  ses => async e =>{
-
     try {
-      localStorage.removeItem('sessaoAtual');
       localStorage.setItem('sessaoAtual', JSON.stringify(ses));
       history.push('/Compra');
     } catch (err) {
