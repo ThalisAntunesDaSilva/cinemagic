@@ -33,6 +33,15 @@ public class Filme implements Serializable{
 	@JoinColumn(name = "genero_id")
 	private Genero genero;
 	
+	/**
+	 * FATAL ERROR:Failed to initialize JPA EntityManagerFactory: mappedBy reference an unknown target entity property
+	 * ao instanciar a lista de generos o spring retorna esse erro e nao inicia o servidor
+	 * Matheus 05/04
+	 */
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "generos")
+//	private List<Genero> generos;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "filme")
 	private List<Atua> atuacoes;
@@ -45,11 +54,20 @@ public class Filme implements Serializable{
 		
 	}
 
-	public Filme(Integer id, String titulo, String duracao,Genero genero) {
+	public Filme(Integer id, String titulo, String duracao, Genero genero) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.duracao = duracao;
+		this.genero = genero;
+	}
+	
+
+	public Genero getGenero() {
+		return genero;
+	}
+
+	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
 
@@ -77,19 +95,6 @@ public class Filme implements Serializable{
 		this.duracao = duracao;
 	}
 
-	
-	public Genero getGenero() {
-		return genero;
-	}
-
-	public void setGenero(Genero genero) {
-		this.genero = genero;
-	}
-	
-	
-
-
-
 	public List<Atua> getAtuacoes() {
 		return atuacoes;
 	}
@@ -114,6 +119,17 @@ public class Filme implements Serializable{
 	public void setPathImage(String pathImage) {
 		this.pathImage = pathImage;
 	}
+	
+	
+	
+//	public List<Genero> getGeneros() {
+//		return generos;
+//	}
+//
+//	public void setGeneros(List<Genero> generos) {
+//		this.generos = generos;
+//	}
+//	
 
 	@Override
 	public int hashCode() {

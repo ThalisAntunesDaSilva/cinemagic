@@ -20,6 +20,7 @@ public class Genero implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String descricao;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "genero")
 	private List<Filme> filmes = new ArrayList<>();
