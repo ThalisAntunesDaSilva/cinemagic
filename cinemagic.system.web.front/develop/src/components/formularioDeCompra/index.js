@@ -71,7 +71,7 @@ const Example = (props) => {
           <option value = "5">5</option>
         </Input>
 
-        <Button color="danger" onClick={click}>Compre já</Button>
+        <Button color="danger" className="button mt-3"  onClick={click}>Compre já</Button>
 
       </Form>
       </div>

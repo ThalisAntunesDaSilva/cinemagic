@@ -58,12 +58,7 @@ const Example = (props) => {
    
         <div className="lado1">
       <Label for="Nome" type="date" size="5" className="Nome text-light mt-3 w-25">Data</Label>
-      <Input
-                            type="date"
-                            name="date"
-                            id="exampleDate"
-                            placeholder="date placeholder"
-                        />
+      <Input                onChange = {e => setDataa(e.target.value)}/>
         
         <Label for="Nome" className="Nome text-light mt-3">Hora</Label>
         <Input size="md" onChange = {e => setHora(e.target.value)}/>

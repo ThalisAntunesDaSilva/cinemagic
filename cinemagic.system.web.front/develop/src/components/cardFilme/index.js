@@ -8,44 +8,20 @@ import {
   CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 
+const sessao = JSON.parse(localStorage.getItem('sessaoAtual'));
 
 const Example =  (props) => {
   const history = useHistory();
-  const [sessao, setSessao] = useState([]);
-  const sessaoSelecionada = localStorage.getItem('id');
- // sessao = JSON.parse(sessaoSelecionada);
-  const sessaoAtual =  JSON.parse(localStorage.getItem("sessaoAtual"));
-  
-  
-  async function getSessaoSelecionada(evento){
-    evento.preventDefault(); 
-  try{
-   setSessao(sessao);
-  
-  }catch(err){
-    alert('Ops, nada encontrado');
-}}
-
-
-
-  useEffect(() => {
-   // getSessaoSelecionada()
-  })
- 
- 
- 
- 
+  const [pathImage, setPathImage] = useState([]);
  
   return (
     <div className="filmes">
   
       <Card>
         <CardBody>
-
-          <CardTitle tag="h5">Seção Alegrete-RS</CardTitle>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">Filmes em sessão</CardSubtitle>
-        <img width="60%" height="80%" src={hp} alt="Card image cap" />
-        <CardText>{sessaoAtual.filme.titulo}</CardText>
+          <CardSubtitle tag="h3" className="mb-2 text-muted">Filmes em sessão</CardSubtitle>
+        <img width="60%" height="80%" src={sessao.filme.pathImage} alt="Card image cap" />
+        <CardText>{sessao.filme.titulo}</CardText>
               
         </CardBody>
      
