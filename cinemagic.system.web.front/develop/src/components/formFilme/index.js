@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Button, Form, FormGroup, Label, Input, Jumbotron } from 'reactstrap';
 import { Redirect, useHistory } from 'react-router-dom';
-import api from '../../services/api';
 import { login, getToken } from '../../services/auth/auth.js';
 import './styles.css';
 import api from '../../services/api';
-import { getToken } from '../../services/auth/auth'
 
 
 const Example = (props) => {
