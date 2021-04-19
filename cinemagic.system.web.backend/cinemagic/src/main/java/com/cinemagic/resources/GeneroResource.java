@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,9 +23,9 @@ import com.cinemagic.services.GeneroService;
 public class GeneroResource {
 
 	@Autowired
+	GeneroRepository generoRepository;
+	@Autowired
 	GeneroService generoService;
-	GeneroRepository repo;
-	
 
 	@RequestMapping(value ="/{id}",method = RequestMethod.GET)
 	public ResponseEntity<Genero> findById(@PathVariable Integer id){
@@ -34,10 +33,11 @@ public class GeneroResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@GetMapping
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Genero>> listaGeneros(){
-		return ResponseEntity.ok().body(generoService.findAll());
-		
+		List<Genero> generos = generoRepository.findAll();
+		return ResponseEntity.ok().body(generos);
+
 	}
 	
 	

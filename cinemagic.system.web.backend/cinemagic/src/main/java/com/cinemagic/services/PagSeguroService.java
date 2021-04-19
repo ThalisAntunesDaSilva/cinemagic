@@ -50,7 +50,8 @@ public class PagSeguroService {
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
 
 		ResponseEntity<CheckoutDTO> response = rest.postForEntity(builder.toUriString(), request, CheckoutDTO.class);
-		response.getBody().setCode("https://pagseguro.uol.com.br/v2/checkout/payment.html?code=" + response.getBody().getCode());
+		response.getBody()
+				.setCode("https://pagseguro.uol.com.br/v2/checkout/payment.html?code=" + response.getBody().getCode());
 		return response.getBody();
 
 	}
@@ -58,23 +59,36 @@ public class PagSeguroService {
 	public void atualizarTransacao(String code) {
 		RestTemplate rest = new RestTemplate();
 
-		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(URLATUALIZAR).path(code).queryParam("email", EMAIL)
-				.queryParam("token", TOKEN);
+		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(URLATUALIZAR).path(code)
+				.queryParam("email", EMAIL).queryParam("token", TOKEN);
 
-		ResponseEntity<NotificacaoDTO> response = rest.getForEntity(builder.toUriString(), NotificacaoDTO.class);
-		atualizarCompra(response.getBody());
+		// ResponseEntity<NotificacaoDTO> response =
+		// rest.getForEntity(builder.toUriString(),NotificacaoDTO.class);
+		ResponseEntity<String> response = rest.getForEntity(builder.toUriString(), String.class);
+
+		int status = Integer.parseInt(teste(response.getBody()));
+		int reference = Integer.parseInt(teste2(response.getBody()));
+
+		atualizarCompra(status, reference);
+
+		// atualizarCompra(response.getBody());
+
 	}
 
-	private void atualizarCompra(NotificacaoDTO objDTO) {
-		Compra compra = compraService.findById(Integer.parseInt(objDTO.getReference()));
-		switch (objDTO.getStatus()) {
-			case 1 : compra.setStatusCompra(StatusCompra.ESPERANDO_PAGAMENTO);
+	private void atualizarCompra(int status, int reference) {
+		Compra compra = compraService.findById(reference);
+		switch (status) {
+		case 1:
+			compra.setStatusCompra(StatusCompra.ESPERANDO_PAGAMENTO);
 			break;
-			case 2 : compra.setStatusCompra(StatusCompra.ANALISE);
+		case 2:
+			compra.setStatusCompra(StatusCompra.ANALISE);
 			break;
-			case 3 : compra.setStatusCompra(StatusCompra.PAGO);
+		case 3:
+			compra.setStatusCompra(StatusCompra.PAGO);
 			break;
-			case 7 : compra.setStatusCompra(StatusCompra.CANCELADO);
+		case 7:
+			compra.setStatusCompra(StatusCompra.CANCELADO);
 			break;
 		}
 		compraService.update(compra);
@@ -95,6 +109,7 @@ public class PagSeguroService {
 		map.add("senderCPF", cliente.getCpf());
 		map.add("reference", compra.getId().toString());
 		map.add("redirectURL", "https://moodle.unipampa.edu.br/moodle/");
+		map.add("notificationURL", "https://cinemagic-grupo04.herokuapp.com/notificacao");
 		map.add("receiverEmail", "gabrielcamposfreitas12@gmail.com");
 		map.add("maxUses", "10");
 		map.add("maxAge", "10000");
@@ -120,6 +135,17 @@ public class PagSeguroService {
 			i++;
 		}
 
+	}
+
+	private String teste(String a) {
+		String b = a.substring(a.indexOf("<status>"), a.lastIndexOf("</status>"));
+		return b.replaceAll("<status>", "");
+
+	}
+
+	private String teste2(String a) {
+		String b = a.substring(a.indexOf("<reference>"), a.lastIndexOf("</reference>"));
+		return b.replaceAll("<reference>", "");
 	}
 
 }
