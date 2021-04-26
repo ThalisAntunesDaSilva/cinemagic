@@ -86,7 +86,7 @@ public class CompraService {
 			}
 
 		}
-		if (compra.getTipoPagamento() == TipoPagamento.PONTOS) {
+		if (compra.getTipoPagamento().equals(TipoPagamento.PONTOS)) {
 			compra.getCliente().setPontos(compra.getCliente().getPontos() - sessao.getValorEmCupons());
 		}
 		cliente.getCompras().add(compra);
