@@ -66,8 +66,8 @@ public class PagSeguroService {
 		// rest.getForEntity(builder.toUriString(),NotificacaoDTO.class);
 		ResponseEntity<String> response = rest.getForEntity(builder.toUriString(), String.class);
 
-		int status = Integer.parseInt(teste(response.getBody()));
-		int reference = Integer.parseInt(teste2(response.getBody()));
+		int status = Integer.parseInt(getStatus(response.getBody()));
+		int reference = Integer.parseInt(getReference(response.getBody()));
 
 		atualizarCompra(status, reference);
 
@@ -90,7 +90,10 @@ public class PagSeguroService {
 		case 7:
 			compra.setStatusCompra(StatusCompra.CANCELADO);
 			break;
+		default:
+			compra.setStatusCompra(StatusCompra.ESPERANDO_PAGAMENTO);
 		}
+
 		compraService.update(compra);
 	}
 
@@ -137,14 +140,14 @@ public class PagSeguroService {
 
 	}
 
-	private String teste(String a) {
-		String b = a.substring(a.indexOf("<status>"), a.lastIndexOf("</status>"));
+	private String getStatus(String body) {
+		String b = body.substring(body.indexOf("<status>"), body.lastIndexOf("</status>"));
 		return b.replaceAll("<status>", "");
 
 	}
 
-	private String teste2(String a) {
-		String b = a.substring(a.indexOf("<reference>"), a.lastIndexOf("</reference>"));
+	private String getReference(String body) {
+		String b = body.substring(body.indexOf("<reference>"), body.lastIndexOf("</reference>"));
 		return b.replaceAll("<reference>", "");
 	}
 
