@@ -1,9 +1,16 @@
+.header-centro {
+  margin: auto;
+  padding: 10px 270px 10px 270px;
 
-.header-centro{
-    margin: auto;
-    padding: 10px 270px 10px 270px;
-    
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
-.agreement{
-    margin:auto;
+.agreement {
+  margin: auto;
+}
+
+.titulo {
+  color: aliceblue;
 }
