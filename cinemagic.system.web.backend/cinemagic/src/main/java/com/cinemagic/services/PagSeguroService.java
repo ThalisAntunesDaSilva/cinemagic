@@ -18,13 +18,14 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.cinemagic.domain.Cliente;
 import com.cinemagic.domain.Compra;
 import com.cinemagic.domain.Ingresso;
+import com.cinemagic.domain.Sessao;
 import com.cinemagic.domain.Enums.StatusCompra;
 import com.cinemagic.domain.Enums.TipoIngresso;
 import com.cinemagic.dto.xml.CheckoutDTO;
 import com.cinemagic.dto.xml.NotificacaoDTO;
 
 @Service
-public class PagSeguroService {
+public class PagSeguroService implements IcompraStrategy{
 	private final String EMAIL = "gabrielcamposfreitas12@gmail.com";
 	private final String TOKEN = "991799a6-6d82-4f4f-8bc6-fd35279f6a9c3c13bd894cf2a2b7a173e286f9310c646217-988e-43ae-a9be-188eba8d3fd6";
 	private final String URL = "https://ws.pagseguro.uol.com.br/v2/checkout?";
@@ -32,7 +33,7 @@ public class PagSeguroService {
 	@Autowired
 	private CompraService compraService;
 
-	public CheckoutDTO criarPagamento(Cliente cliente, Compra compra) {
+	public CheckoutDTO criarPagamento(Cliente cliente,Sessao sessao, Compra compra) {
 		RestTemplate rest = new RestTemplate();
 
 		MultiValueMap<String, String> map = getBody(cliente, compra);
@@ -148,4 +149,5 @@ public class PagSeguroService {
 		return b.replaceAll("<reference>", "");
 	}
 
+	
 }
