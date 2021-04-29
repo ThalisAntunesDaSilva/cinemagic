@@ -1,6 +1,5 @@
 package com.cinemagic.services;
 
-import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -16,6 +15,7 @@ import com.cinemagic.domain.Cidade;
 import com.cinemagic.domain.Cinema;
 import com.cinemagic.domain.Cliente;
 import com.cinemagic.domain.Compra;
+import com.cinemagic.domain.Compra.CompraBuilder;
 import com.cinemagic.domain.Estado;
 import com.cinemagic.domain.Filme;
 import com.cinemagic.domain.Genero;
@@ -121,8 +121,10 @@ public class DBService {
 		
 		Cliente cliente2 = new Cliente(null, "José", "josé@gmail.com", cidade1,pe.encode("123456"),"55","996861486","62594664049");
 		cliente2.addPerfil(Perfil.ADMIN);
-
-		Compra compra1 = new Compra(null, new Date(), cliente1, TipoPagamento.PONTOS);
+		
+		CompraBuilder compraBuilder = new Compra.CompraBuilder();
+		compraBuilder.cliente(cliente1).id(null).instante(new Date()).tipoPagamento(TipoPagamento.PONTOS);
+		Compra compra1 = compraBuilder.getCompra();
 		cliente1.getCompras().addAll(Arrays.asList(compra1));
 		Ingresso ingresso1 = new Ingresso(null, "1", TipoIngresso.MEIA, sessao1, compra1);
 

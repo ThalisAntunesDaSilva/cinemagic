@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,8 +39,7 @@ public class Compra implements Serializable{
 	private Integer tipoPagamento;
 	
 	
-	
-	@OneToMany(mappedBy = "compra")
+	@OneToMany(mappedBy = "compra",cascade = CascadeType.ALL)
 	private List<Ingresso> ingressos = new ArrayList<>();
 	
 	@ManyToOne()
@@ -50,13 +50,53 @@ public class Compra implements Serializable{
 		
 	}
 
-	public Compra(Integer id, Date instante,Cliente cliente,TipoPagamento tipoPagamento) {
+	private Compra(Integer id, Date instante,Cliente cliente,TipoPagamento tipoPagamento) {
 		super();
 		this.id = id;
 		this.instante = instante;
 		this.cliente = cliente;
-		this.tipoPagamento = tipoPagamento.getCod();
+		this.tipoPagamento = tipoPagamento == null? null : tipoPagamento.getCod() ;
 		this.statusCompra = 2;
+	}
+	
+	public static class CompraBuilder{
+		private Integer id;
+		private Date instante;
+		private Cliente cliente;
+		private TipoPagamento tipoPagamento;
+		private Integer statusCompra;
+		private List<Ingresso> ingressos = new ArrayList<>();
+		public CompraBuilder() {
+			statusCompra = 2;
+		}
+		public CompraBuilder id (Integer id) {
+			this.id = id;
+			return this;
+		}
+		public CompraBuilder instante (Date instante) {
+			this.instante = instante;
+			return this;
+		}
+		public CompraBuilder cliente (Cliente cliente) {
+			this.cliente = cliente;
+			return this;
+		}
+		public CompraBuilder tipoPagamento (TipoPagamento tipoPagamento) {
+			this.tipoPagamento = tipoPagamento;
+			return this;
+		}
+		public CompraBuilder ingressos(List<Ingresso> ingressos) {
+			this.ingressos = ingressos;
+			return this;
+		}
+		
+		public Compra getCompra() {
+			Compra compra = new Compra(id,instante,cliente,tipoPagamento);
+			compra.setIngressos(ingressos);
+			return compra;
+		}
+		
+		
 	}
 
 	public Integer getId() {
@@ -174,7 +214,8 @@ public class Compra implements Serializable{
 			return false;
 		return true;
 	}
-	
+
+
 	
 	
 	
