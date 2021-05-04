@@ -21,71 +21,65 @@ public class ClienteService {
 	
 	
 	@Autowired
-	private BCryptPasswordEncoder pe;
+	private BCryptPasswordEncoder password;
 
 	@Autowired
-	private ClienteRepository repo;
+	private ClienteRepository repository;
 	@Autowired
 	private CidadeService cidadeService;
 
-	// Procura por id
 	public Cliente findById(Integer id) {
 		UserSS user = UserService.authenticated();
-		if (user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
+		if (user.equals(null) || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
 			throw new AuthorizationException("Acesso negado");
 		}
-		Optional<Cliente> obj = repo.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFoundException(
+		Optional<Cliente> clientes = repository.findById(id);
+		return clientes.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado Id " + id + " Tipo " + Cliente.class.getName()));
 
 	}
 	public Cliente findByEmail(String email) {
-//		UserSS user = UserService.authenticated();
-//		if(user == null || !user.hasRole(Perfil.ADMIN) && !email.equals(user.getUsername())) {
-//			throw new AuthorizationException("Acesso negado");
-//		}
-		Cliente obj = repo.findByEmail(email);
-		if(obj == null) {
+
+		Cliente cliente = repository.findByEmail(email);
+		
+		if(cliente.equals(null)) {
 			throw new ObjectNotFoundException("Objeto não encontrado email "+ email +" Tipo "+ Cliente.class.getName());
 		}
-		return obj;
+		return cliente;
 	}
 
-	// Procura todos
 	public List<Cliente> findAll() {
-		return repo.findAll();
+		return repository.findAll();
 	}
 
-	// Salva
+	
 	public Cliente insert(Cliente cliente) {
-		return repo.save(cliente);
+		return repository.save(cliente);
 	}
 
 	public Cliente fromDTO(ClienteNewDTO objDTO) {
 		Cidade cidade = cidadeService.findById(objDTO.getCidadeId());
-		Cliente cliente = new Cliente(null, objDTO.getNome(), objDTO.getEmail(), cidade, pe.encode(objDTO.getSenha()),objDTO.getAreaCode(),objDTO.getPhone(),objDTO.getCpf());
+		Cliente cliente = new Cliente(null, objDTO.getNome(), objDTO.getEmail(), cidade, password.encode(objDTO.getSenha()),objDTO.getAreaCode(),objDTO.getPhone(),objDTO.getCpf());
 		return cliente;
 	}
-	
-	// Exclui
+
 	public void delete(Cliente cliente) {
-		repo.delete(cliente);
+		repository.delete(cliente);
 	}
 
-	// Atualiza
-	public Cliente update(Cliente cliente) {
-		Cliente newObj = findById(cliente.getId());
-		updateData(newObj, cliente);
-		return repo.save(newObj);
+
+	public Cliente update(Cliente clienteBD) {
+		Cliente cliente = findById(clienteBD.getId());
+		updateData(cliente, clienteBD);
+		return repository.save(cliente);
 	}
 
-	// Edita
 	public Cliente edit(Cliente cliente) {
-		return repo.save(cliente);
+		return repository.save(cliente);
 	}
 
-	private void updateData(Cliente newObj, Cliente obj) {
-		newObj.setNome(obj.getNome());
-		newObj.setCompras(obj.getCompras());
+	private void updateData(Cliente cliente, Cliente clienteBD) {
+		cliente.setNome(clienteBD.getNome());
+		cliente.setCompras(clienteBD.getCompras());
 	}
 }
