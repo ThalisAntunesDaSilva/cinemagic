@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -33,29 +32,29 @@ public class ClienteResource {
 	ClienteService service;
 
 
-	@RequestMapping(value="/all", method = RequestMethod.GET)
+	@GetMapping(value="/all")
 	public ResponseEntity<List<Cliente>> findClientes() {
 		return ResponseEntity.ok().body(service.findAll());
 	}
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}")
 	public ResponseEntity<Cliente> findById(@PathVariable Integer id) {
 		Cliente cliente = service.findById(id);
 		return ResponseEntity.ok().body(cliente);
 
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public ResponseEntity<Cliente> findByEmail(@RequestParam(value = "email",required = true) String email){
 		String emailDecoded = URL.decodeParam(email);
 		Cliente cliente = service.findByEmail(emailDecoded);
 		return ResponseEntity.ok().body(cliente);
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@PostMapping
 	public ResponseEntity<Void> salvaCliente(@Valid @RequestBody ClienteNewDTO objDTO) {
-		Cliente obj = service.fromDTO(objDTO);
-		service.insert(obj);
-		URI url = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		Cliente cliente = service.fromDTO(objDTO);
+		service.insert(cliente);
+		URI url = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(cliente.getId()).toUri();
 		return ResponseEntity.created(url).build();
 	}
 
