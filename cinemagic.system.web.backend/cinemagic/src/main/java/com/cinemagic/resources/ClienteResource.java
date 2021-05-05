@@ -32,7 +32,7 @@ public class ClienteResource {
 	ClienteService service;
 
 
-	@GetMapping(value="/all")
+	@GetMapping()
 	public ResponseEntity<List<Cliente>> findClientes() {
 		return ResponseEntity.ok().body(service.findAll());
 	}
@@ -43,7 +43,7 @@ public class ClienteResource {
 
 	}
 	
-	@GetMapping
+	@GetMapping(value = "/email")
 	public ResponseEntity<Cliente> findByEmail(@RequestParam(value = "email",required = true) String email){
 		String emailDecoded = URL.decodeParam(email);
 		Cliente cliente = service.findByEmail(emailDecoded);
@@ -60,8 +60,8 @@ public class ClienteResource {
 
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@DeleteMapping
-	public void deletaCliente(@RequestBody Cliente cliente) {
-		service.delete(cliente);
+	public void deletaCliente(@RequestBody Integer id) {
+		service.delete(id);
 	}
 
 	

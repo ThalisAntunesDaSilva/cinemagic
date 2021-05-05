@@ -63,8 +63,9 @@ public class ClienteService {
 		return cliente;
 	}
 
-	public void delete(Cliente cliente) {
-		repository.delete(cliente);
+	public void delete(Integer id) {
+		
+		repository.deleteById(id);
 	}
 
 

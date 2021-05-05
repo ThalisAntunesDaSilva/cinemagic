@@ -1,7 +1,11 @@
 package com.cinemagic.Resources;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -13,8 +17,15 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
+import com.cinemagic.domain.Cliente;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.minidev.json.JSONObject;
 
@@ -264,7 +275,7 @@ public class ClienteResourceTest {
 		
 		
 	}
-	
+
 	@Test
 	@Order(11)
 	public void createClientEmailExists() {
@@ -284,12 +295,11 @@ public class ClienteResourceTest {
 		HttpEntity<String> request = new HttpEntity<>(clienteJson.toString(),headers);
 		
 		ResponseEntity<String> response = restTemplate.postForEntity(urlBase+url, request, String.class);
-		System.out.println("AAAAAAAAAAAAAA"+response.getBody());
 		assertTrue(response.getStatusCode().value() == 422 && response.getBody().contains("Email já existente"));
 		
 		
 	}
-	
+
 	@Test
 	@Order(12)
 	public void createClienteCpfExists() {
@@ -313,5 +323,81 @@ public class ClienteResourceTest {
 		assertTrue(response.getStatusCode().value() == 422 && response.getBody().contains("Cpf já existente"));
 		
 	}
+	
+	@Test
+	@Order(13)
+	public void getAllClientesNotLogged() {
+		String url = "/clientes";
+	
+		ResponseEntity<String> response = restTemplate.getForEntity(urlBase+url,String.class);
+		assertTrue(response.getStatusCode().value() == 403);
+		
+	}
+	@Test
+	@Order(14)
+	public void getAllClientesLoggedPerfilClient() {
+		String url = "/clientes";
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		JSONObject clienteJson = new JSONObject();
+		
+		
+		clienteJson.put("email", "gabriel@gmail.com");
+		clienteJson.put("senha", "123456");
+		
+		
+		HttpEntity<String> request = new HttpEntity<>(clienteJson.toString(),headers);
+		
+		RestTemplate restTemplate2 = new RestTemplate();
+		ResponseEntity<String> resLogin = restTemplate2.postForEntity(urlBase+"/login",request,String.class);
+		
+		String token = resLogin.getHeaders().getFirst("authorization");
+		
+		HttpHeaders headers2 = new HttpHeaders();
+		List<MediaType> listMedia = new ArrayList<>();
+		listMedia.add(MediaType.ALL);
+		headers2.setAccept(listMedia);
+		headers2.add("Authorization", token);
+		HttpEntity<String> request2 = new HttpEntity<>(headers2);
+		ResponseEntity<String> cliente = restTemplate.exchange(urlBase+url,HttpMethod.GET,request2,String.class);
+		assertTrue(cliente.getStatusCode().value() == 403);
+		
+		
+	}
+	@Test
+	@Order(15)
+	public void getAllClientesLoggedPerfilAdmin() {
+		String url = "/clientes";
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		JSONObject clienteJson = new JSONObject();
+		
+		
+		clienteJson.put("email", "josé@gmail.com");
+		clienteJson.put("senha", "123456");
+		
+		
+		HttpEntity<String> request = new HttpEntity<>(clienteJson.toString(),headers);
+		
+		RestTemplate restTemplate2 = new RestTemplate();
+		ResponseEntity<String> resLogin = restTemplate2.postForEntity(urlBase+"/login",request,String.class);
+		
+		String token = resLogin.getHeaders().getFirst("authorization");
+		
+		HttpHeaders headers2 = new HttpHeaders();
+		List<MediaType> listMedia = new ArrayList<>();
+		listMedia.add(MediaType.ALL);
+		headers2.setAccept(listMedia);
+		headers2.add("Authorization", token);
+		HttpEntity<String> request2 = new HttpEntity<>(headers2);
+		ResponseEntity<String> cliente = restTemplate.exchange(urlBase+url,HttpMethod.GET,request2,String.class);
+		assertTrue(cliente.getStatusCode().value() == 200);
+		
+		
+	}
+	
+	
 	
 }
