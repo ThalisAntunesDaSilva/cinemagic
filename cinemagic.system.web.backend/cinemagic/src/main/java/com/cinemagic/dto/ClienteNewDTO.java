@@ -23,11 +23,11 @@ public class ClienteNewDTO implements Serializable{
 	String senha;
 	@NotNull
 	Integer cidadeId;
-	@NotEmpty
+	@NotEmpty(message = "Preenchimento obrigatório")
 	String areaCode;
-	@NotEmpty
+	@NotEmpty(message = "Preenchimento obrigatório")
 	String phone;
-	@NotEmpty
+	@NotEmpty(message = "Preenchimento obrigatório")
 	String cpf;
 	
 	public ClienteNewDTO(){

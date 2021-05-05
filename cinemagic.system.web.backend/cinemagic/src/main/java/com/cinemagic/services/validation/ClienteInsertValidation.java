@@ -43,6 +43,11 @@ public class ClienteInsertValidation implements ConstraintValidator<ClienteInser
 		if(objDTO.getPhone().length() < 8 || objDTO.getPhone().length() >9) {
 			list.add(new FieldMessage("phone","Telefone inválido"));
 		}
+		aux = null;
+		aux = repo.findByCpf(objDTO.getCpf());
+		if(aux != null) {
+			list.add(new FieldMessage("cpf","Cpf já existente"));
+		}
 		
 		
 		for(FieldMessage e : list) {

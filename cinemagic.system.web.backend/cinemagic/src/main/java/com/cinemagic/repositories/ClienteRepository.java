@@ -14,4 +14,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer>{
 	@Transactional(readOnly = true)
 	@Query("SELECT obj FROM Cliente obj WHERE obj.email = :email")
 	Cliente findByEmail(@Param("email") String email);
+	
+	@Query("SELECT obj from Cliente obj WHERE obj.cpf = :cpf")
+	Cliente findByCpf(@Param("cpf") String cpf);
 }
