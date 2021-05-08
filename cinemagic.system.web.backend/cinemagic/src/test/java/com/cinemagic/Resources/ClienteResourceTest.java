@@ -398,6 +398,122 @@ public class ClienteResourceTest {
 		
 	}
 	
+	@Test
+	@Order(16)
+	public void getClientByIdNotAuthenticated() {
+		String url = "/clientes";
+		
+		ResponseEntity<String> response = restTemplate.getForEntity(urlBase+url+"/1", String.class);
+		
+		assertTrue(response.getStatusCode().value() == 403);
+	}
+	
+	@Test
+	@Order(17)
+	public void getClientByIdWithAnotherCustomer() {
+		String url = "/clientes";
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		
+		JSONObject clienteJson = new JSONObject();
+		clienteJson.put("email", "mohamed@gmail.com");
+		clienteJson.put("senha", "123456");
+		
+		HttpEntity<String> request = new HttpEntity<>(clienteJson.toString(),headers);
+		
+		ResponseEntity<String> loginResponse = restTemplate.postForEntity(urlBase+"/login",request,String.class);
+		
+		String token = loginResponse.getHeaders().getFirst("authorization");
+		
+		HttpHeaders headers2 = new HttpHeaders();
+		List<MediaType> listMedia = new ArrayList<>();
+		listMedia.add(MediaType.ALL);
+		headers2.setAccept(listMedia);
+		headers2.add("Authorization", token);
+		HttpEntity<String> request2 = new HttpEntity<>(headers2);
+		
+		
+		ResponseEntity<String> response = restTemplate.getForEntity(urlBase+url+"/1",String.class,request2);
+		
+		
+		assertTrue(response.getStatusCode().value() == 403);
+	}
+	@Test
+	@Order(18)
+	public void getClientByIdCorrectCuscomer() {
+		String url = "/clientes";
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		
+		JSONObject clienteJson = new JSONObject();
+		clienteJson.put("email", "gabriel@gmail.com");
+		clienteJson.put("senha", "123456");
+		
+		HttpEntity<String> request = new HttpEntity<>(clienteJson.toString(),headers);
+		
+		ResponseEntity<String> loginResponse = restTemplate.postForEntity(urlBase+"/login",request,String.class);
+		
+		String token = loginResponse.getHeaders().getFirst("authorization");
+		
+		HttpHeaders headers2 = new HttpHeaders();
+		List<MediaType> listMedia = new ArrayList<>();
+		listMedia.add(MediaType.ALL);
+		headers2.setAccept(listMedia);
+		headers2.add("Authorization", token);
+		HttpEntity<String> request2 = new HttpEntity<>(headers2);
+		
+		
+		ResponseEntity<String> response = restTemplate.getForEntity(urlBase+url+"/1",String.class,request2);
+		
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			Cliente cliente = mapper.readValue(response.getBody(), Cliente.class);
+			assertTrue(response.getStatusCode().value() == 200 && cliente.getId().equals(1));
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
+	
+	@Test
+	@Order(19)
+	public void getClientByIdWithPerfilAdmin() {
+		String url = "/clientes";
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		
+		JSONObject clienteJson = new JSONObject();
+		clienteJson.put("email", "j@gmail.com");
+		clienteJson.put("senha", "123456");
+		
+		HttpEntity<String> request = new HttpEntity<>(clienteJson.toString(),headers);
+		
+		ResponseEntity<String> loginResponse = restTemplate.postForEntity(urlBase+"/login",request,String.class);
+		
+		String token = loginResponse.getHeaders().getFirst("authorization");
+		
+		HttpHeaders headers2 = new HttpHeaders();
+		List<MediaType> listMedia = new ArrayList<>();
+		listMedia.add(MediaType.ALL);
+		headers2.setAccept(listMedia);
+		headers2.add("Authorization", token);
+		HttpEntity<String> request2 = new HttpEntity<>(headers2);
+		
+		
+		ResponseEntity<String> response = restTemplate.getForEntity(urlBase+url+"/1",String.class,request2);
+		
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			Cliente cliente = mapper.readValue(response.getBody(), Cliente.class);
+			assertTrue(response.getStatusCode().value() == 200 && cliente.getId().equals(1));
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}	
 	
 	
 }
