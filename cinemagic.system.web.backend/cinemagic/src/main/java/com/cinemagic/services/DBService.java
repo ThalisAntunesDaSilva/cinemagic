@@ -93,7 +93,9 @@ public class DBService {
 		cidade2.getCinemas().addAll(Arrays.asList(cinema2));
 
 		Sala sala1 = new Sala(null, 01, 50, cinema2);
-		cinema2.getSalas().addAll(Arrays.asList(sala1));
+		Sala sala2 = new Sala(null,02,01,cinema2);
+		Sala sala3 = new Sala(null,03,50,cinema2);
+		cinema2.getSalas().addAll(Arrays.asList(sala1,sala2,sala3));
 
 		 
 		
@@ -102,7 +104,17 @@ public class DBService {
 		sala1.getSessoes().addAll(Arrays.asList(sessao1));
 		sessao1.setTrocaPorCupons(true);
 		sessao1.setValorEmCupons(10);
-
+		
+		Sessao sessao2 = new Sessao(null, new SimpleDateFormat("dd/MM/yyyy").parse("15/02/2021"),
+				new SimpleDateFormat("HH:mm").parse("22:00"), 20.00,10.00, filme1, sala2);
+		sala2.getSessoes().add(sessao2);
+		sessao2.setTrocaPorCupons(false);
+		
+		Sessao sessao3 = new Sessao(null, new SimpleDateFormat("dd/MM/yyyy").parse("15/02/2021"),
+				new SimpleDateFormat("HH:mm").parse("22:00"), 20.00,10.00, filme1, sala3);
+		sala3.getSessoes().add(sessao3);
+		sessao3.setSessaoEncerrada(true);
+		
 
 		generoRepository.saveAll(Arrays.asList(genero1));
 		filmeRepository.saveAll(Arrays.asList(filme1));
@@ -111,8 +123,8 @@ public class DBService {
 		estadoRepository.saveAll(Arrays.asList(estado1));
 		cidadeRepository.saveAll(Arrays.asList(cidade1, cidade2));
 		cinemaRepository.saveAll(Arrays.asList(cinema2));
-		salaRepository.saveAll(Arrays.asList(sala1));
-		sessaoRepository.saveAll(Arrays.asList(sessao1));
+		salaRepository.saveAll(Arrays.asList(sala1,sala2,sala3));
+		sessaoRepository.saveAll(Arrays.asList(sessao1,sessao2,sessao3));
 
 	
 
@@ -121,6 +133,9 @@ public class DBService {
 		
 		Cliente cliente2 = new Cliente(null, "José", "josé@gmail.com", cidade1,pe.encode("123456"),"55","996861486","62594664049");
 		cliente2.addPerfil(Perfil.ADMIN);
+		
+		Cliente cliente3 = new Cliente(null, "test", "test@gmail.com", cidade1,pe.encode("123456"),"55","996861486","62594664049");
+		
 		
 		CompraBuilder compraBuilder = new Compra.CompraBuilder();
 		compraBuilder.cliente(cliente1).id(null).instante(new Date()).tipoPagamento(TipoPagamento.PONTOS);
@@ -136,7 +151,7 @@ public class DBService {
 
 		cliente1 = clienteRepository.save(cliente1);
 		clienteRepository.save(cliente2);
-		
+		clienteRepository.save(cliente3);
 		compra1.setCliente(cliente1);
 		compraRepository.saveAll(Arrays.asList(compra1));
 
