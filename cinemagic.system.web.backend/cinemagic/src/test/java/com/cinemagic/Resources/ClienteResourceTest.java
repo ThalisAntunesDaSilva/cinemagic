@@ -486,7 +486,7 @@ public class ClienteResourceTest {
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		
 		JSONObject clienteJson = new JSONObject();
-		clienteJson.put("email", "j@gmail.com");
+		clienteJson.put("email", "josé@gmail.com");
 		clienteJson.put("senha", "123456");
 		
 		HttpEntity<String> request = new HttpEntity<>(clienteJson.toString(),headers);
