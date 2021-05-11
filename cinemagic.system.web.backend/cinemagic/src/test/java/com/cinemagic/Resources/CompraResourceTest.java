@@ -105,7 +105,7 @@ public class CompraResourceTest {
 			HttpEntity<String> request = new HttpEntity<>(json,header);
 			
 			ResponseEntity<String> response = restTemplate.postForEntity(urlBase, request, String.class);
-			assertTrue(response.getStatusCode().value() == 422);
+			assertTrue(response.getStatusCode().value() == 403);
 			
 			
 		} catch (JsonProcessingException e) {

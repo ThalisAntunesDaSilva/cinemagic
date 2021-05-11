@@ -31,7 +31,7 @@ public class ClienteResource {
 	@Autowired
 	ClienteService service;
 
-
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@GetMapping()
 	public ResponseEntity<List<Cliente>> findClientes() {
 		return ResponseEntity.ok().body(service.findAll());

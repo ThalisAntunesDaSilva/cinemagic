@@ -41,7 +41,7 @@ public class ResourceHandlerExcpetion {
 	@ExceptionHandler(value = PromotionClosedException.class)
 	public ResponseEntity<StandardErr> promotionClosed(PromotionClosedException ex,HttpServletRequest request){
 		StandardErr err = new StandardErr(HttpStatus.BAD_REQUEST.value(), ex.getMessage(), System.currentTimeMillis(),4,"Promoção não encontrada",request.getRequestURI());
-		return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(err);
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
 	}
 	
 	@ExceptionHandler(value = InsufficientCouponException.class)

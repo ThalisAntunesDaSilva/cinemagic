@@ -13,10 +13,12 @@ import com.cinemagic.dto.CompraNewDTO;
 import com.cinemagic.dto.IngressoDTO;
 import com.cinemagic.repositories.CompraRepository;
 import com.cinemagic.repositories.IngressoRepository;
+import com.cinemagic.security.UserSS;
 import com.cinemagic.services.chainOfResponsibility.ClienteCompraChain;
 import com.cinemagic.services.chainOfResponsibility.CompraChain;
 import com.cinemagic.services.chainOfResponsibility.IngressoCompraChain;
 import com.cinemagic.services.chainOfResponsibility.PagamentoCompraChain;
+import com.cinemagic.services.exceptions.AuthorizationException;
 import com.cinemagic.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -32,6 +34,11 @@ public class CompraService {
 	
 	public Compra findById(Integer id) {
 		Optional<Compra> obj = repo.findById(id);
+		UserSS user = UserService.authenticated();
+		if(obj.get() != null && !obj.get().getCliente().getId().equals(user.getId())) {
+			throw new AuthorizationException("Acesso negado");
+		}
+		
 		return obj.orElseThrow(
 				() -> new ObjectNotFoundException("Objeto não encontrado ID:" + id + "Tipo " + Compra.class.getName()));
 	}
